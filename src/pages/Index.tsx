@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Brain, Globe, Zap, Shield, Users, ChevronRight } from "lucide-react";
-import AIAssistantWelcome from "@/components/AIAssistantWelcome";
+import FuturisticAIAnimation from "@/components/FuturisticAIAnimation";
 
 const Index = () => {
   return (
@@ -46,9 +46,9 @@ const Index = () => {
               Our focus is on delivering intelligent systems that drive growth, efficiency, and innovation.
             </p>
             
-            {/* AI Assistant Welcome Animation */}
+            {/* Futuristic AI Animation */}
             <div className="mb-12 flex justify-center">
-              <AIAssistantWelcome />
+              <FuturisticAIAnimation />
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
