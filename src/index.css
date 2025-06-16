@@ -156,12 +156,83 @@
   }
 }
 
+/* New Metricdust AI Animations */
+@keyframes neural-network {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes circuit-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.6), 0 0 30px rgba(34, 211, 238, 0.4);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
 .animate-neural-pulse {
   animation: neural-pulse 2s ease-in-out infinite;
+}
+
+.animate-flow {
+  animation: data-flow 3s linear infinite;
+}
+
+.animate-circuit-glow {
+  animation: circuit-glow 2s ease-in-out infinite;
+}
+
+/* Neural Network Background */
+.neural-network {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.neural-node {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(34, 211, 238, 0.6);
+  border-radius: 50%;
+  animation: neural-network 3s ease-in-out infinite;
+}
+
+.neural-node::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.3), transparent);
+  top: 50%;
+  left: 100%;
+  animation: data-flow 4s linear infinite;
 }
 
 /* Additional Recruitment Platform Animations */

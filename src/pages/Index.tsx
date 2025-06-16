@@ -1,20 +1,20 @@
 
-import RecruitmentHero from "@/components/RecruitmentHero";
-import ValuePropositions from "@/components/ValuePropositions";
-import HowItWorks from "@/components/HowItWorks";
-import UseCases from "@/components/UseCases";
-import TestimonialsSlider from "@/components/TestimonialsSlider";
-import ModernFooter from "@/components/ModernFooter";
+import MetricdustHero from "@/components/MetricdustHero";
+import AIPoweredServices from "@/components/AIPoweredServices";
+import AIIndustries from "@/components/AIIndustries";
+import AIExpertise from "@/components/AIExpertise";
+import AISuccessStories from "@/components/AISuccessStories";
+import MetricdustFooter from "@/components/MetricdustFooter";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <RecruitmentHero />
-      <ValuePropositions />
-      <HowItWorks />
-      <UseCases />
-      <TestimonialsSlider />
-      <ModernFooter />
+      <MetricdustHero />
+      <AIPoweredServices />
+      <AIIndustries />
+      <AIExpertise />
+      <AISuccessStories />
+      <MetricdustFooter />
     </div>
   );
 };
