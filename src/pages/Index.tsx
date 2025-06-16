@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Brain, Globe, Zap, Shield, Users, ChevronRight } from "lucide-react";
+import AIAssistantWelcome from "@/components/AIAssistantWelcome";
 
 const Index = () => {
   return (
@@ -44,6 +45,12 @@ const Index = () => {
               We provide cutting-edge AI solutions and SaaS platforms to clients across the globe. 
               Our focus is on delivering intelligent systems that drive growth, efficiency, and innovation.
             </p>
+            
+            {/* AI Assistant Welcome Animation */}
+            <div className="mb-12 flex justify-center">
+              <AIAssistantWelcome />
+            </div>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3">
                 Explore AI Solutions
