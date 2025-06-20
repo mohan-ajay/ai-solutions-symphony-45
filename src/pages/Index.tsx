@@ -6,15 +6,19 @@ import AIIndustries from "@/components/AIIndustries";
 import AIExpertise from "@/components/AIExpertise";
 import AISuccessStories from "@/components/AISuccessStories";
 import MetricdustFooter from "@/components/MetricdustFooter";
+import IndustryOrbit from "@/components/IndustryOrbit";
+import BinaryLogo from "@/components/BinaryLogo";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <ModernHeader />
+      {/* <ModernHeader /> */}
       {/* Add padding-top to account for fixed header */}
-      <div className="pt-16">
+      <div >
         <MetricdustHero />
+        <BinaryLogo />
         <AIPoweredServices />
+        {/* <IndustryOrbit /> */}
         <AIIndustries />
         <AIExpertise />
         <AISuccessStories />
