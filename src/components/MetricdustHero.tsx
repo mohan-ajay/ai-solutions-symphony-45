@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Zap } from "lucide-react";
@@ -217,8 +218,8 @@ const MetricdustHero = () => {
 
       {/* Container with proper spacing */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* METRICDUST name and visualizer section with proper spacing */}
-        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-16 mb-20">
+        {/* METRICDUST name and visualizer section with reduced spacing */}
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
           {/* Logo/Name Section */}
           <div className="relative w-full lg:w-1/2 h-[200px] flex items-center justify-center lg:justify-start" ref={containerRef}>
             <canvas
@@ -238,11 +239,11 @@ const MetricdustHero = () => {
           </div>
         </div>
 
-        {/* Main hero content with improved spacing */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left column - Text content */}
-          <div className="text-left space-y-8">
-            <div className="space-y-6">
+        {/* Main hero content positioned closer to the name */}
+        <div className="grid lg:grid-cols-2 gap-8 items-start">
+          {/* Left column - Text content positioned closer to METRICDUST */}
+          <div className="text-left space-y-6">
+            <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#F5F5DC] leading-tight">
                 AI-Powered Future
               </h1>
@@ -252,16 +253,16 @@ const MetricdustHero = () => {
               </p>
             </div>
             
-            {/* CTA Button with proper spacing */}
-            <div className="pt-4 pb-8">
+            {/* CTA Button with reduced spacing */}
+            <div className="pt-2 pb-6">
               <Button size="lg" className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-10 py-4 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
                 Explore AI Solutions
                 <ArrowRight className="ml-3 w-5 h-5" />
               </Button>
             </div>
             
-            {/* Stats section with improved spacing */}
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-700/50">
+            {/* Stats section with reduced spacing */}
+            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-700/50">
               <div className="text-center lg:text-left">
                 <div className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">500+</div>
                 <div className="text-slate-400 text-sm sm:text-base">AI Projects Delivered</div>
