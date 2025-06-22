@@ -182,7 +182,7 @@ const MetricdustHero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-black via-[rgba(0,0,0,0.8)] to-black flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-gradient-to-br from-black via-[rgba(0,0,0,0.8)] to-black flex flex-col items-center justify-start overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="neural-network">
@@ -215,33 +215,41 @@ const MetricdustHero = () => {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* METRICDUST name and visualizer in a row at the very top */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 mt-8 max-w-6xl mx-auto">
+        <div className="relative w-full md:w-1/2 h-[200px] mb-2 overflow-visible flex-shrink-0">
+          <canvas
+            ref={canvasRef}
+            className="w-full h-full"
+          />
+        </div>
+        <div className="relative w-full md:w-1/2 h-[400px] flex items-center justify-center flex-shrink-0">
+          <MetricDustVisualizer 
+            micEnabled={false}
+            width="100%"
+            height="100%"
+            particleColor="#F5F5DC"
+          />
+        </div>
+      </div>
+
+      {/* Rest of the hero content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-left" ref={containerRef}>
-            {/* Canvas container with dynamic sizing */}
-            <div className="relative w-full h-[250px] mb-2 overflow-visible">
-              <canvas
-                ref={canvasRef}
-                className="w-full h-full"
-              />
-            </div>
-            
             <h1 className="text-5xl md:text-7xl font-bold text-[#F5F5DC] leading-tight pl-8">
               AI-Powered Future
             </h1>
-            
             <p className="text-xl text-[#F5F5DC] mb-8 mt-10 leading-relaxed max-w-xl pl-8">
               Transform your business with cutting-edge artificial intelligence solutions. 
               We deliver enterprise-grade AI that drives innovation, efficiency, and growth.
             </p>
-            
             <div className="flex flex-col sm:flex-row gap-4 mb-12 pl-8">
               <Button size="lg" className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-8 py-4 text-lg">
                 Explore AI Solutions
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
-            
             <div className="grid grid-cols-3 gap-8 text-center pl-8">
               <div>
                 <div className="text-3xl font-bold text-cyan-400 mb-2">500+</div>
@@ -256,15 +264,6 @@ const MetricdustHero = () => {
                 <div className="text-slate-400 text-sm">AI System Monitoring</div>
               </div>
             </div>
-          </div>
-
-          {/* Right visual - AI Brain Animation */}
-          <div className="relative w-full h-[500px] d-flex justify-center align-end">
-            <MetricDustVisualizer 
-              micEnabled={true}
-              width="100%"
-              height="100%"
-            />
           </div>
         </div>
       </div>

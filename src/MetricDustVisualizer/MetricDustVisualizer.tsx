@@ -125,7 +125,7 @@ const MetricDustVisualizer: React.FC<MetricDustVisualizerProps> = (props) => {
         <Suspense fallback={null}>
           <SceneContent {...props} />
         </Suspense>
-        <OrbitControls enablePan={true} enableZoom={true} minDistance={sphereRadius * 1.5} maxDistance={sphereRadius * 8} />
+        <OrbitControls enablePan={true} enableZoom={false} minDistance={sphereRadius * 1.5} maxDistance={sphereRadius * 8} />
         
         {/* <EffectComposer>
           <Bloom

@@ -13,11 +13,11 @@ import MetricDustVisualizer from '../MetricDustVisualizer/MetricDustVisualizer';
 const Index = () => {
   return (
     <div className="min-h-screen">
-      {/* <ModernHeader /> */}
+      <ModernHeader />
       {/* Add padding-top to account for fixed header */}
       <div >
         <MetricdustHero />
-        {/* <BinaryLogo /> */}
+        <BinaryLogo />
         <AIPoweredServices />
         {/* <IndustryOrbit /> */}
         <AIIndustries />
