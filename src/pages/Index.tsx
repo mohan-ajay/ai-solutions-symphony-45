@@ -1,4 +1,3 @@
-
 import ModernHeader from "@/components/ModernHeader";
 import MetricdustHero from "@/components/MetricdustHero";
 import AIPoweredServices from "@/components/AIPoweredServices";
@@ -8,6 +7,8 @@ import AISuccessStories from "@/components/AISuccessStories";
 import MetricdustFooter from "@/components/MetricdustFooter";
 import IndustryOrbit from "@/components/IndustryOrbit";
 import BinaryLogo from "@/components/BinaryLogo";
+import MetricDustVisualizer from '../MetricDustVisualizer/MetricDustVisualizer';
+
 
 const Index = () => {
   return (
@@ -16,7 +17,7 @@ const Index = () => {
       {/* Add padding-top to account for fixed header */}
       <div >
         <MetricdustHero />
-        <BinaryLogo />
+        {/* <BinaryLogo /> */}
         <AIPoweredServices />
         {/* <IndustryOrbit /> */}
         <AIIndustries />

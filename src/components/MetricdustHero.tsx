@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Zap } from "lucide-react";
+import MetricDustVisualizer from '../MetricDustVisualizer/MetricDustVisualizer';
 
 const MetricdustHero = () => {
   const canvasRef = useRef(null);
@@ -258,42 +259,12 @@ const MetricdustHero = () => {
           </div>
 
           {/* Right visual - AI Brain Animation */}
-          <div className="relative">
-            <div className="relative w-full h-96 flex items-center justify-center">
-              <div className="relative w-64 h-64 bg-gradient-to-br from-cyan-600/30 to-blue-600/30 rounded-full border border-cyan-400/50 backdrop-blur-sm animate-neural-pulse">
-                <Brain className="w-32 h-32 text-cyan-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                
-                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-cyan-500/30 rounded-full border border-cyan-400 flex items-center justify-center">
-                    <Zap className="w-4 h-4 text-cyan-300" />
-                  </div>
-                </div>
-                
-                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
-                  <div className="absolute top-1/2 -right-4 transform -translate-y-1/2 w-6 h-6 bg-blue-500/30 rounded-full border border-blue-400"></div>
-                </div>
-                
-                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '25s' }}>
-                  <div className="absolute -bottom-4 left-1/4 w-6 h-6 bg-purple-500/30 rounded-full border border-purple-400"></div>
-                </div>
-              </div>
-              
-              <div className="absolute inset-0">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-32 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent animate-flow"
-                    style={{
-                      transform: `rotate(${i * 45}deg)`,
-                      transformOrigin: 'center',
-                      top: '50%',
-                      left: '50%',
-                      animationDelay: `${i * 0.3}s`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
+          <div className="relative w-full h-[500px] d-flex justify-center align-end">
+            <MetricDustVisualizer 
+              micEnabled={true}
+              width="100%"
+              height="100%"
+            />
           </div>
         </div>
       </div>
