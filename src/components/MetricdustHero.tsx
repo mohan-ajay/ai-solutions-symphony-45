@@ -182,7 +182,7 @@ const MetricdustHero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen bg-gradient-to-br from-black via-[rgba(0,0,0,0.8)] to-black flex flex-col items-center justify-start overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-gradient-to-br from-black via-[rgba(0,0,0,0.8)] to-black flex flex-col items-center justify-start overflow-hidden pt-20 pb-16">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="neural-network">
@@ -215,56 +215,70 @@ const MetricdustHero = () => {
         ))}
       </div>
 
-      {/* METRICDUST name and visualizer in a row at the very top */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 mt-8 max-w-6xl mx-auto">
-        <div className="relative w-full md:w-1/2 h-[200px] mb-2 overflow-visible flex-shrink-0">
-          <canvas
-            ref={canvasRef}
-            className="w-full h-full"
-          />
+      {/* Container with proper spacing */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* METRICDUST name and visualizer section with proper spacing */}
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-16 mb-20">
+          {/* Logo/Name Section */}
+          <div className="relative w-full lg:w-1/2 h-[200px] flex items-center justify-center lg:justify-start" ref={containerRef}>
+            <canvas
+              ref={canvasRef}
+              className="w-full h-full"
+            />
+          </div>
+          
+          {/* Visualizer Section */}
+          <div className="relative w-full lg:w-1/2 h-[400px] flex items-center justify-center">
+            <MetricDustVisualizer 
+              micEnabled={false}
+              width="100%"
+              height="100%"
+              particleColor="#F5F5DC"
+            />
+          </div>
         </div>
-        <div className="relative w-full md:w-1/2 h-[400px] flex items-center justify-center flex-shrink-0">
-          <MetricDustVisualizer 
-            micEnabled={false}
-            width="100%"
-            height="100%"
-            particleColor="#F5F5DC"
-          />
-        </div>
-      </div>
 
-      {/* Rest of the hero content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-left" ref={containerRef}>
-            <h1 className="text-5xl md:text-7xl font-bold text-[#F5F5DC] leading-tight pl-8">
-              AI-Powered Future
-            </h1>
-            <p className="text-xl text-[#F5F5DC] mb-8 mt-10 leading-relaxed max-w-xl pl-8">
-              Transform your business with cutting-edge artificial intelligence solutions. 
-              We deliver enterprise-grade AI that drives innovation, efficiency, and growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-12 pl-8">
-              <Button size="lg" className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-8 py-4 text-lg">
+        {/* Main hero content with improved spacing */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left column - Text content */}
+          <div className="text-left space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#F5F5DC] leading-tight">
+                AI-Powered Future
+              </h1>
+              <p className="text-lg sm:text-xl text-[#F5F5DC]/90 leading-relaxed max-w-2xl">
+                Transform your business with cutting-edge artificial intelligence solutions. 
+                We deliver enterprise-grade AI that drives innovation, efficiency, and growth.
+              </p>
+            </div>
+            
+            {/* CTA Button with proper spacing */}
+            <div className="pt-4 pb-8">
+              <Button size="lg" className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-10 py-4 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
                 Explore AI Solutions
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-3 w-5 h-5" />
               </Button>
             </div>
-            <div className="grid grid-cols-3 gap-8 text-center pl-8">
-              <div>
-                <div className="text-3xl font-bold text-cyan-400 mb-2">500+</div>
-                <div className="text-slate-400 text-sm">AI Projects Delivered</div>
+            
+            {/* Stats section with improved spacing */}
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-700/50">
+              <div className="text-center lg:text-left">
+                <div className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">500+</div>
+                <div className="text-slate-400 text-sm sm:text-base">AI Projects Delivered</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-cyan-400 mb-2">98%</div>
-                <div className="text-slate-400 text-sm">Client Satisfaction</div>
+              <div className="text-center lg:text-left">
+                <div className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">98%</div>
+                <div className="text-slate-400 text-sm sm:text-base">Client Satisfaction</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-cyan-400 mb-2">24/7</div>
-                <div className="text-slate-400 text-sm">AI System Monitoring</div>
+              <div className="text-center lg:text-left">
+                <div className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">24/7</div>
+                <div className="text-slate-400 text-sm sm:text-base">AI System Monitoring</div>
               </div>
             </div>
           </div>
+          
+          {/* Right column - Empty space for visual balance */}
+          <div className="hidden lg:block"></div>
         </div>
       </div>
     </section>
