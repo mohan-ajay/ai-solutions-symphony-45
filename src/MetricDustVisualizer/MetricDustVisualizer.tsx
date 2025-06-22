@@ -1,3 +1,4 @@
+
 // src/components/visualizer/MetricDustVisualizer/MetricDustVisualizer.tsx
 
 import React, { useRef, Suspense } from 'react';
@@ -6,7 +7,7 @@ import { OrbitControls } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { MetricDustMesh } from './MetricDustMesh';
 import { useAudioData } from './hooks/useAudioData';
-import { AudioVisualizerProps } from '../types';
+import { AudioVisualizerProps } from '../hooks/types';
 import type { TrackReferenceOrPlaceholder } from '@livekit/components-core';
 import * as THREE from 'three';
 
