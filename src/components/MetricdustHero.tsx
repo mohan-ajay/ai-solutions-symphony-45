@@ -218,17 +218,27 @@ const MetricdustHero = () => {
 
       {/* Container with proper spacing */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* METRICDUST name and visualizer section with reduced spacing */}
+        {/* Main layout with METRICDUST + AI-Powered Future in one column, visualizer in another */}
         <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
-          {/* Logo/Name Section */}
-          <div className="relative w-full lg:w-1/2 h-[200px] flex items-center justify-center lg:justify-start" ref={containerRef}>
-            <canvas
-              ref={canvasRef}
-              className="w-full h-full"
-            />
+          {/* Left column - METRICDUST name and AI-Powered Future text */}
+          <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2 space-y-6">
+            {/* METRICDUST Logo/Name */}
+            <div className="relative w-full h-[200px] flex items-center justify-center lg:justify-start" ref={containerRef}>
+              <canvas
+                ref={canvasRef}
+                className="w-full h-full"
+              />
+            </div>
+            
+            {/* AI-Powered Future text directly below */}
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#F5F5DC] leading-tight">
+                AI-Powered Future
+              </h1>
+            </div>
           </div>
           
-          {/* Visualizer Section */}
+          {/* Right column - Visualizer */}
           <div className="relative w-full lg:w-1/2 h-[400px] flex items-center justify-center">
             <MetricDustVisualizer 
               micEnabled={false}
@@ -239,14 +249,11 @@ const MetricdustHero = () => {
           </div>
         </div>
 
-        {/* Main hero content positioned closer to the name */}
+        {/* Secondary content below */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* Left column - Text content positioned closer to METRICDUST */}
+          {/* Left column - Description and CTA */}
           <div className="text-left space-y-6">
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#F5F5DC] leading-tight">
-                AI-Powered Future
-              </h1>
               <p className="text-lg sm:text-xl text-[#F5F5DC]/90 leading-relaxed max-w-2xl">
                 Transform your business with cutting-edge artificial intelligence solutions. 
                 We deliver enterprise-grade AI that drives innovation, efficiency, and growth.
