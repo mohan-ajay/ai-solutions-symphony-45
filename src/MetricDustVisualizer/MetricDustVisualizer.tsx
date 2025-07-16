@@ -47,7 +47,7 @@ const DEFAULT_METRIC_DUST_PARAMS = {
 
 const SceneContent = (props: MetricDustVisualizerProps) => {
   const {
-    micEnabled,
+    // micEnabled,
     voiceAssistantAudioTrack,
     rotationSpeed = DEFAULT_METRIC_DUST_PARAMS.rotationSpeed,
     audioReductionFactor = DEFAULT_METRIC_DUST_PARAMS.audioReductionFactor,
@@ -59,7 +59,7 @@ const SceneContent = (props: MetricDustVisualizerProps) => {
   const prevSmoothedAudio = useRef(0);
 
   const useLiveKitTrack = !!voiceAssistantAudioTrack;
-  const effectiveMicEnabled = !useLiveKitTrack && micEnabled;
+  const effectiveMicEnabled = !useLiveKitTrack ;
   const effectiveVoiceAssistantTrack = useLiveKitTrack ? voiceAssistantAudioTrack : undefined;
 
   const { audioData: rawFrequencyData } = useAudioData({

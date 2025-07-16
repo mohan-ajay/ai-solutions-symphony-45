@@ -1,172 +1,349 @@
-
-import React, {useEffect,useState,useRef} from 'react';
-import { Card, CardContent } from "@/components/ui/card";
-import { Building, Heart, ShoppingCart, Factory, GraduationCap, Car, Banknote, Plane } from "lucide-react";
+import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faBullhorn,
-  faStethoscope,
-  faGears,
-  faHouse,
-  faCoins,
-  faBookOpenReader,
-  faTowerBroadcast,
-  faMicrochip,
-  faRocket
+  faBullhorn, faStethoscope, faGears, faHexagonNodes, faSignHanging, faVrCardboard, faChartLine,
+  faCloud, faNetworkWired, faGraduationCap, faBuilding
 } from '@fortawesome/free-solid-svg-icons';
+import { useMotionValue, useMotionTemplate, motion } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Sphere } from '@react-three/drei';
+import ThreeDSphere from './ThreeDSphere';
+import logo_check from '../../public/logo_black.png';
 
-const industries = [
-  { label: 'Advertising', icon: faBullhorn },
-  { label: 'Healthcare', icon: faStethoscope },
-  { label: 'Manufacturing', icon: faGears },
-  { label: 'Real Estate', icon: faHouse },
-  { label: 'Finance', icon: faCoins },
-  { label: 'Education', icon: faBookOpenReader },
-  { label: 'Telecom', icon: faTowerBroadcast },
-  { label: 'High-Tech', icon: faMicrochip },
-  { label: 'Startups', icon: faRocket }
+interface Orbit {
+  width: number;
+  height: number;
+  speed: number;
+  color: string;
+  pathColor: string;
+  rotation: string;
+  items?: Array<{ label: string; icon: any }>;
+}
+
+interface Industry {
+  label: string;
+  icon: any;
+}
+
+const industries: Industry[] = [
+  { label: 'AI', icon: faHexagonNodes},
+  { label: 'Cloud Migration', icon: faCloud },
+  { label: 'Networking', icon: faNetworkWired },
+  { label: 'Edtech', icon: faGraduationCap },
+  { label: 'Cyber Security', icon: faSignHanging },
+  { label: 'Digital Marketing', icon: faChartLine },
+  { label: 'Real Estate', icon: faBuilding }
 ];
-const AIIndustries = () => {
-  // const industries = [
-  //   {
-  //     icon: Heart,
-  //     name: "Healthcare",
-  //     description: "AI-driven diagnostics, patient care optimization, and medical research acceleration.",
-  //     useCases: ["Medical Imaging AI", "Drug Discovery", "Patient Monitoring", "Predictive Healthcare"]
-  //   },
-  //   {
-  //     icon: Banknote,
-  //     name: "Finance",
-  //     description: "Intelligent fraud detection, algorithmic trading, and risk assessment solutions.",
-  //     useCases: ["Fraud Detection", "Risk Analysis", "Algorithmic Trading", "Credit Scoring"]
-  //   },
-  //   {
-  //     icon: ShoppingCart,
-  //     name: "Retail & E-commerce",
-  //     description: "Personalized shopping experiences, inventory optimization, and demand forecasting.",
-  //     useCases: ["Recommendation Engines", "Inventory Management", "Price Optimization", "Customer Analytics"]
-  //   },
-  //   {
-  //     icon: Factory,
-  //     name: "Manufacturing",
-  //     description: "Predictive maintenance, quality control, and supply chain optimization.",
-  //     useCases: ["Predictive Maintenance", "Quality Control", "Supply Chain AI", "Production Optimization"]
-  //   },
-  //   {
-  //     icon: GraduationCap,
-  //     name: "Education",
-  //     description: "Personalized learning platforms, automated grading, and educational analytics.",
-  //     useCases: ["Adaptive Learning", "Student Analytics", "Automated Assessment", "Content Personalization"]
-  //   },
-  //   {
-  //     icon: Car,
-  //     name: "Transportation",
-  //     description: "Autonomous systems, route optimization, and smart logistics solutions.",
-  //     useCases: ["Route Optimization", "Fleet Management", "Autonomous Vehicles", "Traffic Analysis"]
-  //   },
-  //   {
-  //     icon: Building,
-  //     name: "Real Estate",
-  //     description: "Property valuation, market analysis, and smart building management.",
-  //     useCases: ["Property Valuation", "Market Prediction", "Smart Buildings", "Investment Analysis"]
-  //   },
-  //   {
-  //     icon: Plane,
-  //     name: "Aviation",
-  //     description: "Flight optimization, maintenance prediction, and passenger experience enhancement.",
-  //     useCases: ["Flight Optimization", "Maintenance AI", "Passenger Analytics", "Safety Systems"]
-  //   }
-  // ];
 
-   const orbitRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const orbitRadius = 230;
-  
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        },
-        { threshold: 0.2 }
-      );
-  
-      if (orbitRef.current) observer.observe(orbitRef.current);
-      return () => orbitRef.current && observer.unobserve(orbitRef.current);
-    }, []);
-  
-
-  
+const Mini3DSphere = ({ icon, label, width = 140, height = 140 }: { icon: any, label: string, width?: number, height?: number }) => {
   return (
-    <section className="py-20 bg-[#d3d3d3]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Industries We're Transforming with AI
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Our AI solutions are revolutionizing operations across diverse industries, delivering measurable results and competitive advantages.
+    <div className="w-full h-full" style={{ width, height, position: 'relative' }}>
+      <Canvas camera={{ position: [0, 0, 2.5], fov: 45 }} style={{ width: '100%', height: '100%', borderRadius: '50%' }}>
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[3, 3, 3]} intensity={1} />
+        <mesh>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial 
+            color="#888" 
+            metalness={0.6} 
+            roughness={0.2} 
+            emissive="#d3d3d3"
+            emissiveIntensity={0.1}
+          />
+        </mesh>
+        <OrbitControls 
+          enableZoom={false} 
+          autoRotate={true} 
+          autoRotateSpeed={3}
+          enablePan={false}
+          enableRotate={false}
+        />
+      </Canvas>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="text-white text-center">
+          <FontAwesomeIcon icon={icon} className="text-xl mb-1" />
+          <p className="text-xs mt-1">{label}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const AllIndustries = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [randomBinary, setRandomBinary] = useState("");
+  const animationRef = useRef<number>();
+  const previousTimeRef = useRef<number>();
+  const progressRef = useRef<number[]>([]);
+  
+  let mouseX = useMotionValue(0);
+  let mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    // Generate random binary string
+    let str = "";
+    for (let i = 0; i < 15000; i++) {
+      str += Math.random() > 0.5 ? "1" : "0";
+    }
+    setRandomBinary(str);
+
+    // Intersection Observer
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.2 }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+      stopAnimation();
+    };
+  }, []);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  const orbits: Orbit[] = [
+    { 
+      width: 700,
+      height: 700, // Make width and height equal for a perfect circle
+      speed: 20, 
+      color: 'from-purple-600 to-purple-700', 
+      pathColor: 'rgba(160, 100, 255, 0.3)',
+      rotation: '' // Remove 3D rotation for a flat circle
+    },
+    { 
+      width: 450,
+      height: 450, // Make width and height equal for a perfect circle
+      speed: 25, 
+      color: 'from-purple-600 to-purple-700', 
+      pathColor: 'rgba(160, 100, 255, 0.3)',
+      rotation: '' // Remove 3D rotation for a flat circle
+    }
+  ];
+
+  const assignIndustries = (orbitsToAssign: Orbit[]): Orbit[] => {
+    // First orbit: AI, Cloud Migration, Networking, Real Estate
+    const firstOrbitItems = [
+      industries[0], // AI
+      industries[1], // Cloud Migration
+      industries[2], // Networking
+      industries[6], // Real Estate
+    ];
+    // Second orbit: Edtech, Cyber Security, Digital Marketing
+    const secondOrbitItems = [
+      industries[3], // Edtech
+      industries[4], // Cyber Security
+      industries[5], // Digital Marketing
+    ];
+    return orbitsToAssign.map((orbit, orbitIdx) => {
+      const newOrbit = { ...orbit };
+      if (orbitIdx === 0) {
+        newOrbit.items = firstOrbitItems;
+      } else if (orbitIdx === 1) {
+        newOrbit.items = secondOrbitItems;
+      } else {
+        newOrbit.items = [];
+      }
+      return newOrbit;
+    });
+  };
+
+  const allOrbits = assignIndustries(orbits);
+
+  const getOrbitPosition = (orbitIndex: number, progress: number) => {
+    const orbit = allOrbits[orbitIndex];
+    const angle = progress * Math.PI * 2;
+    const x = Math.cos(angle) * (orbit.width / 2);
+    const y = Math.sin(angle) * (orbit.height / 2);
+    return { x, y };
+  };
+
+  const startAnimation = () => {
+    progressRef.current = new Array(allOrbits.length).fill(0);
+    previousTimeRef.current = undefined;
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  const stopAnimation = () => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+  };
+
+  const animate = (time: number) => {
+    if (previousTimeRef.current === undefined) {
+      previousTimeRef.current = time;
+    }
+
+    const deltaTime = time - previousTimeRef.current;
+    previousTimeRef.current = time;
+
+    allOrbits.forEach((orbit, orbitIndex) => {
+      progressRef.current[orbitIndex] = (progressRef.current[orbitIndex] + (deltaTime / (orbit.speed * 1000))) % 1;
+      
+      const orbitElement = containerRef.current?.querySelector(`.orbit-${orbitIndex}`);
+      const items = orbitElement?.querySelectorAll('.orbit-item');
+
+      items?.forEach((item, itemIndex) => {
+        const itemProgress = (progressRef.current[orbitIndex] + (itemIndex / (items.length || 1))) % 1;
+        const pos = getOrbitPosition(orbitIndex, itemProgress);
+        (item as HTMLElement).style.transform = `translate(calc(${pos.x}px - 50%), calc(${pos.y}px - 50%)`;
+      });
+    });
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    if (isVisible) {
+      startAnimation();
+    } else {
+      stopAnimation();
+    }
+    return stopAnimation;
+  }, [isVisible]);
+
+  return (
+    <section 
+      className="py-16 bg-[#000000] relative overflow-hidden group"
+      onMouseMove={handleMouseMove}
+    >
+      {/* Binary Pattern Background */}
+      <div className="absolute inset-0 z-0 p-16 pointer-events-none overflow-hidden">
+        <BinaryPattern 
+          mouseX={mouseX} 
+          mouseY={mouseY} 
+          randomString={randomBinary} 
+        />
+      </div>
+
+      {/* Floating dots background */}
+      
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h1 className="text-4xl font-semibold leading-snug text-slate-100">
+            Domain Expertise
+          </h1>
+          <p className="text-xl text-gray-400 mt-4 max-w-3xl mx-auto">
+            Our solutions orbit around your core business needs
           </p>
         </div>
-          <div
-                ref={orbitRef}
-                className={`relative w-[100px] h-[500px] m-auto flex justify-start items-start transition-all duration-[2000ms] ease-in-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
-              >
-                <div className="
-  absolute top-1/2 left-1/2 w-[310px] h-[310px] 
-  bg-[#4169e1]/60
-  border-2 border-white rounded-full 
-  transform -translate-x-1/2 -translate-y-1/2
-  transition-all duration-[2000ms] ease-in-out
-"></div>
-<div className="
-  absolute top-1/2 left-1/2 w-[460px] h-[460px] 
-  bg-[#4169e1]/70
-  border-4 border-white rounded-full 
-  transform -translate-x-1/2 -translate-y-1/2
-  transition-all duration-[2000ms] ease-in-out
-  shadow-[0_0_15px_rgba(255,255,255,0.5)]
-"></div>          
-<div className={`
-  absolute top-1/2 left-1/2 w-[170px] h-[170px] 
-  bg-[#4169e1]/90
-  rounded-full transform -translate-x-1/2 -translate-y-1/2 
-  flex justify-center items-center text-black font-bold text-[60px] z-20 
-  shadow-[0_0_20px_rgba(65,105,225,0.9)]
-  transition-all duration-[2000ms] ease-in-out 
-  ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
-`}>
-  M
-</div>          
-                <div className="absolute top-1/2 left-1/2 w-[410px] h-[410px] -translate-x-1/2 -translate-y-1/2">
-                  <div className="relative w-full h-full animate-[spin_40s_linear_infinite]">
-                    {industries.map((item, index) => {
-                      const angle = (index / industries.length) * 2 * Math.PI;
-                      const x = orbitRadius * Math.cos(angle);
-                      const y = orbitRadius * Math.sin(angle);
-          
-                      return (
-                        <div
-                          key={index}
-                          className={`absolute w-[80px] h-[80px] bg-[#4169e1] rounded-full flex flex-col items-center justify-center text-center text-[#0c1323] text-sm font-semibold shadow-md z-10 transition-all duration-[2000ms] ease-in-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
-                          style={{
-                            left: `calc(50% + ${x}px - 40px)`,
-                            top: `calc(50% + ${y}px - 40px)`,
-                            transitionDelay: `${400 + index * 150}ms`
-                          }}
-                        >
-                          <div className="animate-[spinReverse_40s_linear_infinite] w-full h-full flex flex-col items-center justify-center text-white">
-                            <FontAwesomeIcon icon={item.icon} />
-                            <div className="mt-1 text-xs text-white">{item.label}</div>
-                          </div>
-                        </div>
-                      );
-                    })}
+
+        <div 
+          ref={containerRef}
+          className="relative h-[800px] flex items-center justify-center perspective-1000"
+        >
+          {/* Central 3D Planet */}
+          <div className={`
+            absolute z-10 w-56 h-56 flex items-center justify-center
+            transition-all duration-1000 ${isVisible ? 'opacity-80 scale-100' : 'opacity-0 scale-50'}
+          `}>
+            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-gray-200 via-white to-gray-400 shadow-2xl flex items-center justify-center border-4 border-gray-300">
+              <img 
+                src={logo_check}
+                alt="Center Logo"
+                width={150}
+                height={150}
+                // style={{ borderRadius: '50%' }}
+              />
+            </div>
+          </div>
+
+          {/* Orbit Paths with Moving Icons */}
+          {allOrbits.map((orbit, orbitIndex) => (
+            <div
+              key={orbitIndex}
+              className={`orbit-${orbitIndex} absolute border rounded-full border-[#4961e1] transition-opacity duration-100 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              style={{
+                width: `${orbit.width}px`,
+                height: `${orbit.height}px`,
+                left: '50%',
+                top: '50%',
+                transform: `translate(-50%, -50%)`, // Remove rotation for perfect circle
+              }}
+            >
+              
+              {orbit.items?.map((item, itemIndex) => {
+                const itemProgress = (progressRef.current[orbitIndex] + (itemIndex / orbit.items.length)) % 1;
+                const pos = getOrbitPosition(orbitIndex, itemProgress);
+                // Alternate sizes for demo; you can customize as needed
+                const sphereSizes = [
+                  { width: 130, height: 130 },
+                  { width: 105, height: 105 },
+                  { width: 90, height: 90 },
+                  { width: 105, height: 105 }, // For the 4th sphere (Real Estate)
+                ];
+                const { width, height } = sphereSizes[itemIndex % sphereSizes.length];
+                return (
+                  <div
+                    key={itemIndex}
+                    className="orbit-item absolute top-1/2 left-1/2 flex items-center justify-center z-20"
+                    style={{
+                      width,
+                      height,
+                      transform: `translate(calc(${pos.x}px - 50%), calc(${pos.y}px - 50%)`,
+                    }}
+                  >
+                    <Mini3DSphere icon={item.icon} label={item.label} width={width} height={height} />
                   </div>
-                </div>
-              </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+      `}</style>
     </section>
   );
 };
 
-export default AIIndustries;
+// Binary Pattern Component
+const BinaryPattern = ({ mouseX, mouseY, randomString }: any) => {
+  let maskImage = useMotionTemplate`radial-gradient(120px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  let style = { maskImage, WebkitMaskImage: maskImage };
+
+  return (
+    <>
+      <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] opacity-50"></div>
+      
+      {/* Base visible binary pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <p className="absolute inset-x-0 text-xs h-full break-words whitespace-pre-wrap text-blue-900 font-mono font-bold">
+          {randomString.split('').join(' ')}
+        </p>
+      </div>
+      
+      {/* Hover focus effect - only the small area becomes brighter */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-40 transition duration-300"
+        style={style}
+      />
+      
+      <motion.div
+        className="absolute inset-0 opacity-0 group-hover:opacity-60 mix-blend-overlay transition duration-300"
+        style={style}
+      >
+        <p className="absolute inset-x-0 text-xs h-full break-words whitespace-pre-wrap text-white font-mono font-bold">
+          {randomString.split('').join(' ')}
+        </p>
+      </motion.div>
+    </>
+  );
+};
+
+export default AllIndustries;

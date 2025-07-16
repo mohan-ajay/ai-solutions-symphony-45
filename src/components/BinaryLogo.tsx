@@ -159,8 +159,7 @@ const BinaryLogoAnimation = () => {
   return (
     <div className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
       <canvas
-        ref={canvasRef}
-        className="w-full h-full cursor-pointer"
+        ref={canvasRef}aria-activedescendant=''               
       />
     </div>
   );

@@ -18,6 +18,10 @@ export default {
       }
     },
     extend: {
+      fontFamily: {
+        spartan: ['"League Spartan"', 'Arial', 'sans-serif'],
+        sans: ['"Glacial Indifference"', 'Arial', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
