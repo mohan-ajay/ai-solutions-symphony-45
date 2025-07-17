@@ -6,7 +6,7 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '/services' },
   { name: 'About', href: '/about-us' },
-  { name: 'Reflects', href: '/reflects' },
+  { name: 'Reflect', href: '/reflects' },
   { name: 'Contact', href: '/contact-us' },
 ];
 
@@ -15,6 +15,8 @@ const ModernHeader = ({ alwaysHideOnScroll = false }: { alwaysHideOnScroll?: boo
   const shouldHide = alwaysHideOnScroll
     ? scrollDirection !== undefined && window.scrollY > 0
     : scrollDirection === 'down';
+
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
 
   return (
     <header
@@ -29,12 +31,16 @@ const ModernHeader = ({ alwaysHideOnScroll = false }: { alwaysHideOnScroll?: boo
           <img src="/logo_check.png" alt="Logo" className="h-10 w-auto object-contain bg-transparent" />
         </a>
         {/* Links Centered */}
-        <ul className="flex-1 flex justify-center gap-10 text-slate-200 text-lg font-medium">
+        <ul className="flex-1 flex justify-center gap-5 text-slate-200 text-xl font-medium">
           {navLinks.map(link => (
             <li key={link.name}>
               <a
                 href={link.href}
-                className="hover:text-cyan-400 transition-colors duration-200"
+                className={`relative px-5 py-2 transition-colors duration-200
+                  hover:bg-neutral-800 hover:text-white hover:rounded-xl
+                  focus:bg-neutral-800 focus:text-white focus:rounded-xl
+                  ${currentPath === link.href ? 'bg-neutral-800 text-white rounded-xl' : ''}
+                `}
               >
                 {link.name}
               </a>

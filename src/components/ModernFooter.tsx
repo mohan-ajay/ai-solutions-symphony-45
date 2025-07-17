@@ -23,7 +23,7 @@ const ModernFooter = () => {
       { name: 'Home', href: '/' },
       { name: 'About', href: '/about-us' },
       { name: 'Services', href: '/services' },
-      { name: 'Reflects', href: '/reflects' },
+      { name: 'Reflect', href: '/reflects' },
       { name: 'Contact', href: '/contact-us' }
     ],
     support: [

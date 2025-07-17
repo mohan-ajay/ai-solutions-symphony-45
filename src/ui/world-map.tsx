@@ -14,18 +14,18 @@ interface MapProps {
 
 export function WorldMap({
   dots = [],
-  lineColor = "#0ea5e9",
+  lineColor = "#fff",
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const map = new DottedMap({ height: 100, grid: "diagonal" });
 
   // Always use light theme for background and dots
-  const svgMap = map.getSVG({
+  const svgMap = useMemo(() => map.getSVG({
     radius: 0.22,
-    color: "#00000060",
+    color: "#fff",
     shape: "circle",
-    backgroundColor: "white",
-  });
+    backgroundColor: "black",
+  }), [map]);
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -43,7 +43,7 @@ export function WorldMap({
   };
 
   return (
-    <div className="w-full aspect-[2/1] bg-[#d3d3d3] rounded-lg relative font-sans p-16">
+    <div className="w-full aspect-[2/1] rounded-lg relative font-sans p-16">
       <div
         className="h-full w-full absolute inset-0 pointer-events-none select-none"
         style={{ zIndex: 0 }}
@@ -91,7 +91,7 @@ export function WorldMap({
                   x={dot.start.label === 'Germany' ? projectPoint(dot.start.lat, dot.start.lng).x + 32 : projectPoint(dot.start.lat, dot.start.lng).x}
                   y={dot.start.label === 'Germany' ? projectPoint(dot.start.lat, dot.start.lng).y + 4 : projectPoint(dot.start.lat, dot.start.lng).y - 10}
                   textAnchor="middle"
-                  fill={lineColor}
+                  fill={"#fff"}
                   fontSize="12"
                   fontWeight="bold"
                   style={{ pointerEvents: 'none' }}
@@ -136,7 +136,7 @@ export function WorldMap({
                   x={dot.end.label === 'Germany' ? projectPoint(dot.end.lat, dot.end.lng).x + 32 : projectPoint(dot.end.lat, dot.end.lng).x}
                   y={dot.end.label === 'Germany' ? projectPoint(dot.end.lat, dot.end.lng).y + 4 : projectPoint(dot.end.lat, dot.end.lng).y - 10}
                   textAnchor="middle"
-                  fill={lineColor}
+                  fill={"#fff"}
                   fontSize="12"
                   fontWeight="bold"
                   style={{ pointerEvents: 'none' }}
