@@ -25,16 +25,17 @@ const actualMicEnabled = micTrack && !micTrack.isMuted && localMicTrack?.publica
 const voiceAssistant = useVoiceAssistant();
 const { audioTrack } = voiceAssistant;
 
-const { voiceAssistantAudioData } = useAudioData({
- micEnabled: actualMicEnabled,
- voiceAssistantAudioTrack: audioTrack,
- preferredSource: 'voiceAssistant'
-});
+// const { voiceAssistantAudioData } = useAudioData({
+//  micEnabled: actualMicEnabled,
+//  voiceAssistantAudioTrack: audioTrack,
+//  preferredSource: 'voiceAssistant'
+// });
 
     return (
-<MetricDustVisualizer
-            micEnabled={true}
+        <MetricDustVisualizer 
+            micEnabled={false}
             particleColor="#4961e1"
-          />
+            voiceAssistantAudioTrack={audioTrack}
+        />
     )
 }

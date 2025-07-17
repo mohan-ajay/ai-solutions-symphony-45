@@ -1,4 +1,3 @@
-
 // src/components/visualizer/MetricDustVisualizer/MetricDustVisualizer.tsx
 
 import React, { useRef, Suspense } from 'react';
@@ -7,7 +6,7 @@ import { OrbitControls } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { MetricDustMesh } from './MetricDustMesh';
 import { useAudioData } from './hooks/useAudioData';
-import { AudioVisualizerProps } from '../hooks/types';
+import { AudioVisualizerProps } from './hooks/types';
 import type { TrackReferenceOrPlaceholder } from '@livekit/components-core';
 import * as THREE from 'three';
 
@@ -17,10 +16,8 @@ interface MetricDustVisualizerProps extends AudioVisualizerProps {
     modelScale?: number; // This will now be the BASE size
     particleColor?: string | THREE.Color;
     rotationSpeed?: number;
-    audioResponseFactor?: number; // Controls emissive glow
-    audioScaleFactor?: number;   // New prop: Controls size pulse
-    bloomIntensity?: number;
-    bloomLuminanceThreshold?: number;
+    audioResponseFactor?: number;
+    audioScaleFactor?: number;
     audioReductionFactor?: number;
     noiseScale?: number;
     noiseSpeed?: number;
@@ -34,21 +31,19 @@ const DEFAULT_METRIC_DUST_PARAMS = {
     particleColor: '#4488ff',
     modelScale: 0.2,
     rotationSpeed: 0.05,
-    audioResponseFactor: 5.0,
+    audioResponseFactor: 7.0,
     audioScaleFactor: 2.0, // New default: models can grow up to 2x their base size with audio
-    bloomIntensity: 0.7,
-    bloomLuminanceThreshold: 0.2,
     audioReductionFactor: 1.0,
-    noiseScale: 1.5,
-    noiseSpeed: 0.1,
-    audioDeformationFactor: 1.5,
+    noiseScale: 1.3,
+    noiseSpeed: 0.2,
+    audioDeformationFactor: 1.7,
     baseDeformationAmount: 0.05,
     ambientLightIntensity: 10.5,
 };
 
 const SceneContent = (props: MetricDustVisualizerProps) => {
   const {
-    // micEnabled,
+    micEnabled,
     voiceAssistantAudioTrack,
     rotationSpeed = DEFAULT_METRIC_DUST_PARAMS.rotationSpeed,
     audioReductionFactor = DEFAULT_METRIC_DUST_PARAMS.audioReductionFactor,
@@ -60,7 +55,7 @@ const SceneContent = (props: MetricDustVisualizerProps) => {
   const prevSmoothedAudio = useRef(0);
 
   const useLiveKitTrack = !!voiceAssistantAudioTrack;
-  const effectiveMicEnabled = !useLiveKitTrack ;
+  const effectiveMicEnabled = !useLiveKitTrack && micEnabled;
   const effectiveVoiceAssistantTrack = useLiveKitTrack ? voiceAssistantAudioTrack : undefined;
 
   const { audioData: rawFrequencyData } = useAudioData({
@@ -110,30 +105,27 @@ const MetricDustVisualizer: React.FC<MetricDustVisualizerProps> = (props) => {
     className = '',
     width = '100%',
     height = '100%',
-
-    sphereRadius = DEFAULT_METRIC_DUST_PARAMS.sphereRadius,
-    bloomIntensity = DEFAULT_METRIC_DUST_PARAMS.bloomIntensity,
-    bloomLuminanceThreshold = DEFAULT_METRIC_DUST_PARAMS.bloomLuminanceThreshold,
+    sphereRadius = DEFAULT_METRIC_DUST_PARAMS.sphereRadius
   } = props;
 
   return (
     <div className={`metric-dust-visualizer ${className}`} style={{ width, height }}>
       <Canvas
         camera={{ position: [0, 0, sphereRadius * 3], fov: 50, near: 0.1, far: 100 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: false, alpha: true }} 
         dpr={Math.min(window.devicePixelRatio, 2)}
       >
         <Suspense fallback={null}>
           <SceneContent {...props} />
         </Suspense>
-        <OrbitControls enablePan={true} enableZoom={false} minDistance={sphereRadius * 1.5} maxDistance={sphereRadius * 8} />
+        <OrbitControls enablePan={true} enableZoom={true} minDistance={sphereRadius * 1.5} maxDistance={sphereRadius * 8} />
         
         {/* <EffectComposer>
           <Bloom
-            intensity={bloomIntensity}
-            luminanceThreshold={bloomLuminanceThreshold}
+            intensity={1.5}
+            luminanceThreshold={0.5}
             luminanceSmoothing={0.2}
-            mipmapBlur={true}
+            mipmapBlur
           />
         </EffectComposer>  */}
       </Canvas>

@@ -242,17 +242,17 @@ const MetricdustHero = () => {
                 />
               </div>
               <div className="mt-8 flex gap-6 justify-center w-full">
-                <Button
+                {/* <Button
                   size="lg"
                   disabled={isSessionActive}
-                  className="bg-gradient-to-r from-[#4961e1] to-[#22232a] mb-8 hover:from-[#4961e1] hover:to-[#000000] text-white text-lg font-semibold border-0 shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gradient-to-r f rom-[#4961e1] to-[#22232a] mb-8 hover:from-[#4961e1] hover:to-[#000000] text-white text-lg font-semibold border-0 shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handleStartSession}
                 >
                   {isSessionActive ? 'Session Active' : 'Start Session'}
-                </Button>
+                </Button> */}
                 <Button
                   size="lg"
-                  disabled={!isSessionActive}
+                  // disabled={!isSessionActive}
                   className="bg-gradient-to-r from-red-500 to-[#22232a] hover:from-red-500 hover:to-[#000000] text-white text-lg font-semibold border-0 shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handleEndSession}
                 >
@@ -317,7 +317,7 @@ const MetricdustHero = () => {
         {/* Right: Globe Visualizer */}
         <div className="flex-1 flex flex-col items-center justify-center w-full max-w-xl h-[550px] relative">
           {/* MetricDustVisualizer */}
-          <MetricDustVisualizer />
+          <MetricDustVisualizer micEnabled={false}/>
           
           {/* Play Icon Overlay - Inside the 1's and 0's */}
           <div className="absolute inset-0 flex items-center mb-24 justify-center pointer-events-none">
@@ -352,7 +352,7 @@ const MetricdustHero = () => {
           <Button
             size="lg"
             className="mt-6 bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-4 mb-8 text-lg font-semibold border-0 shadow-md transition-all duration-200"
-            onClick={() => setShowModal(true)}
+            onClick={() => { setShowModal(true); handleStartSession(); }}
           >
             Talk To AI <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
