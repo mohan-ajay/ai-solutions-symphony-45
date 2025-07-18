@@ -376,7 +376,7 @@ const MetricdustHero = () => {
         </div>
       </div>
       {/* Right: Globe Visualizer */}
-      <div className="flex-1 flex flex-col items-center justify-top mb-60 w-full max-w-xl h-[550px] relative">
+      <div className="flex-1 flex flex-col items-center justify-top mb-60 w-full max-w-xl h-[500px] relative">
         {/* MetricDustVisualizer */}
         <MetricDustVisualizer micEnabled={false} />
 
