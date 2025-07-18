@@ -1,78 +1,226 @@
-import React, { lazy, Suspense } from "react";
+import { useState } from "react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { useToast } from "../ui/use-toast";
 import ModernHeader from "@/components/ModernHeader";
 import ModernFooter from "@/components/ModernFooter";
-import worldMap from '/map.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { Phone, Mail, MapPin, Send } from "lucide-react";
 
+interface ContactInfo {
+  icon: React.ReactNode;
+  title: string;
+  content: string;
+}
 
-export default function ContactUs() {
-  // Remove useInView and inView logic
+const contactInfo: ContactInfo[] = [
+  {
+    icon: (<img src="/glassy_icons/phone.svg" className="w-200 h-100" alt=""></img>),
+    title: "Phone",
+    content: "+1 425-900-9663"
+  },
+  {
+    icon: (<img src="/glassy_icons/email.svg" className="w-200 h-100" alt=""></img>), 
+    title: "Email",
+    content: "lohith@metricdust.com"
+  },
+  {
+    icon: (<img src="/glassy_icons/pin.svg" className="w-200 h-100" alt=""></img>), 
+    title: "Address",
+    content: "2519 Baker Ave. Unit 3 Everett, WA 98201"
+  }
+];
+
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    toast({
+      title: "Message sent successfully!",
+      description: "We'll get back to you as soon as possible."
+    });
+
+    setFormData({ name: "", email: "", phone: "", message: "" });
+    setIsSubmitting(false);
+  };
 
   return (
     <>
-     
-    <ModernHeader />
-    <div 
-        className="h-[80vh] bg-black text-white bg-cover bg-center flex items-center justify-center" 
-        
-      >
-       <div className="flex flex-col items-center justify-center mt-20 pb-10 bg-black">
-        <h2 className="text-white text-3xl font-bold mb-2 text-center">We are spread across the globe!</h2>
-        <p className="text-white mb-6 text-xl text-center">Let's connect to help you build Along Intelligence.</p>
-        <img src={worldMap} alt="World Map" className="w-[80%] h-[20%] object-contain" />
-      </div> 
-      </div>
+      <ModernHeader />
+      <div className="min-h-screen bg-background">
+        {/* Hero Section */}
+        <div
+          className="relative bg-contact-hero bg-cover bg-center bg-no-repeat"
+          style={{
+            background: "url('/contact-us.webp') center center / cover no-repeat, #222a45",
+            marginTop: '80px'
+          }}
+        >
+          <div className="container mx-auto px-6 py-24 text-center">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              We're here to help you
+            </h1>
+            <div className="flex items-center justify-center gap-2 text-white/80">
+              <span>Home</span>
+              <span>&gt;</span>
+              <span className="text-contact-icon">Contact</span>
+            </div>
+          </div>
+        </div>
 
-      
-      {/* <div className="p-8 bg-[#d3d3d3] mt-16 flex flex-col justify-center items-center">
-        <h2 className="text-black text-3xl font-bold mb-2">We are spread across the globe!</h2>
-        <p className="text-black mb-6 text-xl">Let's connect to help you build Along Intelligence.</p>
-        <img src={worldMap} alt="World Map" className="max-w-full h-auto rounded-lg shadow" style={{ width: '50%', maxWidth: '900px' }} />
-      </div> */}
-      <div className="p-8 bg-[#d3d3d3]  grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Right: Contact Form */}
-        <form className="bg-black rounded-xl shadow-lg p-6 space-y-6 border border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block font-semibold mb-1 text-[#d3d3d3]">First Name</label>
-              <input type="text" placeholder="First Name" className="w-full border rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500" />
+        {/* Contact Info Bar */}
+        <div className="bg-zinc-900">
+          <div className="container mx-auto px-6">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              {contactInfo.map((info, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center gap-4 text-white"
+                >
+                  <div className="text-contact-icon flex-shrink-3">
+                    {info.icon}
+                  </div>
+                  <div className="text-left mb-5">
+                    <h3 className="text-lg font-semibold mb-1">
+                      {info.title}
+                    </h3>
+                    <p className="text-white/80 text-sm">{info.content}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div>
-              <label className="block font-semibold mb-1 text-[#d3d3d3]">Last Name</label>
-              <input type="text" placeholder="Last Name" className="w-full border rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500" />
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <div className="bg-background py-16">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
+                Send us a message
+              </h2>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Left Column - Name, Email, Phone */}
+                  <div className="space-y-6">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium mb-2 text-foreground"
+                      >
+                        Name
+                      </label>
+                      <Input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Your Name"
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-2 text-foreground"
+                      >
+                        Email
+                      </label>
+                      <Input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Your Email"
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium mb-2 text-foreground"
+                      >
+                        Phone
+                      </label>
+                      <Input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Your Phone"
+                        className="w-full"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Right Column - Message */}
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium mb-2 text-foreground"
+                    >
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Your Message"
+                      rows={8}
+                      className="w-full h-full resize-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-start">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-8 transition-all duration-300"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </div>
+              </form>
             </div>
-          </div>
-          <div>
-            <label className="block font-semibold mb-1 text-[#d3d3d3]">Email</label>
-            <input type="email" placeholder="Email" className="w-full border rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500" />
-          </div>
-          <div>
-            <label className="block font-semibold mb-1 text-[#d3d3d3]">Message</label>
-            <textarea placeholder="Type your message here." className="w-full border rounded-md p-3 h-32 focus:outline-none focus:ring focus:ring-blue-500"></textarea>
-          </div>
-          <button type="submit" className="w-full text-white py-3 bg-[#4961e1] rounded-md hover:bg-gray-900 transition">
-            Send Message
-          </button>
-        </form>
-        {/* Single Contact Card */}
-        <div className="border border-gray-300 rounded-xl p-3 my-32 shadow-[0_2px_24px_0_rgba(255,255,255,0.15)] transition-transform transition-shadow duration-100 bg-[#000000] flex flex-col gap-2 justify-center items-start max-w-md mx-auto cursor-pointer transform-gpu hover:rotate-2 hover:shadow-[0_4px_32px_0_rgba(255,255,255,0.35)]" style={{ minHeight: 'unset' }}>
-          <div className="flex items-center gap-3 mb-1">
-            <FontAwesomeIcon icon={faEnvelope} className="text-blue-400 w-5 h-5" />
-            <span className="text-white text-xl">lohith@metricdust.com</span>
-          </div>
-          <div className="flex items-center gap-3 mb-1">
-            <FontAwesomeIcon icon={faPhone} className="text-blue-400 w-5 h-5" />
-            <span className="text-white text-xl">+1 (425) 900-9663</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-400 w-5 h-5" />
-            <span className="text-white text-xl">2519 Baker Ave. Unit 3 Everett, WA 98201</span>
           </div>
         </div>
       </div>
-      
       <ModernFooter />
     </>
   );
-} 
+}
