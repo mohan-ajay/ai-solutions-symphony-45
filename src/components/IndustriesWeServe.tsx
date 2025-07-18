@@ -1,20 +1,18 @@
 import React from 'react';
 import {
-  FaCar, FaSatellite, FaIndustry, FaBookOpen, FaWind,
-  FaUniversity, FaHeartbeat, FaVideo, FaHandHoldingHeart,
-  FaLandmark, FaShoppingCart, FaMicrochip
+  FaBuilding, FaUserTie, FaNetworkWired, FaHeadset, FaBookOpen, FaHeartbeat, FaBullhorn, FaCloud, FaShieldAlt
 } from 'react-icons/fa';
 
 const industries = [
-  {name: 'Property Tech', icon: <FaSatellite /> },
-  {name: 'HR', icon: <FaSatellite /> },
-  { name: 'Open Network Service', icon: <FaSatellite /> },
-  { name: 'Customer Support', icon: <FaIndustry /> },
+  {name: 'Property Tech', icon: <FaBuilding /> },
+  {name: 'HR', icon: <FaUserTie /> },
+  { name: 'Open Network Service', icon: <FaNetworkWired /> },
+  { name: 'Customer Support', icon: <FaHeadset /> },
   { name: 'Edu Tech', icon: <FaBookOpen /> },
   { name: 'Health Care', icon: <FaHeartbeat /> },
-  { name: 'Digital Marketing', icon: <FaIndustry /> },
-  { name: 'Cloud Transformation', icon: <FaVideo /> },
-  { name: 'Cyber Security', icon: <FaHandHoldingHeart /> },
+  { name: 'Digital Marketing', icon: <FaBullhorn /> },
+  { name: 'Cloud Transformation', icon: <FaCloud /> },
+  { name: 'Cyber Security', icon: <FaShieldAlt /> },
 ];
 
 const IndustriesWeServe: React.FC = () => {

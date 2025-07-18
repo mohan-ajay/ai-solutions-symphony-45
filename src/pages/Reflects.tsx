@@ -122,19 +122,23 @@ const Reflects = () => {
       <ModernHeader />
 
       <div 
-        className="h-[100vh]  bg-black text-white bg-cover bg-center flex items-center justify-center" 
-        style={{ backgroundImage: 'url(/NSlider2.webp)' }}
-      >
-        <div className="text-center p-8 rounded-lg">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Place your hero content here, or keep existing content */}
-            {/* Example: */}
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tech News, industry insights, knowledge base & more...</h1>
-            {/* Add any buttons or links as needed */}
-          </div>
-        </div>
-      </div>
+  className="h-[100vh] bg-black text-white flex items-center justify-center relative"
+>
+  {/* Background with opacity */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center opacity-60"
+    style={{ backgroundImage: 'url(/NSlider2.webp)' }}
+  />
+  
+  {/* Content container (unchanged) */}
+  <div className="relative z-10 text-center p-8 rounded-lg">
+    <div className="max-w-4xl mx-auto text-center">
+      <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        Tech News, Industry Insights, Knowledge Base & more...
+      </h1>
+    </div>
+  </div>
+</div>
     <div className="min-h-screen bg-[#d3d3d3] py-12 px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {cards.map((card, idx) => (

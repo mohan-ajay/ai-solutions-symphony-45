@@ -109,19 +109,23 @@ const Services = () => {
 
       <ModernHeader alwaysHideOnScroll={true} />
       <div 
-        className="h-[100vh] bg-blue-100 bg-opacity-100 text-white bg-cover bg-center flex items-center justify-center" 
-        style={{ backgroundImage: 'url(/bg_image.png)' }}
-      >
-        <div className=" text-center p-8 rounded-lg">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Place your hero content here, or keep existing content */}
-            {/* Example: */}
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h1>
-            <p className="text-5xl font-bold text-gray-300 mb-8">We help you build an AI-first, customer-centric ecosystem that is scalable and future-proof</p>
-            {/* Add any buttons or links as needed */}
-          </div>
-        </div>
-      </div>
+  className="h-[100vh] bg-black text-white bg-cover bg-center flex items-center justify-center relative" 
+>
+  {/* Background with opacity */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center opacity-60"
+    style={{ backgroundImage: 'url(/NSlider2.webp)' }}
+  />
+  
+  {/* Content container (unchanged) */}
+  <div className="relative z-10 text-center p-8 rounded-lg">
+    <div className="max-w-4xl mx-auto text-center">
+      <h1 className="text-5xl font-bold text-gray-300 mb-8">
+        We help you build an AI-first, customer-centric ecosystem that is scalable and future-proof
+      </h1>
+    </div>
+  </div>
+</div>
 
       <div className="bg-gray-50">
         <div className="sticky top-[0px] bg-gray-50 z-10 shadow-sm">
@@ -262,10 +266,9 @@ const Services = () => {
       <div className="bg-gray-200 py-20 text-center">
         <h2 className="text-4xl font-bold text-black mb-4">Your tech partners for AI-first Digital Transformation —</h2>
         <p className="text-2xl text-gray-600 mb-8">We'd love to hear about your project</p>
-        <Button size="lg"
-            className="mt-6 bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-4 mb-8 text-lg font-semibold border-0 shadow-md transition-all duration-200" onClick={() => navigate('/contact-us')}>
-            Contact us
-          </Button>
+        <button type="button" className="text-white mb-8 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {navigate('/contact-us')
+           
+          }}>Talk to AI</button>
       </div>
       <ModernFooter />
     </>

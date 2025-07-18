@@ -271,8 +271,8 @@ const MetricdustHero = () => {
     >
       {/* Modal Popup for LiveKitAgent */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden min-h-[600px] max-h-[85vh]">
+        <div className="fixed inset-0 top-0 mt-12 z-[100] flex items-center justify-center bg-black bg-opacity-70">
+          <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden min-h-[500px] max-h-[75vh]">
             <button
               className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-red-600 z-10"
               onClick={() => {
@@ -296,136 +296,135 @@ const MetricdustHero = () => {
         </div>
       )}
       {/* Floating Background Dots */}
-      <div
-        className="h-[140vh]  w-screen bg-black text-white bg-cover bg-center"
-        style={{ backgroundImage: "url(/earth_horizon.jpg)" }}
-      >
-        <div className="relative z-10 w-full max-w-7xl px-6 ml-8 flex flex-col lg:flex-row items-center justify-between gap-8 pt-16">
-          {/* Left: METRICDUST + text */}
+      <div className="h-[150vh] w-screen bg-black text-white relative overflow-hidden">
+  {/* Background with opacity */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center opacity-60"
+    style={{ backgroundImage: "url(/earth_horizon.jpg)" }}
+  />
+  
+  {/* Content container with relative positioning */}
+  <div className="relative z-10 h-full">
+    <div className="w-full max-w-7xl mt-32 px-6 ml-8 flex flex-col lg:flex-row items-center justify-between gap-8 pt-16">
+      {/* Left: METRICDUST + text */}
+      <div className="flex-1 flex flex-col items-start">
+        <div className="w-full max-w-xl" ref={containerRef}>
+          <canvas ref={canvasRef} className="w-full h-[260px]" />
+        </div>
+        <h1 className="mt-6 text-[22px] ml-8 md:text-[26px] font-light leading-snug">
           <div className="flex-1 flex flex-col items-start">
-            <div className="w-full max-w-xl" ref={containerRef}>
-              <canvas ref={canvasRef} className="w-full h-[260px]" />
-            </div>
-            <h1 className="mt-6 text-[22px] ml-8 md:text-[26px] font-light leading-snug">
-              <div className="flex-1 flex flex-col items-start">
-                <h1 className="text-8xl md:text-6xl font-bold text-white mb-4">
-                  Transform Your Digital
-                </h1>
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                  Experience with AI
-                </h1>
-                
-              </div>
+            <h1 className="text-8xl md:text-6xl font-bold text-white mb-4">
+              Transform Your Digital
             </h1>
-
-            {/* Stats Row */}
-            <div
-              ref={statsRef}
-              className="w-full max-w-4xl mt-28 mb-10 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0"
-            >
-              {/* Stat 1 */}
-              <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:pr-16">
-                <div className="flex items-end gap-1">
-                  <span className="text-5xl font-bold text-white">
-                    {projects}
-                  </span>
-                  <span className="text-2xl font-bold text-white">+</span>
-                </div>
-                <span className="mt-2 text-xl font-medium text-white">
-                  Projects Completed
-                </span>
-              </div>
-              {/* Stat 2 */}
-              <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-8">
-                <div className="flex items-end gap-1">
-                  <span className="text-5xl font-bold text-white">
-                    {clients}
-                  </span>
-                  <span className="text-2xl font-bold text-white">+</span>
-                </div>
-                <span className="mt-2 text-xl font-medium text-white">
-                  Global Clients
-                </span>
-              </div>
-              {/* Stat 3 */}
-              <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-16">
-                <div className="flex items-end gap-1">
-                  <span className="text-5xl font-bold text-white">
-                    {satisfaction}
-                  </span>
-                  <span className="text-2xl font-bold text-white">%</span>
-                </div>
-                <span className="mt-2 text-xl font-medium text-white">
-                  Customer Satisfaction
-                </span>
-              </div>
-              {/* Stat 4 */}
-              <div className="flex-1 flex flex-col items-center md:items-start pb-6 md:pb-0 md:pl-16">
-                <div className="flex items-end gap-1">
-                  <span className="text-5xl font-bold text-white">{years}</span>
-                  <span className="text-2xl font-bold text-white">+</span>
-                </div>
-                <span className="mt-2 text-xl font-medium text-white">
-                  Year of Experiences
-                </span>
-              </div>
-            </div>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+              Experience with AI
+            </h1>
           </div>
-          {/* Right: Globe Visualizer */}
-          <div className="flex-1 flex flex-col items-center justify-top mb-60 w-full max-w-xl h-[550px] relative">
-            {/* MetricDustVisualizer */}
-            <MetricDustVisualizer micEnabled={false} />
+        </h1>
 
-            {/* Play Icon Overlay - Inside the 1's and 0's */}
-            <div className="absolute inset-0 flex items-center mb-24 justify-center pointer-events-none">
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center gap-2">
-                <Button
-                  onClick={handlePlayAudio}
-                  size="lg"
-                  className={`flex items-center gap-2 bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-1 py-1 h-8 text-lg font-semibold border-0 shadow-md transition-all duration-200 ${
-                    isPlaying ? "ring-2 ring-white/60" : ""
-                  }`}
-                  aria-label={isPlaying ? "Pause audio" : "Play audio"}
-                  type="button"
-                >
-                  {isPlaying ? (
-                    <div className="flex items-center justify-center space-x-1">
-                      <div className="w-2 h-6 bg-white rounded-sm"></div>
-                      <div className="w-2 h-6 bg-white rounded-sm"></div>
-                    </div>
-                  ) : (
-                    <Play
-                      className="w-5 h-8 text-white ml-1 transition-transform duration-300"
-                      fill="white"
-                    />
-                  )}
-                  <span className="font-league-spartan font-bold select-none">
-                    About us
-                  </span>
-                </Button>
-              </div>
+        {/* Stats Row */}
+        <div
+          ref={statsRef}
+          className="w-full max-w-4xl mt-28 mb-10 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0"
+        >
+          {/* Stat 1 */}
+          <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:pr-16">
+            <div className="flex items-end gap-1">
+              <span className="text-5xl font-bold text-white">
+                {projects}
+              </span>
+              <span className="text-2xl font-bold text-white">+</span>
             </div>
-
-            {/* Audio element for background music */}
-            <audio
-              ref={audioRef}
-              src="/agent-intro.mp3"
-              onEnded={() => setIsPlaying(false)}
-            />
-
-            {/* Talk To AI Button - Now below the visualizer */}
-            <button
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border bg-background hover:text-accent-foreground border-gray-300 hover:bg-gray-50 text-gray-700 font-light rounded-full px-[clamp(1.5rem,3vw,2rem)] py-[clamp(0.75rem,1.5vw,1.5rem)] h-auto transition-all mt-6 mb-8"
-              onClick={() => {
-                setShowModal(true);
-                handleStartSession();
-              }}
-            >
-              Schedule a demo
-            </button>
+            <span className="mt-2 text-xl font-medium text-white">
+              Projects Completed
+            </span>
+          </div>
+          {/* Stat 2 */}
+          <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-8">
+            <div className="flex items-end gap-1">
+              <span className="text-5xl font-bold text-white">
+                {clients}
+              </span>
+              <span className="text-2xl font-bold text-white">+</span>
+            </div>
+            <span className="mt-2 text-xl font-medium text-white">
+              Global Clients
+            </span>
+          </div>
+          {/* Stat 3 */}
+          <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-16">
+            <div className="flex items-end gap-1">
+              <span className="text-5xl font-bold text-white">
+                {satisfaction}
+              </span>
+              <span className="text-2xl font-bold text-white">%</span>
+            </div>
+            <span className="mt-2 text-xl font-medium text-white">
+              Customer Satisfaction
+            </span>
+          </div>
+          {/* Stat 4 */}
+          <div className="flex-1 flex flex-col items-center md:items-start pb-6 md:pb-0 md:pl-16">
+            <div className="flex items-end gap-1">
+              <span className="text-5xl font-bold text-white">{years}</span>
+              <span className="text-2xl font-bold text-white">+</span>
+            </div>
+            <span className="mt-2 text-xl font-medium text-white">
+              Year of Experiences
+            </span>
           </div>
         </div>
       </div>
+      {/* Right: Globe Visualizer */}
+      <div className="flex-1 flex flex-col items-center justify-top mb-60 w-full max-w-xl h-[550px] relative">
+        {/* MetricDustVisualizer */}
+        <MetricDustVisualizer micEnabled={false} />
+
+        {/* Play Icon Overlay - Inside the 1's and 0's */}
+        <div className="absolute inset-0 flex items-center mb-24 justify-center pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 mt-4 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center gap-2">
+            <Button
+              onClick={handlePlayAudio}
+              size="lg"
+              className="text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 h-10 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              aria-label={isPlaying ? "Pause audio" : "Play audio"}
+              type="button"
+            >
+              {isPlaying ? (
+                <div className="flex items-center justify-center space-x-1">
+                  <div className="w-2 h-6 bg-white rounded-sm"></div>
+                  <div className="w-2 h-6 bg-white rounded-sm"></div>
+                </div>
+              ) : (
+                <Play
+                  className="w-5 h-8 text-white ml-1 transition-transform duration-300"
+                  fill="white"
+                />
+              )}
+              <span className="font-league-spartan font-bold select-none">
+                About us
+              </span>
+            </Button>
+          </div>
+        </div>
+
+        {/* Audio element for background music */}
+        <audio
+          ref={audioRef}
+          src="/agent-intro.mp3"
+          onEnded={() => setIsPlaying(false)}
+        />
+
+        {/* Talk To AI Button - Now below the visualizer */}
+        
+        <button type="button" className="text-white mb-8 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {
+            setShowModal(true);
+            handleStartSession();
+          }}>Talk to AI</button>
+      </div>
+    </div>
+  </div>
+</div>
     </section>
   );
 };

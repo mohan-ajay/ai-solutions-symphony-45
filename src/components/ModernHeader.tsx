@@ -22,7 +22,7 @@ const ModernHeader = ({ alwaysHideOnScroll = false }: { alwaysHideOnScroll?: boo
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300
         ${shouldHide ? '-translate-y-full' : 'translate-y-0'}
-        ${!shouldHide && scrollDirection === 'up' ? 'bg-black/90 backdrop-blur' : 'bg-transparent'}
+        ${!shouldHide && scrollDirection === 'up' ? 'backdrop-blur' : 'bg-transparent'}
       `}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-5">

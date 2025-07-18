@@ -64,17 +64,22 @@ const AboutUs = () => {
       <ModernHeader />
 
       <div 
-        className="h-[100vh] bg-black text-white bg-cover bg-center flex items-center justify-center" 
-        style={{ backgroundImage: 'url(/NSlider2.webp)' }}
-      >
-        <div className=" text-center p-8 rounded-lg">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">With a customer-centric approach, we transform and amplify your digital presence.</h1>
-            <p className="text-3xl text-gray-300 mb-8">Our products help you enhance ease of accessibility and streamline your operations. Our multi-domain expertise and purpose-driven technology drives your business growth.</p>
-            <button className="bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-3 text-lg font-semibold rounded shadow-md transition-all duration-200" onClick={() => navigate('/contact-us')}>Let's Connect</button>
-          </div>
-        </div>
-      </div>
+  className="h-[100vh] bg-black text-white flex items-center justify-center relative" 
+>
+  {/* Background with opacity */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center opacity-60"
+    style={{ backgroundImage: 'url(/NSlider2.webp)' }}
+  />
+  
+  {/* Content container (unchanged) */}
+  <div className="relative z-10 text-center p-8 rounded-lg">
+    <div className="max-w-4xl mx-auto text-center">
+      <h1 className="text-5xl font-bold text-gray-300 mb-8">Tailored software solutions. Amplifying digital experiences</h1>
+      <button className="bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-3 text-lg font-semibold rounded shadow-md transition-all duration-200" onClick={() => navigate('/contact-us')}>Let's Connect</button>
+    </div>
+  </div>
+</div>
 
 
       {/* Hero Section */}
