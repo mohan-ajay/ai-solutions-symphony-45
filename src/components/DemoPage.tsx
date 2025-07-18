@@ -1,9 +1,7 @@
 import {  BauhausCard } from "@/ui/bauhaus-card";
-import reflect_metricTalks from '../../public/reflect_metricTalks_2.jpg';
-
 export const IMAGES = {
-  reportIcon: '/public/reflect_metricTalks_2.jpg',
-  financialDoc: '/images/financial-doc.jpg',
+  reportIcon: '/reflect_metricTalks_2.jpg',
+  financialDoc: '/financial-doc.jpg',
 };
 export default function DemoPage() {
   

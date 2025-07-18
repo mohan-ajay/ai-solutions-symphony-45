@@ -8,7 +8,7 @@ import { useMotionValue, useMotionTemplate, motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere } from '@react-three/drei';
 import ThreeDSphere from './ThreeDSphere';
-import logo_check from '../../public/logo_black.png';
+import logo_check from '/logo_black.png';
 
 interface Orbit {
   width: number;
@@ -279,7 +279,7 @@ const AllIndustries = () => {
                 const sphereSizes = [
                   { width: 130, height: 130 },
                   { width: 105, height: 105 },
-                  { width: 90, height: 90 },
+                  { width: 110, height: 110 },
                   { width: 105, height: 105 }, // For the 4th sphere (Real Estate)
                 ];
                 const { width, height } = sphereSizes[itemIndex % sphereSizes.length];

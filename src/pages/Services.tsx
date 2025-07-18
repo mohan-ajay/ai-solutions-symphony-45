@@ -10,13 +10,14 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import ModernFooter from '@/components/ModernFooter';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@/ui/button';
 
 const expertiseData = [
   {
     id: 'technology',
     tabName: 'AI & Automation',
     title: 'AI & Automation',
-    image: '/Ai_data_services.jpg',
+    image: '/services/AI-services.jpeg',
     description: "We're not lying when we say AI is nothing without data.At MetricDust we leverage your data judiciously to forward the best solutions in which your data can serve your business interests and personalize customer experience.",
     services: [
       { name: 'Data & AI', icon: faMobileAlt, details: 'We build high-performance, cross-platform mobile applications that offer a seamless user experience.' },
@@ -27,7 +28,7 @@ const expertiseData = [
     id: 'design',
     tabName: 'Digital Solutions',
     title: 'Digital Solutions',
-    image: '/web_development.jpg',
+    image: '/services/digital-services.png',
     description: 'MetricDust acts as your technology arm to help you grow digitally, across the internet to reach more people & gain an edge over your competitors leveraging user-centric development.',
     services: [
         { name: 'Web Development', icon: faSearch, details: 'We help you validate your ideas and define a product strategy that meets market needs.' },
@@ -39,7 +40,7 @@ const expertiseData = [
     id: 'strategy',
     tabName: 'Cloud-Native& Quantum:',
     title: 'Cloud-Native& Quantum:',
-    image: '/MachineL.jpg',
+    image: '/services/cloud-services.jpeg',
     description: 'Build and migrate to cloud-native ecosystem for better agility, cost-cutting and scalability. At MetricDust we integrate Quantum Computing power to AI/ML plus quantum enabled cloud services.',
     services: [
         { name: 'Cloud-Native Technology ', icon: faSyncAlt, details: 'We guide your business through the process of adopting new digital technologies to improve processes and value.' },
@@ -50,7 +51,7 @@ const expertiseData = [
     id: 'growth',
     tabName: 'Security & Trust',
     title: 'Security & Trust',
-    image: '/web_development.jpg',
+    image: '/services/cybersecurity.png',
     description: "Ours is a world driven and governed by data but it's important to keep your data safe to promote brand integrity and customer retention.We help you build security and trust with our blockchain & Cybersecurity services that help you feel secure.",
     services: [
         { name: 'Cybersecurity', icon: faCogs, details: 'We provide continuous product management to ensure your product evolves with user needs.' },
@@ -138,7 +139,7 @@ const Services = () => {
                     <button
                         key={tab.id}
                         onClick={() => scrollToSection(tab.id)}
-                        className={`w-1/4 py-4 text-lg font-medium text-center transition-colors duration-300 relative ${activeSection === tab.id ? 'text-black' : 'text-gray-400 hover:text-black'}`}
+                        className={`w-1/4 py-4 text-xl font-medium text-center transition-colors duration-300 relative ${activeSection === tab.id ? 'text-black' : 'text-gray-400 hover:text-black'}`}
                     >
                         <span className="text-gray-400 mr-2">0{index + 1}</span> {tab.tabName}
                         {activeSection === tab.id && <motion.div className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-black" layoutId="underline" />}
@@ -168,7 +169,7 @@ const Services = () => {
                             <img src={expertise.image} alt={expertise.title} className="w-full h-auto object-cover" />
                           </div>
                         </div>
-                        <div>
+                        <div className='mt-14'>
                           <p className="text-black text-xl font-medium mb-8">{expertise.description}</p>
                           <div className="mb-8">
                             <h4 className="text-base font-semibold text-gray-500 mb-4">Services</h4>
@@ -188,25 +189,13 @@ const Services = () => {
                                         </div>
                                         <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronRight} className="text-gray-400 transition-transform" />
                                     </button>
-                                    <AnimatePresence>
-                                        {isOpen && (
-                                            <motion.div
-                                                initial="collapsed"
-                                                animate="open"
-                                                exit="collapsed"
-                                                variants={{
-                                                    open: { opacity: 1, height: 'auto' },
-                                                    collapsed: { opacity: 0, height: 0 }
-                                                }}
-                                                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                                className="overflow-hidden"
-                                            >
-                                                <p className="pt-2 pb-4 text-base px-4 text-black">
-                                                    {service.details}
-                                                </p>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                    {isOpen && (
+                                      <div className="overflow-visible">
+                                        <p className="pt-2 pb-4 text-base px-4 text-black">
+                                          {service.details}
+                                        </p>
+                                      </div>
+                                    )}
                                 </li>
                                 )
                             })}
@@ -281,11 +270,10 @@ const Services = () => {
       <div className="bg-gray-200 py-20 text-center">
         <h2 className="text-4xl font-bold text-black mb-4">Your tech partners for AI-first Digital Transformation —</h2>
         <p className="text-2xl text-gray-600 mb-8">We'd love to hear about your project</p>
-        <button className="bg-black text-white font-semibold py-3 px-8 rounded-full hover:bg-gray-800 transition-colors" 
-          onClick={() => navigate('/contact-us')}
-        >
-          Contact Us
-        </button>
+        <Button size="lg"
+            className="mt-6 bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-4 mb-8 text-lg font-semibold border-0 shadow-md transition-all duration-200" onClick={() => navigate('/contact-us')}>
+            Contact us
+          </Button>
       </div>
       <ModernFooter />
     </>

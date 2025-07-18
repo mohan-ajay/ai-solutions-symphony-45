@@ -1,13 +1,13 @@
 import React from 'react';
 import ModernHeader from '../components/ModernHeader';
 import ModernFooter from '../components/ModernFooter';
-import inception_1 from '../../public/about-us/inception_1.jpg'
-import inception_2 from '../../public/about-us/inception_2.jpg'
-import inception_3 from '../../public/about-us/inception_3.jpg'
-import lohith_img from '../../public/about-us/Lohith_img.png'
-import satish_img from '../../public/about-us/Satish_img.png'
-import lakshmi_img from '../../public/about-us/Lakshmi_img.png'
-import your_dream_img from '../../public/about-us/Your_dream_img.webp'
+import inception_1 from '/about-us/inception_1.jpg'
+import inception_2 from '/about-us/inception_2.jpg'
+import inception_3 from '/about-us/inception_3.jpg'
+import lohith_img from '/about-us/Lohith_img.png'
+import satish_img from '/about-us/Satish_img.png'
+import lakshmi_img from '/about-us/Lakshmi_img.png'
+import your_dream_img from '/about-us/Your_dream_img.webp'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -85,7 +85,7 @@ const AboutUs = () => {
         <div className="bg-black bg-opacity-10 text-center p-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">With a customer-centric approach, we transform and amplify your digital presence.</h1>
-          <p className="text-lg text-gray-300 mb-8">Our products help you enhance ease of accessibility and streamline your operations. Our multi-domain expertise and purpose-driven technology drives your business growth.</p>
+          <p className="text-xl text-gray-300 mb-8">Our products help you enhance ease of accessibility and streamline your operations. Our multi-domain expertise and purpose-driven technology drives your business growth.</p>
           <button className="bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-3 text-lg font-semibold rounded shadow-md transition-all duration-200" onClick={() => navigate('/contact-us')}>Let's Connect</button>
         </div>
         </div>
@@ -104,53 +104,29 @@ const AboutUs = () => {
           {/* Vertical line */}
           <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-blue-500 via-blue-400 to-yellow-400 z-0" style={{ transform: 'translateX(-50%)' }} />
           <div className="flex flex-col gap-24 relative z-10">
-            {timeline.map((item, idx) => {
-              const isLeft = idx % 2 === 0;
-              return (
-                <div key={item.year} className="flex flex-col md:flex-row md:items-center w-full relative">
-                  {/* For desktop: alternate left/right */}
-                  {isLeft ? (
-                    <>
-                      {/* Image left */}
-                      <div className="md:w-1/2 flex justify-end pr-8 md:order-1 order-2 md:mb-0 mb-6">
-                        <img src={item.img} alt={item.title} className="w-full max-w-md h-48 object-cover rounded-lg shadow-lg border-4 border-white" />
-                      </div>
-                      {/* Marker and line */}
-                      <div className="hidden md:flex flex-col items-center z-20 md:w-0 w-full">
-                        <div className="relative">
-                          <span className={`w-6 h-6 rounded-full border-4 ${item.year === '2022' ? 'border-yellow-400 bg-white' : 'border-blue-500 bg-white'} flex items-center justify-center z-20`} />
-                          <span className={`absolute left-1/2 -translate-x-1/2 -top-8 px-4 py-1 rounded-full text-xs font-bold shadow ${item.year === '2022' ? 'bg-yellow-400 text-black' : 'bg-blue-700 text-white'}`}>{item.year}</span>
-                        </div>
-                      </div>
-                      {/* Content right */}
-                      <div className="md:w-1/2 flex flex-col justify-center items-start pl-8 md:order-2 order-1">
-                        <h3 className="text-2xl font-bold text-black mb-2">{item.title}</h3>
-                        <p className="text-black text-base max-w-md">{item.desc}</p>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Content left */}
-                      <div className="md:w-1/2 flex flex-col justify-center items-end pr-8 md:order-1 order-1">
-                        <h3 className="text-2xl font-bold text-black mb-2">{item.title}</h3>
-                        <p className="text-black text-base max-w-md text-right">{item.desc}</p>
-                      </div>
-                      {/* Marker and line */}
-                      <div className="hidden md:flex flex-col items-center z-20 md:w-0 w-full">
-                        <div className="relative">
-                          <span className={`w-6 h-6 rounded-full border-4 ${item.year === '2022' ? 'border-yellow-400 bg-white' : 'border-blue-500 bg-white'} flex items-center justify-center z-20`} />
-                          <span className={`absolute left-1/2 -translate-x-1/2 -top-8 px-4 py-1 rounded-full text-xs font-bold shadow ${item.year === '2022' ? 'bg-yellow-400 text-black' : 'bg-blue-700 text-white'}`}>{item.year}</span>
-                        </div>
-                      </div>
-                      {/* Image right */}
-                      <div className="md:w-1/2 flex justify-start pl-8 md:order-2 order-2 md:mb-0 mb-6">
-                        <img src={item.img} alt={item.title} className="w-full max-w-md h-48 object-cover rounded-lg shadow-lg border-4 border-white" />
-                      </div>
-                    </>
-                  )}
+            {timeline.map((item) => (
+              <div key={item.year} className="flex flex-row items-center w-full relative">
+                {/* Image left */}
+                <div className="w-1/2 flex justify-end pr-8">
+                  <img src={item.img} alt={item.title} className="w-full max-w-md h-48 object-cover rounded-lg shadow-lg border-4 border-white" />
                 </div>
-              );
-            })}
+                {/* Timeline center */}
+                <div className="flex flex-col items-center w-0 relative z-10">
+                  {/* Vertical line (already present globally, but for mobile fallback) */}
+                  <span className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-blue-500 via-blue-400 to-yellow-400 z-0" style={{ transform: 'translateX(-50%)' }} />
+                  {/* Year and dot */}
+                  <div className="flex items-center justify-center h-20 z-10">
+                    <span className={`px-6 py-2 rounded-full text-lg font-bold shadow ${item.year === '2022' ? 'bg-yellow-400 text-black' : 'bg-blue-700 text-white'}`}>{item.year}</span>
+                    <span className={`-ml-3 w-6 h-6 rounded-full border-4 ${item.year === '2022' ? 'border-yellow-400 bg-white' : 'border-blue-500 bg-white'} flex items-center justify-center z-20`} />
+                  </div>
+                </div>
+                {/* Content right */}
+                <div className="w-1/2 flex flex-col justify-center items-start pl-8">
+                  <h3 className="text-2xl font-bold text-black mb-2">{item.title}</h3>
+                  <p className="text-black text-lg max-w-md">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -164,7 +140,7 @@ const AboutUs = () => {
               <div key={member.name} className="flex flex-col items-center bg-[#181a20] rounded-lg p-6 shadow">
                 <img src={member.img} alt={member.name} className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-[#4961e1]" />
                 <h4 className="text-lg font-bold text-white mb-1">{member.name}</h4>
-                <p className="text-gray-400 text-sm mb-1">{member.location}</p>
+                <p className="text-gray-400 text-lg mb-1">{member.location}</p>
                 <span className="inline-block bg-[#22232a] text-white text-xs px-3 py-1 rounded-full">Team Member</span>
               </div>
             ))}

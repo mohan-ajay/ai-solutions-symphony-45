@@ -3,16 +3,16 @@
 import React, { type SVGProps } from "react";
 import { GradientHeading } from "./Gradient-heading";
 import { LogoCarousel } from "./logo-carousel";
-import shopprop_logo from '../../public/logos/shopprop_logo.png'
-import richs_logo from '../../public/logos/rich_logo.webp'
-import bean_info from '../../public/logos/bean-logo.png'
-import intview_logo from '../../public/logos/intview_io.png'
-import hireko from '../../public/logos/Hireko-logo.png'
-import nets_turf from '../../public/logos/nets_and-turf_logo.png'
-import stordis from '../../public/logos/stordis-logo.jpg';
-import walsgreen from '../../public/logos/walsgreen.jpg'
-import intracrew from '../../public/logos/intracrew-logo.png'
-import fracsials from '../../public/logos/fracsials.png'
+import shopprop_logo from '/logos/shopprop_logo.png'
+import richs_logo from '/logos/rich_logo.webp'
+import bean_info from '/logos/bean-logo.png'
+import intview_logo from '/logos/intview_io.png'
+import hireko from '/logos/Hireko-logo.png'
+import nets_turf from '/logos/nets_and-turf_logo.png'
+import stordis from '/logos/stordis-logo.jpg';
+import walsgreen from '/logos/walsgreen.jpg'
+import intracrew from '/logos/intracrew-logo.png'
+import fracsials from '/logos/fracsials.png'
 
 const allLogos = [
   { name: "Shopprop", id: 1, img: shopprop_logo },

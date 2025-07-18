@@ -1,25 +1,30 @@
 import React, { lazy, Suspense } from "react";
 import ModernHeader from "@/components/ModernHeader";
 import ModernFooter from "@/components/ModernFooter";
-// const DemoOne = lazy(() => import("@/components/ContactDemo"));
-import worldMap from '../../public/map.png';
+import worldMap from '/map.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import WorldMapDemo from "@/components/WorldMapDemo";
-import WorldMap from "@/components/worldmap";
+
 
 export default function ContactUs() {
   // Remove useInView and inView logic
 
   return (
-    <section className="">
-      
-        <ModernHeader />
-      <div className="flex flex-col items-center justify-center mt-20 pb-10 bg-black">
+    <>
+     
+    <ModernHeader />
+    <div 
+        className="h-[80vh] bg-black text-white bg-cover bg-center flex items-center justify-center" 
+        
+      >
+       <div className="flex flex-col items-center justify-center mt-20 pb-10 bg-black">
         <h2 className="text-white text-3xl font-bold mb-2 text-center">We are spread across the globe!</h2>
         <p className="text-white mb-6 text-xl text-center">Let's connect to help you build Along Intelligence.</p>
         <img src={worldMap} alt="World Map" className="w-[80%] h-[20%] object-contain" />
+      </div> 
       </div>
+
+      
       {/* <div className="p-8 bg-[#d3d3d3] mt-16 flex flex-col justify-center items-center">
         <h2 className="text-black text-3xl font-bold mb-2">We are spread across the globe!</h2>
         <p className="text-black mb-6 text-xl">Let's connect to help you build Along Intelligence.</p>
@@ -68,6 +73,6 @@ export default function ContactUs() {
       </div>
       
       <ModernFooter />
-    </section>
+    </>
   );
 } 

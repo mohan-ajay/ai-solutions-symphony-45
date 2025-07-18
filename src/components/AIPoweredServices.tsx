@@ -1,10 +1,12 @@
 import React from 'react';
 import { Card, CardContent } from "@/ui/card";
 import { Brain, Bot, BarChart3, Cog, Database, Shield } from "lucide-react";
-import MDlogovideo from '../../public/MicrosoftTeams-video.mp4'
+import MDlogovideo from '/MicrosoftTeams-video.mp4'
+import { useNavigate } from 'react-router-dom';
 
 
 const AIPoweredServices = () => {
+  const navigate = useNavigate();
   return (
     <div>
       {/* Main Scroll Container */}
@@ -87,7 +89,7 @@ const AIPoweredServices = () => {
               </div>
             </div>
 
-            <button className="flex justify-start mt-6 ml-10 mr-10 text-lg underline underline-offset-4 hover:text-gray-800 transition text-black">
+            <button className="flex justify-start mt-6 ml-10 mr-10 text-lg underline underline-offset-4 hover:text-gray-800 transition text-black" onClick={() => navigate('/services')}>
               View all services →
             </button>
           </div>

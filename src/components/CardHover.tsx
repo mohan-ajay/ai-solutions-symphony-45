@@ -1,7 +1,7 @@
 import { HoverEffect } from "@/ui/hover-effect"
-import metric_talks_1 from '../../public/reflect_metricTalks_2.jpg'
-import metric_talks_2 from '../../public/metrictalks_webinar3.jpg';
-import metric_talks_3 from '../../public/metrictalks_workshop3.jpg';
+import metric_talks_1 from '/reflect_metricTalks_2.jpg'
+import metric_talks_2 from '/metrictalks_webinar3.jpg';
+import metric_talks_3 from '/metrictalks_workshop3.jpg';
 import { ArrowRight } from "lucide-react";
 
 export function CardHoverEffectDemo() {

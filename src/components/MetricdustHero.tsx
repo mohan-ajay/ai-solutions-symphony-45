@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { Button } from "@/ui/button";
 import { ArrowRight, Brain, Zap, Play } from "lucide-react";
 import MetricDustVisualizer from "../MetricDustVisualizer/MetricDustVisualizer";
@@ -15,6 +16,28 @@ const MetricdustHero = () => {
   const [isSessionActive, setIsSessionActive] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  // Stats animation
+  const [projects, setProjects] = useState(0);
+  const [clients, setClients] = useState(0);
+  const [satisfaction, setSatisfaction] = useState(0);
+  const [years, setYears] = useState(0);
+  const { ref: statsRef, inView: statsInView } = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  useEffect(() => {
+    if (statsInView) {
+      let p = 0, c = 0, s = 0, y = 0;
+      const interval = setInterval(() => {
+        let changed = false;
+        if (p < 15) { p++; setProjects(p); changed = true; }
+        if (c < 10) { c++; setClients(c); changed = true; }
+        if (s < 99) { s += 3; if (s > 99) s = 99; setSatisfaction(s); changed = true; }
+        if (y < 3) { y++; setYears(y); changed = true; }
+        if (!changed) clearInterval(interval);
+      }, 70);
+      return () => clearInterval(interval);
+    }
+  }, [statsInView]);
 
   const handleStartSession = () => {
     console.log('Starting session...');
@@ -228,8 +251,8 @@ const MetricdustHero = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
           <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden min-h-[600px] max-h-[85vh]">
             <button
-              className="absolute top-3 right-4 text-black text-3xl font-bold hover:text-red-600 z-10"
-              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-red-600 z-10"
+              onClick={() => { setIsSessionActive(false); setShowModal(false); }}
               aria-label="Close"
             >
               &times;
@@ -241,33 +264,9 @@ const MetricdustHero = () => {
                   onSessionStateChange={handleSessionStateChange}
                 />
               </div>
-              <div className="mt-8 flex gap-6 justify-center w-full">
-                {/* <Button
-                  size="lg"
-                  disabled={isSessionActive}
-                  className="bg-gradient-to-r f rom-[#4961e1] to-[#22232a] mb-8 hover:from-[#4961e1] hover:to-[#000000] text-white text-lg font-semibold border-0 shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={handleStartSession}
-                >
-                  {isSessionActive ? 'Session Active' : 'Start Session'}
-                </Button> */}
-                <Button
-                  size="lg"
-                  // disabled={!isSessionActive}
-                  className="bg-gradient-to-r from-red-500 to-[#22232a] hover:from-red-500 hover:to-[#000000] text-white text-lg font-semibold border-0 shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={handleEndSession}
-                >
-                  End Session
-                </Button>
-              </div>
+              {/* End Session button removed */}
             </div>
-            <div className="w-full md:w-[350px] bg-[#d3d3d3] border-l border-white/30 p-6 flex flex-col min-h-[400px] max-h-[600px] overflow-y-auto">
-              {/* Live Transcript Placeholder */}
-              <h2 className="text-lg font-semibold mb-2 text-black">Live Transcript</h2>
-              <div className="text-gray-300 text-sm opacity-80">
-                {/* Replace this with your transcript component */}
-                <p>Transcript will appear here...</p>
-              </div>
-            </div>
+            
           </div>
         </div>
       )}
@@ -313,19 +312,55 @@ const MetricdustHero = () => {
             We help you build AI-first, customer-centric systems that are ready
             to scale and future-proof.
           </p>
+
+          {/* Stats Row */}
+          <div ref={statsRef} className="w-full max-w-4xl mt-28 mb-10 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0">
+            {/* Stat 1 */}
+            <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:pr-16">
+              <div className="flex items-end gap-1">
+                <span className="text-5xl font-bold text-white">{projects}</span>
+                <span className="text-2xl font-bold text-white">+</span>
+              </div>
+              <span className="mt-2 text-xl font-medium text-white">Projects Completed</span>
+            </div>
+            {/* Stat 2 */}
+            <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-8">
+              <div className="flex items-end gap-1">
+                <span className="text-5xl font-bold text-white">{clients}</span>
+                <span className="text-2xl font-bold text-white">+</span>
+              </div>
+              <span className="mt-2 text-xl font-medium text-white">Global Clients</span>
+            </div>
+            {/* Stat 3 */}
+            <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-16">
+              <div className="flex items-end gap-1">
+                <span className="text-5xl font-bold text-white">{satisfaction}</span>
+                <span className="text-2xl font-bold text-white">%</span>
+              </div>
+              <span className="mt-2 text-xl font-medium text-white">Customer Satisfaction</span>
+            </div>
+            {/* Stat 4 */}
+            <div className="flex-1 flex flex-col items-center md:items-start pb-6 md:pb-0 md:pl-16">
+              <div className="flex items-end gap-1">
+                <span className="text-5xl font-bold text-white">{years}</span>
+                <span className="text-2xl font-bold text-white">+</span>
+              </div>
+              <span className="mt-2 text-xl font-medium text-white">Year of Experiences</span>
+            </div>
+          </div>
         </div>
         {/* Right: Globe Visualizer */}
-        <div className="flex-1 flex flex-col items-center justify-center w-full max-w-xl h-[550px] relative">
+        <div className="flex-1 flex flex-col items-center justify-top mb-32 w-full max-w-xl h-[550px] relative">
           {/* MetricDustVisualizer */}
           <MetricDustVisualizer micEnabled={false}/>
           
           {/* Play Icon Overlay - Inside the 1's and 0's */}
           <div className="absolute inset-0 flex items-center mb-24 justify-center pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center gap-4">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center gap-2">
               <Button
                 onClick={handlePlayAudio}
                 size="lg"
-                className={`flex items-center gap-3 bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-5 py-4 text-lg font-semibold border-0 shadow-md transition-all duration-200 ${isPlaying ? 'ring-2 ring-white/60' : ''}`}
+                className={`flex items-center gap-3 bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-2 py-2 text-lg font-semibold border-0 shadow-md transition-all duration-200 ${isPlaying ? 'ring-2 ring-white/60' : ''}`}
                 aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
                 type="button"
               >
