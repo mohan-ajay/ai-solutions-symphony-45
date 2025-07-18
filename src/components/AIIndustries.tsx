@@ -9,6 +9,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere } from '@react-three/drei';
 import ThreeDSphere from './ThreeDSphere';
 import logo_check from '/logo_black.png';
+import IndustriesWeServe from './IndustriesWeServe';
 
 interface Orbit {
   width: number;
@@ -233,73 +234,12 @@ const AllIndustries = () => {
           <h1 className="text-4xl font-semibold leading-snug text-slate-100">
             Domain Expertise
           </h1>
-          <p className="text-xl text-gray-400 mt-4 max-w-3xl mx-auto">
+          <p className="text-2xl text-gray-400 mt-4 max-w-3xl mx-auto">
             Our solutions orbit around your core business needs
           </p>
         </div>
 
-        <div 
-          ref={containerRef}
-          className="relative h-[800px] flex items-center justify-center perspective-1000"
-        >
-          {/* Central 3D Planet */}
-          <div className={`
-            absolute z-10 w-56 h-56 flex items-center justify-center
-            transition-all duration-1000 ${isVisible ? 'opacity-80 scale-100' : 'opacity-0 scale-50'}
-          `}>
-            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-gray-200 via-white to-gray-400 shadow-2xl flex items-center justify-center border-4 border-gray-300">
-              <img 
-                src={logo_check}
-                alt="Center Logo"
-                width={150}
-                height={150}
-                // style={{ borderRadius: '50%' }}
-              />
-            </div>
-          </div>
-
-          {/* Orbit Paths with Moving Icons */}
-          {allOrbits.map((orbit, orbitIndex) => (
-            <div
-              key={orbitIndex}
-              className={`orbit-${orbitIndex} absolute border rounded-full border-[#4961e1] transition-opacity duration-100 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{
-                width: `${orbit.width}px`,
-                height: `${orbit.height}px`,
-                left: '50%',
-                top: '50%',
-                transform: `translate(-50%, -50%)`, // Remove rotation for perfect circle
-              }}
-            >
-              
-              {orbit.items?.map((item, itemIndex) => {
-                const itemProgress = (progressRef.current[orbitIndex] + (itemIndex / orbit.items.length)) % 1;
-                const pos = getOrbitPosition(orbitIndex, itemProgress);
-                // Alternate sizes for demo; you can customize as needed
-                const sphereSizes = [
-                  { width: 130, height: 130 },
-                  { width: 105, height: 105 },
-                  { width: 110, height: 110 },
-                  { width: 105, height: 105 }, // For the 4th sphere (Real Estate)
-                ];
-                const { width, height } = sphereSizes[itemIndex % sphereSizes.length];
-                return (
-                  <div
-                    key={itemIndex}
-                    className="orbit-item absolute top-1/2 left-1/2 flex items-center justify-center z-20"
-                    style={{
-                      width,
-                      height,
-                      transform: `translate(calc(${pos.x}px - 50%), calc(${pos.y}px - 50%)`,
-                    }}
-                  >
-                    <Mini3DSphere icon={item.icon} label={item.label} width={width} height={height} />
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+        <IndustriesWeServe />
       </div>
 
       <style>{`

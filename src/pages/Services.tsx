@@ -106,28 +106,20 @@ const Services = () => {
 
   return (
     <>
-    <div className="absolute inset-0 z-0 pointer-events-none">
-        {Array.from({ length: 120 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-[#4961e1] rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${4 + Math.random() * 3}s`,
-            }}
-          />
-        ))}
-      </div> 
 
       <ModernHeader alwaysHideOnScroll={true} />
       <div 
-        className="h-[90vh] bg-black text-white bg-cover bg-center flex items-center justify-center" 
-        
+        className="h-[100vh] bg-blue-100 bg-opacity-100 text-white bg-cover bg-center flex items-center justify-center" 
+        style={{ backgroundImage: 'url(/bg_image.png)' }}
       >
-        <div className="bg-black bg-opacity-10 text-center p-8">
-            <h1 className="text-5xl font-bold text-white">Bring your A-game to the technology front with AI</h1>
+        <div className=" text-center p-8 rounded-lg">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Place your hero content here, or keep existing content */}
+            {/* Example: */}
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h1>
+            <p className="text-5xl font-bold text-gray-300 mb-8">We help you build an AI-first, customer-centric ecosystem that is scalable and future-proof</p>
+            {/* Add any buttons or links as needed */}
+          </div>
         </div>
       </div>
 

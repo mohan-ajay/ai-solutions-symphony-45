@@ -28,7 +28,7 @@ interface MetricDustVisualizerProps extends AudioVisualizerProps {
 
 const DEFAULT_METRIC_DUST_PARAMS = {
     sphereRadius: 4,
-    particleColor: '#4488ff',
+    particleColor: '#FFFFFF',
     modelScale: 0.2,
     rotationSpeed: 0.05,
     audioResponseFactor: 7.0,

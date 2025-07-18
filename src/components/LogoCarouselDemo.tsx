@@ -9,8 +9,8 @@ import bean_info from '/logos/bean-logo.png'
 import intview_logo from '/logos/intview_io.png'
 import hireko from '/logos/Hireko-logo.png'
 import nets_turf from '/logos/nets_and-turf_logo.png'
-import stordis from '/logos/stordis-logo.jpg';
-import walsgreen from '/logos/walsgreen.jpg'
+import stordis from '/logos/stordis.png';
+import walsgreen from '/logos/walsgreen.png'
 import intracrew from '/logos/intracrew-logo.png'
 import fracsials from '/logos/fracsials.png'
 

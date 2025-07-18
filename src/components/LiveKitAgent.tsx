@@ -60,7 +60,7 @@ const LivekitAgent: React.FC<LiveKitAgentProps> = ({ isSessionActive, onSessionS
           const result = await response.json();
           console.log("result", result.session_data);
           setInterviewData(result.session_data);
-          setIsLoading(false);
+          setIsLoading(true);
        
         } catch (error) {
           console.error('Interview token API call failed', error);
@@ -101,6 +101,7 @@ const LivekitAgent: React.FC<LiveKitAgentProps> = ({ isSessionActive, onSessionS
               audio={true}
               video={false}
               onConnected={() => {
+                setIsLoading(true)
                 console.log('Connected to LiveKit room');
               }}
               onDisconnected={() => {
@@ -120,10 +121,7 @@ const LivekitAgent: React.FC<LiveKitAgentProps> = ({ isSessionActive, onSessionS
                   <p className="text-gray-600">Connecting to session...</p>
                 </div>
               ) : (
-                <MetricDustVisualizer
-                  micEnabled={true}
-                  particleColor="#4961e1"
-                />
+                <></>
               )}
             </div>
           )}

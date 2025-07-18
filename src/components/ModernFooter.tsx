@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Brain, Mail, Phone, MapPin, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
+import { Brain, Mail, Phone, MapPin, Inbox, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
 import { GlobeDemo } from './GlobeDemo';
 
 const ModernFooter = () => {
@@ -12,12 +12,11 @@ const ModernFooter = () => {
       { name: 'API Integration', href: '#' },
       { name: 'Mobile App', href: '#' }
     ],
-    solutions: [
-      { name: 'For Startups', href: '#' },
-      { name: 'For Enterprises', href: '#' },
-      { name: 'For Agencies', href: '#' },
-      { name: 'For HR Teams', href: '#' },
-      { name: 'Custom Solutions', href: '#' }
+    services: [
+      { name: 'AI & Automation', href: '/services' },
+      { name: 'Digital Transformation', href: '/services' },
+      { name: 'Cloud Native & Quantam', href: '/services' },
+      { name: 'Security & Test', href: '/services' },
     ],
     company: [
       { name: 'Home', href: '/' },
@@ -42,10 +41,7 @@ const ModernFooter = () => {
   };
 
   const socialLinks = [
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Facebook, href: '#', label: 'Facebook' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/metricdust', label: 'LinkedIn' },
   ];
 
   return (
@@ -58,11 +54,11 @@ const ModernFooter = () => {
             <GlobeDemo />
           </div>
           {/* Links - 60% */}
-          <div className="w-full md:w-3/5 grid grid-cols-1 mt-32 md:grid-cols-3 gap-8">
+          <div className="w-full md:w-3/5 grid grid-cols-1 mt-32 md:grid-cols-3 gap-8 md:gap-x-3 justify-between">
             <div>
-              <h3 className="text-white font-semibold mb-4">Solutions</h3>
-              <ul className="space-y-3">
-                {navigation.solutions.map((item) => (
+              <h3 className="text-white font-semibold mb-4">Services</h3>
+              <ul className="space-y-4">
+                {navigation.services.map((item) => (
                   <li key={item.name}>
                     <a href={item.href} className="text-slate-400 hover:text-white transition-colors text-base">
                       {item.name}
@@ -71,7 +67,7 @@ const ModernFooter = () => {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className='ml-10'>
               <h3 className="text-white font-semibold mb-4">Company</h3>
               <ul className="space-y-3">
                 {navigation.company.map((item) => (
@@ -83,11 +79,11 @@ const ModernFooter = () => {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className=''>
               <h3 className="text-white font-semibold mb-4">Contact</h3>
               <ul className="space-y-3">
                 <li className="flex items-center space-x-2">
-                  <Mail className="w-5 h-5 text-slate-400" />
+                  <Mail className="w-10 h-10 text-slate-400" />
                   <span className="text-slate-400 text-base">lohith@metricdust.com</span>
                 </li>
                 <li className="flex items-center space-x-2">
@@ -95,7 +91,7 @@ const ModernFooter = () => {
                   <span className="text-slate-400 text-base">+1 (425) 900-9663</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <MapPin className="w-7 h-7 text-slate-400" />
+                  <MapPin className="w-10 h-10 text-slate-400" />
                   <span className="text-slate-400 text-base">2519 Baker Ave. Unit 3 Everett, WA 98201</span>
                 </li>
               </ul>
@@ -130,8 +126,9 @@ const ModernFooter = () => {
                   href={social.href}
                   className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors group"
                   aria-label={social.label}
+                  target='_blank'
                 >
-                  <social.icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+                  <social.icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors"/>
                 </a>
               ))}
             </div>
@@ -143,3 +140,4 @@ const ModernFooter = () => {
 };
 
 export default ModernFooter;
+

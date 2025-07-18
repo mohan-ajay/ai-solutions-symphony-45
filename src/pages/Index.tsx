@@ -34,16 +34,19 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <ModernHeader />
-      <div >
-        <MetricdustHero />
-        <AIPoweredServices />
-        <AIIndustries />
-        <LogoCarouselDemo />
-        <TechStackMarquee />
-        <CardHoverEffectDemo />
-        <ModernFooter />
-        <a href="/contact-us" className="text-black underline hover:text-[#d3d3d3] font-league-spartan">Contact Us</a>
+      <div className="relative h-[100vh] flex items-center justify-center">
+        <div className="absolute inset-0 bg-black bg-cover bg-center opacity-60" style={{ backgroundImage: 'url(/NSlider2.webp)' }} />
+        <div className="relative z-10 w-full">
+          <MetricdustHero />
+        </div>
       </div>
+      <AIPoweredServices />
+      <AIIndustries />
+      <LogoCarouselDemo />
+      <TechStackMarquee />
+      <CardHoverEffectDemo />
+      <ModernFooter />
+      <a href="/contact-us" className="text-black underline hover:text-[#d3d3d3] font-league-spartan">Contact Us</a>
     </div>
   );
 };
