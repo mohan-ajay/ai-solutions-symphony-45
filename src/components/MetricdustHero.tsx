@@ -303,7 +303,7 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
         </div>
       )}
       {/* Floating Background Dots */}
-      <div className="h-[160vh] w-screen bg-black text-white relative overflow-hidden">
+      <div className="h-[150vh] w-screen bg-black text-white relative overflow-hidden">
   {/* Background with opacity */}
   <div 
     className="absolute inset-0 bg-cover bg-center opacity-60"
@@ -424,7 +424,7 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
 
         {/* Talk To AI Button - Now below the visualizer */}
         
-        <button type="button" className="text-white mb-40 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {
+        <button type="button" className="text-white mb-32 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {
             setShowModal(true);
             handleStartSession();
           }}>Talk to AI</button>
