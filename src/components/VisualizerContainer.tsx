@@ -32,10 +32,12 @@ const { audioTrack } = voiceAssistant;
 // });
 
     return (
+        <div className="flex-1 flex flex-col items-center justify-top w-full max-w-xl h-[450px] relative">
         <MetricDustVisualizer 
             micEnabled={false}
             particleColor="#4961e1"
             voiceAssistantAudioTrack={audioTrack}
         />
+        </div>
     )
 }
