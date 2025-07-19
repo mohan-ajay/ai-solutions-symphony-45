@@ -303,7 +303,7 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
         </div>
       )}
       {/* Floating Background Dots */}
-      <div className="h-[150vh] w-screen bg-black text-white relative overflow-hidden">
+      <div className="h-[160vh] w-screen bg-black text-white relative overflow-hidden">
   {/* Background with opacity */}
   <div 
     className="absolute inset-0 bg-cover bg-center opacity-60"
