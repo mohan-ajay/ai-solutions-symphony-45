@@ -272,7 +272,7 @@ const MetricdustHero = () => {
       {/* Modal Popup for LiveKitAgent */}
       {showModal && (
         <div className="fixed inset-0 top-0 mt-12 z-[100] flex items-center justify-center bg-black bg-opacity-70">
-          <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden min-h-[500px] max-h-[75vh]">
+          <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden h-[500px]">
             <button
               className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-red-600 z-10"
               onClick={() => {
@@ -325,7 +325,7 @@ const MetricdustHero = () => {
         {/* Stats Row */}
         <div
           ref={statsRef}
-          className="w-full max-w-4xl mt-28 mb-10 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0"
+          className="w-full max-w-4xl mt-16 mb-10 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0"
         >
           {/* Stat 1 */}
           <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:pr-16">
