@@ -95,11 +95,11 @@ export default function ContactForm() {
         {/* Contact Info Bar */}
         <div className="bg-zinc-900">
           <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="grid md:grid-cols-3 gap-4 text-center">
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center gap-4 text-white"
+                  className="flex items-center justify-center gap-2 text-white"
                 >
                   <div className="text-contact-icon flex-shrink-3">
                     {info.icon}
@@ -108,7 +108,7 @@ export default function ContactForm() {
                     <h3 className="text-lg font-semibold mb-1">
                       {info.title}
                     </h3>
-                    <p className="text-white/80 text-sm">{info.content}</p>
+                    <p className="text-white/80 text-lg">{info.content}</p>
                   </div>
                 </div>
               ))}
@@ -143,7 +143,7 @@ export default function ContactForm() {
                         onChange={handleInputChange}
                         required
                         placeholder="Your Name"
-                        className="w-full"
+                        className="w-full border-black border-2"
                       />
                     </div>
 
@@ -162,7 +162,7 @@ export default function ContactForm() {
                         onChange={handleInputChange}
                         required
                         placeholder="Your Email"
-                        className="w-full"
+                        className="w-full border-black border-2"
                       />
                     </div>
 
@@ -180,7 +180,7 @@ export default function ContactForm() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Your Phone"
-                        className="w-full"
+                        className="w-full border-black border-2"
                       />
                     </div>
                   </div>
@@ -201,7 +201,7 @@ export default function ContactForm() {
                       required
                       placeholder="Your Message"
                       rows={8}
-                      className="w-full h-full resize-none"
+                      className="w-full h-full resize-none border-black border-2"
                     />
                   </div>
                 </div>

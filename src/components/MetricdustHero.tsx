@@ -5,7 +5,7 @@ import { ArrowRight, Brain, Zap, Play } from "lucide-react";
 import MetricDustVisualizer from "../MetricDustVisualizer/MetricDustVisualizer";
 import LivekitAgent from "./LiveKitAgent";
 
-const MetricdustHero = () => {
+const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: boolean) => void }) => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const binaryDotsRef = useRef([]);
@@ -264,6 +264,13 @@ const MetricdustHero = () => {
     };
   }, []);
 
+  // Notify parent when modal state changes
+  useEffect(() => {
+    if (onModalStateChange) {
+      onModalStateChange(showModal);
+    }
+  }, [showModal, onModalStateChange]);
+
   return (
     <section
       id="home"
@@ -305,13 +312,13 @@ const MetricdustHero = () => {
   
   {/* Content container with relative positioning */}
   <div className="relative z-10 h-full">
-    <div className="w-full max-w-7xl mt-32 px-6 ml-8 flex flex-col lg:flex-row items-center justify-between gap-8 pt-16">
+    <div className="w-full max-w-7xl mt-32 px-6 ml-8 flex flex-col lg:flex-row items-center justify-between gap-8 pt-32">
       {/* Left: METRICDUST + text */}
       <div className="flex-1 flex flex-col items-start">
         <div className="w-full max-w-xl" ref={containerRef}>
           <canvas ref={canvasRef} className="w-full h-[260px]" />
         </div>
-        <h1 className="mt-6 text-[22px] ml-8 md:text-[26px] font-light leading-snug">
+        <h1 className="mt-6 text-[22px] ml-8 mt-16 md:text-[26px] font-light leading-snug">
           <div className="flex-1 flex flex-col items-start">
             <h1 className="text-8xl md:text-6xl font-bold text-white mb-4">
               Transform Your Digital
@@ -325,7 +332,7 @@ const MetricdustHero = () => {
         {/* Stats Row */}
         <div
           ref={statsRef}
-          className="w-full max-w-4xl mt-16 mb-10 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0"
+          className="w-full max-w-4xl mt-24 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0"
         >
           {/* Stat 1 */}
           <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:pr-16">
@@ -376,7 +383,7 @@ const MetricdustHero = () => {
         </div>
       </div>
       {/* Right: Globe Visualizer */}
-      <div className="flex-1 flex flex-col items-center justify-top mb-60 w-full max-w-xl h-[500px] relative">
+      <div className="flex-1 flex flex-col items-center justify-top mb-16 w-full max-w-xl h-[600px] relative">
         {/* MetricDustVisualizer */}
         <MetricDustVisualizer micEnabled={false} />
 
@@ -386,7 +393,7 @@ const MetricdustHero = () => {
             <Button
               onClick={handlePlayAudio}
               size="lg"
-              className="text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 h-10 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              className="text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 h-10 me-2 mb-32 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
               aria-label={isPlaying ? "Pause audio" : "Play audio"}
               type="button"
             >
@@ -417,7 +424,7 @@ const MetricdustHero = () => {
 
         {/* Talk To AI Button - Now below the visualizer */}
         
-        <button type="button" className="text-white mb-8 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {
+        <button type="button" className="text-white mb-32 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {
             setShowModal(true);
             handleStartSession();
           }}>Talk to AI</button>

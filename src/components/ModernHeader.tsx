@@ -10,7 +10,7 @@ const navLinks = [
   { name: 'Contact', href: '/contact-us' },
 ];
 
-const ModernHeader = ({ alwaysHideOnScroll = false }: { alwaysHideOnScroll?: boolean }) => {
+const ModernHeader = ({ alwaysHideOnScroll = false, isModalOpen = false }: { alwaysHideOnScroll?: boolean; isModalOpen?: boolean }) => {
   const scrollDirection = useScrollDirection();
   const shouldHide = alwaysHideOnScroll
     ? scrollDirection !== undefined && window.scrollY > 0
@@ -22,7 +22,8 @@ const ModernHeader = ({ alwaysHideOnScroll = false }: { alwaysHideOnScroll?: boo
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300
         ${shouldHide ? '-translate-y-full' : 'translate-y-0'}
-        ${!shouldHide && scrollDirection === 'up' ? 'backdrop-blur' : 'bg-transparent'}
+        ${!shouldHide && scrollDirection === 'up' ? 'bg-black' : ''}
+        ${isModalOpen ? 'opacity-0 pointer-events-none' : ''}
       `}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-5">

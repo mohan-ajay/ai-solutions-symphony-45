@@ -6,11 +6,12 @@ import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
 import { CardHoverEffectDemo } from "@/components/CardHover";
 import ModernFooter from "@/components/ModernFooter";
 import TechStackMarquee from "@/components/TechStackMarquee";
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -33,11 +34,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <ModernHeader />
+      <ModernHeader isModalOpen={isModalOpen} />
       <div className="relative h-[100vh] flex items-center justify-center">
         <div className="absolute inset-0 bg-black bg-cover bg-center opacity-60" style={{ backgroundImage: 'url(/NSlider2.webp)' }} />
         <div className="relative z-10 w-full">
-          <MetricdustHero />
+          <MetricdustHero onModalStateChange={setIsModalOpen} />
         </div>
       </div>
       <AIPoweredServices />

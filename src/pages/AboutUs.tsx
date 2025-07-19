@@ -89,37 +89,90 @@ const AboutUs = () => {
       
 
       {/* Timeline Section */}
-      <section className="bg-[#d3d3d3] py-16 px-4">
-        <div className="max-w-5xl mx-auto relative">
-          {/* Vertical line */}
-          <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-blue-500 via-blue-400 to-yellow-400 z-0" style={{ transform: 'translateX(-50%)' }} />
-          <div className="flex flex-col gap-24 relative z-10">
-            {timeline.map((item) => (
-              <div key={item.year} className="flex flex-row items-center w-full relative">
-                {/* Image left */}
-                <div className="w-1/2 flex justify-end pr-8">
-                  <img src={item.img} alt={item.title} className="w-full max-w-md h-48 object-cover rounded-lg shadow-lg border-4 border-white" />
-                </div>
-                {/* Timeline center */}
-                <div className="flex flex-col items-center w-0 relative z-10">
-                  {/* Vertical line (already present globally, but for mobile fallback) */}
-                  <span className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-blue-500 via-blue-400 to-yellow-400 z-0" style={{ transform: 'translateX(-50%)' }} />
-                  {/* Year and dot */}
-                  <div className="flex items-center justify-center h-20 z-10">
-                    <span className={`px-6 py-2 rounded-full text-lg font-bold shadow ${item.year === '2022' ? 'bg-yellow-400 text-black' : 'bg-blue-700 text-white'}`}>{item.year}</span>
-                    <span className={`-ml-3 w-6 h-6 rounded-full border-4 ${item.year === '2022' ? 'border-yellow-400 bg-white' : 'border-blue-500 bg-white'} flex items-center justify-center z-20`} />
-                  </div>
-                </div>
-                {/* Content right */}
-                <div className="w-1/2 flex flex-col justify-center items-start pl-8">
-                  <h3 className="text-2xl font-bold text-black mb-2">{item.title}</h3>
-                  <p className="text-black text-lg max-w-md">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+      <section className="py-16 bg-white">
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="relative">
+      {/* Vertical center line */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-300 z-0"></div>
+
+      <div className="flex flex-col gap-24 relative z-10">
+        {/* === Timeline Item 1 === */}
+        <div className="flex flex-col md:flex-row items-center md:items-start relative">
+          {/* Left Image */}
+          <div className="w-full md:w-1/2 flex justify-end pr-8">
+            <img src="/about-us/inception_1.jpg" alt="Start of Startup" className="w-full max-w-md h-64 object-cover rounded-lg shadow-lg" />
+          </div>
+
+          {/* Right Content */}
+          <div className="w-full md:w-1/2 pl-8 mt-8 md:mt-0">
+            {/* Year */}
+            <div className="flex items-center mb-4">
+              <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+              <h4 className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">2020</h4>
+            </div>
+            {/* Text */}
+            <h3 className="text-2xl font-bold mb-2">Company Inception</h3>
+            <p className="text-gray-700">
+              In the year 2020, a group of like-minded tech enthusiasts founded MetricDust. With a shared passion for
+              technology, we embarked on a journey to establish a firm that would provide innovative solutions to the
+              ever-evolving world of information technology.
+            </p>
           </div>
         </div>
-      </section>
+
+        {/* === Timeline Item 2 === */}
+        <div className="flex flex-col md:flex-row-reverse items-center md:items-start relative">
+          {/* Right Image */}
+          <div className="w-full md:w-1/2 flex justify-start pl-8">
+            <img src="/about-us/inception_2.jpg" alt="Product Launch" className="w-full max-w-md h-64 object-cover rounded-lg shadow-lg" />
+          </div>
+
+          {/* Left Content */}
+          <div className="w-full md:w-1/2 pr-8 mt-8 md:mt-0">
+            {/* Year */}
+            <div className="flex items-center mb-4 justify-end">
+              <h4 className="bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-bold">2022</h4>
+              <div className="w-3 h-3 bg-yellow-400 rounded-full ml-2"></div>
+            </div>
+            {/* Text */}
+            <h3 className="text-2xl font-bold mb-2 text-right">InHouse Product Development</h3>
+            <p className="text-gray-700 text-right">
+              The services provided to various clients were being widely appreciated. Simultaneously, we decided to
+              launch a proprietary software product that would compete with the big tech company offerings in the real
+              estate market.
+            </p>
+          </div>
+        </div>
+
+        {/* === Timeline Item 3 === */}
+        <div className="flex flex-col md:flex-row items-center md:items-start relative">
+          {/* Left Image */}
+          <div className="w-full md:w-1/2 flex justify-end pr-8">
+            <img src="/about-us/inception_3.jpg" alt="Team Expansion" className="w-full max-w-md h-64 object-cover rounded-lg shadow-lg" />
+          </div>
+
+          {/* Right Content */}
+          <div className="w-full md:w-1/2 pl-8 mt-8 md:mt-0">
+            {/* Year */}
+            <div className="flex items-center mb-4">
+              <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+              <h4 className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">2023</h4>
+            </div>
+            {/* Text */}
+            <h3 className="text-2xl font-bold mb-2">Team Expansion</h3>
+            <p className="text-gray-700">
+              In 2023, we celebrated our 3rd year in the industry. The expansion of the company was necessary to
+              accommodate the project requirements. We are now joined by 10 of our ever-growing roster of talented
+              professionals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* Team Section */}
       <section className="bg-black py-16 px-4">
