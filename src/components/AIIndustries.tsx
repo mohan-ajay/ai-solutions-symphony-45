@@ -214,7 +214,7 @@ const AllIndustries = () => {
 
   return (
     <section 
-      className="py-32 bg-[#000000] relative overflow-hidden group"
+      className="py-16 bg-[#000000] relative overflow-hidden group"
       onMouseMove={handleMouseMove}
     >
       {/* Binary Pattern Background */}
@@ -229,8 +229,8 @@ const AllIndustries = () => {
       {/* Floating dots background */}
       
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 ">
+        <div className="text-center mb-10">
           <h1 className="text-4xl font-semibold leading-snug text-slate-100">
             Domain Expertise
           </h1>

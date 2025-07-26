@@ -17,6 +17,13 @@ export default {
         '2xl': '1400px'
       }
     },
+    theme: {
+    extend: {
+      backdropBlur: {
+        sm: '4px',
+      },
+    },
+  },
     extend: {
       fontFamily: {
         spartan: ['"League Spartan"', 'Arial', 'sans-serif'],

@@ -272,14 +272,12 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
   }, [showModal, onModalStateChange]);
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen bg-black flex flex-col items-center justify-start overflow-hidden"
-    >
-      {/* Modal Popup for LiveKitAgent */}
+    <section id="" className="relative min-h-screen bg-black flex flex-col items-center justify-items-center">
+      {/* Modal Popup for LiveKitAgent - restored */}
+       {/* Modal Popup for LiveKitAgent */}
       {showModal && (
         <div className="fixed inset-0 top-0 mt-12 z-[100] flex items-center justify-center bg-black bg-opacity-70">
-          <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden h-[500px]">
+          <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden h-[100px]">
             <button
               className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-red-600 z-10"
               onClick={() => {
@@ -290,7 +288,7 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
             >
               &times;
             </button>
-            <div className="flex-1 min-w-0 flex flex-col items-center justify-center p-6 bg-black">
+            <div className="flex-1 w-0 flex flex-col items-center justify-center p-6 bg-black">
               <div className="w-full flex-1 flex items-center justify-center">
                 <LivekitAgent
                   isSessionActive={isSessionActive}
@@ -302,137 +300,164 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
           </div>
         </div>
       )}
-      {/* Floating Background Dots */}
-      <div className="h-[150vh] w-screen bg-black text-white relative overflow-hidden">
-  {/* Background with opacity */}
-  <div 
-    className="absolute inset-0 bg-cover bg-center opacity-60"
-    style={{ backgroundImage: "url(/earth_horizon.jpg)" }}
-  />
-  
-  {/* Content container with relative positioning */}
-  <div className="relative z-10 h-full">
-    <div className="w-full max-w-7xl mt-32 px-6 ml-8 flex flex-col lg:flex-row items-center justify-between gap-8 pt-32">
-      {/* Left: METRICDUST + text */}
-      <div className="flex-1 flex flex-col items-start">
-        <div className="w-full max-w-xl" ref={containerRef}>
-          <canvas ref={canvasRef} className="w-full h-[260px]" />
-        </div>
-        <h1 className="mt-6 text-[22px] ml-8 mt-16 md:text-[26px] font-light leading-snug">
-          <div className="flex-1 flex flex-col items-start">
-            <h1 className="text-8xl md:text-6xl font-bold text-white mb-4">
-              Transform Your Digital
-            </h1>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Experience with AI
-            </h1>
-          </div>
-        </h1>
 
-        {/* Stats Row */}
+      {/* Main Content */}
+      <div className="w-screen bg-black text-white relative overflow-hidden">
+        {/* Background with opacity */}
         <div
-          ref={statsRef}
-          className="w-full max-w-4xl mt-24 ml-10 flex flex-col md:flex-row items-stretch justify-between gap-10 md:gap-0"
-        >
-          {/* Stat 1 */}
-          <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:pr-16">
-            <div className="flex items-end gap-1">
-              <span className="text-5xl font-bold text-white">
-                {projects}
-              </span>
-              <span className="text-2xl font-bold text-white">+</span>
-            </div>
-            <span className="mt-2 text-xl font-medium text-white">
-              Projects Completed
-            </span>
-          </div>
-          {/* Stat 2 */}
-          <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-8">
-            <div className="flex items-end gap-1">
-              <span className="text-5xl font-bold text-white">
-                {clients}
-              </span>
-              <span className="text-2xl font-bold text-white">+</span>
-            </div>
-            <span className="mt-2 text-xl font-medium text-white">
-              Global Clients
-            </span>
-          </div>
-          {/* Stat 3 */}
-          <div className="flex-1 flex flex-col items-center md:items-start border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0 md:px-16">
-            <div className="flex items-end gap-1">
-              <span className="text-5xl font-bold text-white">
-                {satisfaction}
-              </span>
-              <span className="text-2xl font-bold text-white">%</span>
-            </div>
-            <span className="mt-2 text-xl font-medium text-white">
-              Customer Satisfaction
-            </span>
-          </div>
-          {/* Stat 4 */}
-          <div className="flex-1 flex flex-col items-center md:items-start pb-6 md:pb-0 md:pl-16">
-            <div className="flex items-end gap-1">
-              <span className="text-5xl font-bold text-white">{years}</span>
-              <span className="text-2xl font-bold text-white">+</span>
-            </div>
-            <span className="mt-2 text-xl font-medium text-white">
-              Year of Experiences
-            </span>
-          </div>
-        </div>
-      </div>
-      {/* Right: Globe Visualizer */}
-      <div className="flex-1 flex flex-col items-center justify-top mb-32 w-full max-w-xl h-[600px] relative">
-        {/* MetricDustVisualizer */}
-        <MetricDustVisualizer micEnabled={false} />
-
-        {/* Play Icon Overlay - Inside the 1's and 0's */}
-        <div className="absolute inset-0 flex items-center mb-24 justify-center pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 mt-4 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center gap-2">
-            <Button
-              onClick={handlePlayAudio}
-              size="lg"
-              className="text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 h-10 me-2 mb-32 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-              aria-label={isPlaying ? "Pause audio" : "Play audio"}
-              type="button"
-            >
-              {isPlaying ? (
-                <div className="flex items-center justify-center space-x-1">
-                  <div className="w-2 h-6 bg-white rounded-sm"></div>
-                  <div className="w-2 h-6 bg-white rounded-sm"></div>
-                </div>
-              ) : (
-                <Play
-                  className="w-5 h-8 text-white ml-1 transition-transform duration-300"
-                  fill="white"
-                />
-              )}
-              <span className="font-league-spartan font-bold select-none">
-                About us
-              </span>
-            </Button>
-          </div>
-        </div>
-
-        {/* Audio element for background music */}
-        <audio
-          ref={audioRef}
-          src="/agent-intro.mp3"
-          onEnded={() => setIsPlaying(false)}
+          className="h-[150vh] absolute inset-0 bg-cover bg-center opacity-60"
+          style={{ backgroundImage: "url(/earth_horizon.jpg)" }}
         />
 
-        {/* Talk To AI Button - Now below the visualizer */}
-        
-        <button type="button" className="text-white mb-32 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {
-            setShowModal(true);
-            handleStartSession();
-          }}>Talk to AI</button>
+        {/* Content container */}
+        <div className="relative z-10 h-full container mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-72">
+          <div className="flex flex-col lg:flex-row items-center justify-items-center gap-12">
+            {/* Left: Text Content */}
+            <div className="w-full lg:w-1/2 flex flex-col items-start space-y-8">
+              {/* METRICDUST Canvas */}
+              <div className="w-full" ref={containerRef}>
+                <canvas ref={canvasRef} className="w-full h-[180px] md:h-[220px]" />
+              </div>
+
+              {/* Headings */}
+              <div className="space-y-2 ml-8">
+                <h1 className="text-3xl sm:text-3xl md:text-6xl font-bold text-white leading-tight">
+                  Transform Your
+                </h1>
+                <h1 className="text-3xl py-2 sm:text-3xl md:text-6xl font-bold text-white leading-tight">
+                  Digital Experience
+                </h1>
+                <h1 className="text-3xl py-2 sm:text-3xl md:text-6xl font-bold text-white leading-tight">
+                  with AI
+                </h1>
+              </div>
+            </div>
+
+            {/* Right: Visualizer */}
+            <div className="w-full lg:w-1/2 flex flex-col items-center justify-center relative h-[400px] md:h-[400px] md:mt-24">
+              <div className="w-full h-full relative flex items-start justify-start">
+                <MetricDustVisualizer micEnabled={false} />
+                {/* Play Button - Centered in Visualizer */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
+                  <Button
+                    onClick={handlePlayAudio}
+                    size="lg"
+                    className="text-white font-medium rounded-xl px-6 py-3 transition-all border"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      borderRadius: '10px',
+                      boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                      backdropFilter: 'blur(5px)',
+                      WebkitBackdropFilter: 'blur(5px)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)'
+                    }}
+                  >
+                    {isPlaying ? (
+                      <div className="flex items-center justify-center space-x-1">
+                        <div className="w-2 h-6 bg-white rounded-sm"></div>
+                        <div className="w-2 h-6 bg-white rounded-sm"></div>
+                      </div>
+                    ) : (
+                      <Play className="w-5 h-5 text-white" fill="white" />
+                    )}
+                    <span className="font-bold">About us</span>
+                  </Button>
+                </div>
+              </div>
+              {/* Talk To AI Button */}
+              <button
+                onClick={() => {
+                  setShowModal(true);
+                  handleStartSession();
+                }}
+                className="text-white font-medium rounded-xl px-6 py-2 transition-all border flex items-center gap-2"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(5px)',
+                  WebkitBackdropFilter: 'blur(5px)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)'
+                }}
+              >
+                <span>Talk to AI</span>
+                <ArrowRight className="w-5 h-5 text-white" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+
+      {/* Stats Grid in separate div below hero */}
+      <div className="w-full bg-black text-white py-16">
+        <div className="container mx-auto">
+          <div
+            ref={statsRef}
+            className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          >
+            {/* Stat 1 */}
+            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+              <div className="flex items-end gap-1">
+                <span className="text-3xl md:text-4xl font-bold text-white">
+                  {projects}
+                </span>
+                <span className="text-xl font-bold text-white">+</span>
+              </div>
+              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+                Projects Completed
+              </span>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+              <div className="flex items-end gap-1">
+                <span className="text-3xl md:text-4xl font-bold text-white">
+                  {clients}
+                </span>
+                <span className="text-xl font-bold text-white">+</span>
+              </div>
+              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+                Global Clients
+              </span>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+              <div className="flex items-end gap-1">
+                <span className="text-3xl md:text-4xl font-bold text-white">
+                  {satisfaction}
+                </span>
+                <span className="text-xl font-bold text-white">%</span>
+              </div>
+              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+                Customer Satisfaction
+              </span>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+              <div className="flex items-end gap-1">
+                <span className="text-3xl md:text-4xl font-bold text-white">
+                  {years}
+                </span>
+                <span className="text-xl font-bold text-white">+</span>
+              </div>
+              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+                Years of Experience
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Audio element */}
+      <audio
+        ref={audioRef}
+        src="/agent-intro.mp3"
+        onEnded={() => setIsPlaying(false)}
+      />
     </section>
+
   );
 };
 

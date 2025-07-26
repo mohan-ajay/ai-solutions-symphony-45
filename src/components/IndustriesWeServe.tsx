@@ -1,61 +1,106 @@
 import React from 'react';
 import {
-  FaBuilding, FaUserTie, FaNetworkWired, FaHeadset, FaBookOpen, FaHeartbeat, FaBullhorn, FaCloud, FaShieldAlt
+  FaBuilding, FaUserTie, FaNetworkWired, FaHeadset, FaBookOpen, 
+  FaHeartbeat, FaBullhorn, FaCloud, FaShieldAlt
 } from 'react-icons/fa';
+import './IndustriesWeServe.css';
+
+const gradientMapping: Record<string, string> = {
+  blue: "linear-gradient(hsla(223, 10%, 87%, 1.00))",
+  purple: "linear-gradient(hsla(285, 7%, 88%, 1.00), hsla(260, 2%, 61%, 1.00))",
+  red: "linear-gradient(hsla(0, 16%, 89%, 1.00), hsla(340, 3%, 57%, 1.00))",
+  indigo: "linear-gradient(hsla(255, 4%, 80%, 1.00), hsla(240, 1%, 56%, 1.00))",
+  orange: "linear-gradient(hsla(40, 11%, 85%, 1.00), hsla(40, 1%, 57%, 1.00))",
+  green: "linear-gradient(hsla(120, 7%, 83%, 1.00), hsla(110, 3%, 66%, 1.00))",
+  teal: "linear-gradient(hsla(180, 10%, 89%, 1.00), hsl(168, 90%, 40%))",
+  pink: "linear-gradient(hsla(330, 14%, 89%, 1.00), hsla(310, 3%, 58%, 1.00))",
+  cyan: "linear-gradient(hsla(204, 6%, 85%, 1.00), hsla(180, 2%, 53%, 1.00))"
+};
 
 const industries = [
-  {name: 'Property Tech', icon: <FaBuilding /> },
-  {name: 'HR', icon: <FaUserTie /> },
-  { name: 'Open Network Service', icon: <FaNetworkWired /> },
-  { name: 'Customer Support', icon: <FaHeadset /> },
-  { name: 'Edu Tech', icon: <FaBookOpen /> },
-  { name: 'Health Care', icon: <FaHeartbeat /> },
-  { name: 'Digital Marketing', icon: <FaBullhorn /> },
-  { name: 'Cloud Transformation', icon: <FaCloud /> },
-  { name: 'Cyber Security', icon: <FaShieldAlt /> },
+  { name: 'Property Tech', icon: <FaBuilding />, color: 'orange' },
+  { name: 'HR', icon: <FaUserTie />, color: 'purple' },
+  { name: 'Open Network', icon: <FaNetworkWired />, color: 'blue' },
+  { name: 'Customer Support', icon: <FaHeadset />, color: 'indigo' },
+  { name: 'Edu Tech', icon: <FaBookOpen />, color: 'green' },
+  { name: 'Health Care', icon: <FaHeartbeat />, color: 'red' },
+  { name: 'Digital Marketing', icon: <FaBullhorn />, color: 'pink' },
+  { name: 'Cloud Transformation', icon: <FaCloud />, color: 'cyan' },
+  { name: 'Cyber Security', icon: <FaShieldAlt />, color: 'teal' },
 ];
 
 const IndustriesWeServe: React.FC = () => {
+  const getBackgroundStyle = (color: string): React.CSSProperties => {
+    if (gradientMapping[color]) {
+      return { background: gradientMapping[color] };
+    }
+    return { background: color };
+  };
+
+  // Split industries into two rows: 5 in first row, 4 in second
+  const firstRow = industries.slice(0, 5);
+  const secondRow = industries.slice(5);
+
   return (
-    <div style={{ padding: '4rem 2rem', textAlign: 'center', }}>
-      
-
-      <div style={{
-        marginTop: '3rem',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: '1.5rem'
-      }}>
-        {industries.map((industry, index) => (
-          <div
-            key={index}
-            style={{
-              width: '13rem',
-              height: '11rem',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: index % 2 === 0 ? 'black' : 'black',
-              backgroundColor: index % 2 === 0 ? '#A9A9A9' : 'white',
-              border: index % 2 !== 0 ? '1px solid #e5e7eb' : 'none',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
-              transition: 'transform 0.3s ease-in-out'
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          >
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{industry.icon}</div>
-            <div style={{ fontSize: '1rem', fontWeight: 600, padding: '0 0.25rem', textAlign: 'center' }}>
-              {industry.name}
-            </div>
-          </div>
-        ))}
+    <div className="flex w-full justify-center items-center py-12">
+      <div className="hexagon-grid-container">
+        {/* First row with 5 hexagons */}
+        <div className="hexagon-row">
+          {firstRow.map((industry, index) => (
+            <HexagonItem 
+              key={index} 
+              industry={industry} 
+              getBackgroundStyle={getBackgroundStyle} 
+            />
+          ))}
+        </div>
+        
+        {/* Second row with 4 hexagons, offset */}
+        <div className="hexagon-row offset">
+          {secondRow.map((industry, index) => (
+            <HexagonItem 
+              key={index + 5} 
+              industry={industry} 
+              getBackgroundStyle={getBackgroundStyle} 
+            />
+          ))}
+        </div>
       </div>
+    </div>
+  );
+};
 
-      
+const HexagonItem: React.FC<{
+  industry: { name: string; icon: React.ReactElement; color: string };
+  getBackgroundStyle: (color: string) => React.CSSProperties;
+}> = ({ industry, getBackgroundStyle }) => {
+  return (
+    <div className="hexagon-item">
+      <button
+        type="button"
+        aria-label={industry.name}
+        className="hexagon-button group"
+      >
+        {/* Back layer */}
+        <span
+          className="hexagon-back"
+          style={{
+            ...getBackgroundStyle(industry.color),
+          }}
+        ></span>
+
+        {/* Front layer */}
+        <span className="hexagon-front">
+          <span className="hexagon-icon" aria-hidden="true">
+            {React.cloneElement(industry.icon, { size: 36 })}
+          </span>
+        </span>
+
+        {/* Label */}
+        <span className="hexagon-label">
+          {industry.name}
+        </span>
+      </button>
     </div>
   );
 };

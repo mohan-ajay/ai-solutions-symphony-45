@@ -39,14 +39,14 @@
   opacity: 0.9;
 }
 
-.tech-bordered {
+/* .tech-bordered {
   border: 2px solid white;
   background: white;
   border-radius: 1.5rem;
   padding: 0.5rem 1.25rem;
   box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
   transition: border-color 0.2s, box-shadow 0.2s;
-}
+} */
 
 .tech-item:hover {
   border-color: #38bdf8;
@@ -55,7 +55,7 @@
 
 .tech-icon {
   margin-right: 0.75rem;
-  font-size: 2rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
 }

@@ -47,7 +47,7 @@ function MarqueeRow({ items, direction = "left" }) {
       <div className="marquee-content">
         {items.map((tech, idx) => (
           <React.Fragment key={tech.name + idx}>
-            <span className="tech-item tech-bordered">
+            <span className="tech-item bg-gray-500 px-3 py-3 rounded-3xl border bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
               <span className="tech-icon">{tech.icon || <MdDeviceUnknown />}</span>
               <span className="tech-label">{tech.name}</span>
             </span>
@@ -58,7 +58,7 @@ function MarqueeRow({ items, direction = "left" }) {
         {/* Duplicate for seamless loop */}
         {items.map((tech, idx) => (
           <React.Fragment key={tech.name + "-dup-" + idx}>
-            <span className="tech-item tech-bordered">
+            <span className="tech-item bg-gray-500 px-3 py-3 rounded-3xl border bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
               <span className="tech-icon">{tech.icon || <MdDeviceUnknown />}</span>
               <span className="tech-label">{tech.name}</span>
             </span>

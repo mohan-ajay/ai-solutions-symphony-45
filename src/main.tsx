@@ -4,6 +4,8 @@ import App from './App.tsx'
 import './index.css'
 import React from 'react'
 import './MetricDustVisualizer/styles.css'
+import './index.css';
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
