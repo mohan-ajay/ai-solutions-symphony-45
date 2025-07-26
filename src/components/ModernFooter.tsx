@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Brain, Mail, Phone, MapPin, Inbox, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
-import { GlobeDemo } from './GlobeDemo';
+import { SimpleGlobe } from './SimpleGlobe';
 
 const ModernFooter = () => {
   const navigation = {
@@ -51,7 +51,7 @@ const ModernFooter = () => {
         <div className="flex flex-col lg:flex-row gap-16 sm:gap-24 lg:gap-32 w-full">
           {/* GlobeDemo - 40% */}
           <div className="w-full lg:w-2/5 flex items-center justify-center">
-            <GlobeDemo />
+            <SimpleGlobe />
           </div>
           {/* Links - 60% */}
           <div className="w-full lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 lg:mt-32 gap-8 lg:gap-x-3 justify-between">
