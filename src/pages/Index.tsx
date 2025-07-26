@@ -7,8 +7,6 @@ import { CardHoverEffectDemo } from "@/components/CardHover";
 import ModernFooter from "@/components/ModernFooter";
 import TechStackMarquee from "@/components/TechStackMarquee";
 import React, { useRef, useEffect, useState } from 'react';
-import GlassHexagon from "@/components/GlassHexagon";
-import { GlassDemo } from "@/components/demo";
 
 
 const Index = () => {
@@ -49,7 +47,7 @@ const Index = () => {
       <TechStackMarquee />
       <CardHoverEffectDemo />
       <ModernFooter />
-      <a href="/contact-us" className="text-black underline hover:text-[#d3d3d3] font-league-spartan">Contact Us</a>
+      
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
-import NewGlobe from './NewGlobe';'; // Adjust the path to where your Globe.tsx is located
+import NewGlobe from './NewGlobe'; // Adjust the path to where your Globe.tsx is located
 
 const WorldMap: React.FC = () => {
   const [geoJson, setGeoJson] = useState<GeoJSON.FeatureCollection | null>(null);

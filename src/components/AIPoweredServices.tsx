@@ -10,11 +10,11 @@ const AIPoweredServices = () => {
   return (
     <div>
       {/* Main Scroll Container */}
-      <section className="py-32 bg-[#d3d3d3] overflow-x-hidden">
-  <div className="demo-container flex flex-col md:flex-row mt-8">
+      <section className="py-16 sm:py-24 md:py-32 bg-[#d3d3d3] overflow-x-hidden">
+  <div className="demo-container flex flex-col lg:flex-row mt-4 sm:mt-8">
     
     {/* Left Fixed MD Video – 60% width on desktop, full width on mobile */}
-    <div className="w-full md:w-[60%] md:sticky md:top-[100px] h-[300px] md:h-[calc(100vh-100px)]">
+    <div className="w-full lg:w-[60%] lg:sticky lg:top-[100px] h-[250px] sm:h-[300px] lg:h-[calc(100vh-100px)]">
       <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
         <defs>
           <mask id="md-mask">
@@ -58,12 +58,12 @@ const AIPoweredServices = () => {
     </div>
 
     {/* Right Side Content – 40% width on desktop, full on mobile */}
-    <div className="w-full md:w-[50%] flex flex-col justify-start mt-10 md:mt-20 px-6 space-y-10">
-      <h1 className="text-2xl md:text-4xl font-semibold leading-snug text-black">
+    <div className="w-full lg:w-[50%] flex flex-col justify-start mt-6 sm:mt-10 lg:mt-20 px-4 sm:px-6 space-y-6 sm:space-y-8 lg:space-y-10">
+      <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold leading-snug text-black">
         Build products mounted on our AI-first approach for a future ready solution that's ready to scale
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-lg font-light text-zinc-400">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-base sm:text-lg font-light text-zinc-400">
         {[
           { icon: "technology.png", label: "Tech Development" },
           { icon: "framework.png", label: "Product Design" },
@@ -71,15 +71,15 @@ const AIPoweredServices = () => {
           { icon: "settings.png", label: "Growth Marketing" },
           { icon: "blockchain.png", label: "Digital Transformation" },
         ].map(({ icon, label }) => (
-          <div key={label} className="flex items-center gap-2">
-            <img src={icon} alt={label} className="w-6 h-6" />
-            <span className="text-lg md:text-xl text-black max-w-3xl">{label}</span>
+          <div key={label} className="flex items-center gap-2 sm:gap-3">
+            <img src={icon} alt={label} className="w-5 h-5 sm:w-6 sm:h-6" />
+            <span className="text-base sm:text-lg lg:text-xl text-black max-w-3xl">{label}</span>
           </div>
         ))}
       </div>
 
       <button
-        className="self-start mt-4 text-base md:text-lg underline underline-offset-4 hover:text-gray-800 transition text-black"
+        className="self-start mt-4 text-sm sm:text-base lg:text-lg underline underline-offset-4 hover:text-gray-800 transition text-black"
         onClick={() => navigate('/services')}
       >
         View all services →

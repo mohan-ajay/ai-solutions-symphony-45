@@ -47,14 +47,14 @@ const ModernFooter = () => {
   return (
     <footer className="bg-black border-t border-slate-800">
       {/* Main footer content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col md:flex-row gap-32 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="flex flex-col lg:flex-row gap-16 sm:gap-24 lg:gap-32 w-full">
           {/* GlobeDemo - 40% */}
-          <div className="w-full md:w-2/5 flex items-center justify-center">
+          <div className="w-full lg:w-2/5 flex items-center justify-center">
             <GlobeDemo />
           </div>
           {/* Links - 60% */}
-          <div className="w-full md:w-3/5 grid grid-cols-1 mt-32 md:grid-cols-3 gap-8 md:gap-x-3 justify-between">
+          <div className="w-full lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 lg:mt-32 gap-8 lg:gap-x-3 justify-between">
             <div>
               <h3 className="text-white font-semibold mb-4">Services</h3>
               <ul className="space-y-4">
@@ -67,7 +67,7 @@ const ModernFooter = () => {
                 ))}
               </ul>
             </div>
-            <div className='ml-10'>
+            <div className='sm:ml-10'>
               <h3 className="text-white font-semibold mb-4">Company</h3>
               <ul className="space-y-3">
                 {navigation.company.map((item) => (
@@ -82,17 +82,17 @@ const ModernFooter = () => {
             <div className=''>
               <h3 className="text-white font-semibold mb-4">Contact</h3>
               <ul className="space-y-3">
-                <li className="flex items-center space-x-2">
-                  <Mail className="w-10 h-10 text-slate-400" />
-                  <span className="text-slate-400 text-base">lohith@metricdust.com</span>
+                <li className="flex items-start space-x-2">
+                  <Mail className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-400 text-sm sm:text-base">lohith@metricdust.com</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <Phone className="w-5 h-5 text-slate-400" />
-                  <span className="text-slate-400 text-base">+1 (425) 900-9663</span>
+                  <Phone className="w-5 h-5 text-slate-400 flex-shrink-0" />
+                  <span className="text-slate-400 text-sm sm:text-base">+1 (425) 900-9663</span>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <MapPin className="w-10 h-10 text-slate-400" />
-                  <span className="text-slate-400 text-base">2519 Baker Ave. Unit 3 Everett, WA 98201</span>
+                <li className="flex items-start space-x-2">
+                  <MapPin className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-400 text-sm sm:text-base">2519 Baker Ave. Unit 3 Everett, WA 98201</span>
                 </li>
               </ul>
             </div>
@@ -102,14 +102,14 @@ const ModernFooter = () => {
 
       {/* Bottom footer */}
       <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="flex flex-col lg:flex-row justify-between items-center">
             {/* Copyright and legal */}
-            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mb-4 md:mb-0">
+            <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-6 mb-4 lg:mb-0 text-center lg:text-left">
               <p className="text-slate-400 text-sm">
                 © 2024 Webist AI. All rights reserved.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap justify-center lg:justify-start space-x-2 sm:space-x-4">
                 {navigation.legal.map((item) => (
                   <a key={item.name} href={item.href} className="text-slate-500 hover:text-slate-400 transition-colors text-xs">
                     {item.name}

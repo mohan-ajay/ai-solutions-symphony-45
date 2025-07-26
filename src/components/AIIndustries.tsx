@@ -214,7 +214,7 @@ const AllIndustries = () => {
 
   return (
     <section 
-      className="py-16 bg-[#000000] relative overflow-hidden group"
+      className="py-8 sm:py-12 md:py-16 bg-[#000000] relative overflow-hidden group"
       onMouseMove={handleMouseMove}
     >
       {/* Binary Pattern Background */}
@@ -229,12 +229,12 @@ const AllIndustries = () => {
       {/* Floating dots background */}
       
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 ">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-semibold leading-snug text-slate-100">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug text-slate-100">
             Domain Expertise
           </h1>
-          <p className="text-2xl text-gray-400 mt-4 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-400 mt-3 sm:mt-4 max-w-3xl mx-auto px-2">
             Our solutions orbit around your core business needs
           </p>
         </div>

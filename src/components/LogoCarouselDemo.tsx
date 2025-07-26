@@ -29,9 +29,9 @@ const allLogos = [
 
 export function LogoCarouselDemo() {
   return (
-    <div className="space-y-8 py-16 bg-[#d3d3d3] min-h-[500px]">
-      <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center space-y-15">
-        <h1 className="text-4xl font-semibold leading-snug text-slate-800">
+    <div className="space-y-6 sm:space-y-8 py-12 sm:py-16 bg-[#d3d3d3] min-h-[400px] sm:min-h-[500px]">
+      <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center space-y-8 sm:space-y-15 px-4 sm:px-6">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug text-slate-800 text-center">
           Our Partners
         </h1>
         <LogoCarousel columnCount={5} logos={allLogos} />

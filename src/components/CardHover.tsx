@@ -7,12 +7,12 @@ import { ArrowRight } from "lucide-react";
 export function CardHoverEffectDemo() {
   return (
     <div>
-      <h1 className="text-4xl font-semibold leading-snug text-slate-800 text-start ml-20 mt-6 flex items-center">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug text-slate-800 text-center sm:text-start ml-4 sm:ml-20 mt-4 sm:mt-6 flex items-center justify-center sm:justify-start">
         Reflect
-        <ArrowRight className="ml-1 w-5 h-5" />
+        <ArrowRight className="ml-1 w-4 sm:w-5 h-4 sm:h-5" />
       </h1>
 
-    <div className="max-w-7xl mx-auto px-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6">
       <HoverEffect items={projects} />
       
     </div>

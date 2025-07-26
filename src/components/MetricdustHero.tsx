@@ -310,39 +310,36 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
         />
 
         {/* Content container */}
-        <div className="relative z-10 h-full container mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-72">
-          <div className="flex flex-col lg:flex-row items-center justify-items-center gap-12">
-            {/* Left: Text Content */}
-            <div className="w-full lg:w-1/2 flex flex-col items-start space-y-8">
-              {/* METRICDUST Canvas */}
-              <div className="w-full" ref={containerRef}>
-                <canvas ref={canvasRef} className="w-full h-[180px] md:h-[220px]" />
-              </div>
-
-              {/* Headings */}
-              <div className="space-y-2 ml-8">
-                <h1 className="text-3xl sm:text-3xl md:text-6xl font-bold text-white leading-tight">
-                  Transform Your
-                </h1>
-                <h1 className="text-3xl py-2 sm:text-3xl md:text-6xl font-bold text-white leading-tight">
-                  Digital Experience
-                </h1>
-                <h1 className="text-3xl py-2 sm:text-3xl md:text-6xl font-bold text-white leading-tight">
-                  with AI
-                </h1>
-              </div>
+        <div className="relative z-10 h-full container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-32 md:pt-40 lg:pt-72">
+          <div className="flex flex-col items-center text-center space-y-8 lg:space-y-12">
+            {/* METRICDUST Canvas */}
+            <div className="w-full max-w-4xl" ref={containerRef}>
+              <canvas ref={canvasRef} className="w-full h-[120px] sm:h-[150px] md:h-[180px] lg:h-[220px]" />
             </div>
 
-            {/* Right: Visualizer */}
-            <div className="w-full lg:w-1/2 flex flex-col items-center justify-center relative h-[400px] md:h-[400px] md:mt-24">
-              <div className="w-full h-full relative flex items-start justify-start">
+            {/* Headings */}
+            <div className="space-y-2 sm:space-y-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight">
+                Transform Your
+              </h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight">
+                Digital Experience
+              </h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight">
+                with AI
+              </h1>
+            </div>
+
+            {/* Visualizer */}
+            <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl flex flex-col items-center justify-center relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]">
+              <div className="w-full h-full relative flex items-center justify-center">
                 <MetricDustVisualizer micEnabled={false} />
                 {/* Play Button - Centered in Visualizer */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
                   <Button
                     onClick={handlePlayAudio}
                     size="lg"
-                    className="text-white font-medium rounded-xl px-6 py-3 transition-all border"
+                    className="text-white font-medium rounded-xl px-4 sm:px-6 py-2 sm:py-3 transition-all border text-sm sm:text-base"
                     style={{
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '10px',
@@ -354,23 +351,24 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
                   >
                     {isPlaying ? (
                       <div className="flex items-center justify-center space-x-1">
-                        <div className="w-2 h-6 bg-white rounded-sm"></div>
-                        <div className="w-2 h-6 bg-white rounded-sm"></div>
+                        <div className="w-1.5 sm:w-2 h-4 sm:h-6 bg-white rounded-sm"></div>
+                        <div className="w-1.5 sm:w-2 h-4 sm:h-6 bg-white rounded-sm"></div>
                       </div>
                     ) : (
-                      <Play className="w-5 h-5 text-white" fill="white" />
+                      <Play className="w-4 sm:w-5 h-4 sm:h-5 text-white" fill="white" />
                     )}
-                    <span className="font-bold">About us</span>
+                    <span className="font-bold ml-2">About us</span>
                   </Button>
                 </div>
               </div>
+              
               {/* Talk To AI Button */}
               <button
                 onClick={() => {
                   setShowModal(true);
                   handleStartSession();
                 }}
-                className="text-white font-medium rounded-xl px-6 py-2 transition-all border flex items-center gap-2"
+                className="mt-6 text-white font-medium rounded-xl px-4 sm:px-6 py-2 transition-all border flex items-center gap-2 text-sm sm:text-base"
                 style={{
                   background: 'rgba(255, 255, 255, 0.2)',
                   borderRadius: '10px',
@@ -381,7 +379,7 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
                 }}
               >
                 <span>Talk to AI</span>
-                <ArrowRight className="w-5 h-5 text-white" />
+                <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
               </button>
             </div>
           </div>
@@ -389,60 +387,60 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
       </div>
 
       {/* Stats Grid in separate div below hero */}
-      <div className="w-full bg-black text-white py-16">
-        <div className="container mx-auto">
+      <div className="w-full bg-black text-white py-8 sm:py-12 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6">
           <div
             ref={statsRef}
-            className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+            className="w-full grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
           >
             {/* Stat 1 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+            <div className="flex flex-col items-center sm:items-start p-3 sm:p-4 border-b border-gray-700">
               <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   {projects}
                 </span>
-                <span className="text-xl font-bold text-white">+</span>
+                <span className="text-lg sm:text-xl font-bold text-white">+</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+              <span className="mt-1 text-sm sm:text-base md:text-xl font-medium text-gray-300 text-center sm:text-left">
                 Projects Completed
               </span>
             </div>
 
             {/* Stat 2 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+            <div className="flex flex-col items-center sm:items-start p-3 sm:p-4 border-b border-gray-700">
               <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   {clients}
                 </span>
-                <span className="text-xl font-bold text-white">+</span>
+                <span className="text-lg sm:text-xl font-bold text-white">+</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+              <span className="mt-1 text-sm sm:text-base md:text-xl font-medium text-gray-300 text-center sm:text-left">
                 Global Clients
               </span>
             </div>
 
             {/* Stat 3 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+            <div className="flex flex-col items-center sm:items-start p-3 sm:p-4 border-b border-gray-700">
               <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   {satisfaction}
                 </span>
-                <span className="text-xl font-bold text-white">%</span>
+                <span className="text-lg sm:text-xl font-bold text-white">%</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+              <span className="mt-1 text-sm sm:text-base md:text-xl font-medium text-gray-300 text-center sm:text-left">
                 Customer Satisfaction
               </span>
             </div>
 
             {/* Stat 4 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
+            <div className="flex flex-col items-center sm:items-start p-3 sm:p-4 border-b border-gray-700">
               <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   {years}
                 </span>
-                <span className="text-xl font-bold text-white">+</span>
+                <span className="text-lg sm:text-xl font-bold text-white">+</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
+              <span className="mt-1 text-sm sm:text-base md:text-xl font-medium text-gray-300 text-center sm:text-left">
                 Years of Experience
               </span>
             </div>
