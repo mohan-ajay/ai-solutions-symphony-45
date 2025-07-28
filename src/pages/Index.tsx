@@ -7,7 +7,7 @@ import { CardHoverEffectDemo } from "@/components/CardHover";
 import ModernFooter from "@/components/ModernFooter";
 import TechStackMarquee from "@/components/TechStackMarquee";
 import React, { useRef, useEffect, useState } from 'react';
-import { GlassDemo } from "@/components/demo";
+
 
 
 const Index = () => {
