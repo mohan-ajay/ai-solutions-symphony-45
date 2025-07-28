@@ -2,6 +2,7 @@
 import React from 'react';
 import { Brain, Mail, Phone, MapPin, Inbox, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
 import { SimpleGlobe } from './SimpleGlobe';
+import { GlobeDemo } from './GlobeDemo';
 
 const ModernFooter = () => {
   const navigation = {
