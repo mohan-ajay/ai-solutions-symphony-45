@@ -53,7 +53,7 @@ const ModernFooter = () => {
           {/* GlobeDemo - 40% */}
           <div className="w-full md:w-2/5 flex items-center justify-center">
             <div className="w-full max-w-[300px] sm:max-w-none">
-              <SimpleGlobe />
+              <GlobeDemo />
             </div>
           </div>
           {/* Links - 60% */}
