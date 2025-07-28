@@ -249,6 +249,7 @@ const AllIndustries = () => {
   return (
     <section 
       className="py-8 sm:py-12 md:py-16 bg-[#000000] relative overflow-hidden group"
+      className="py-8 sm:py-12 md:py-16 bg-[#000000] relative overflow-hidden group"
       onMouseMove={handleMouseMove}
     >
       {/* Binary Pattern Background */}

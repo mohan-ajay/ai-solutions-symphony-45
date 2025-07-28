@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Brain, Mail, Phone, MapPin, Inbox, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
-import { GlobeDemo } from './GlobeDemo';
+import { SimpleGlobe } from './SimpleGlobe';
 
 const ModernFooter = () => {
   const navigation = {
@@ -104,14 +104,14 @@ const ModernFooter = () => {
 
       {/* Bottom footer */}
       <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="flex flex-col lg:flex-row justify-between items-center">
             {/* Copyright and legal */}
-            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mb-4 md:mb-0">
+            <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-6 mb-4 lg:mb-0 text-center lg:text-left">
               <p className="text-slate-400 text-sm">
                 © 2024 Webist AI. All rights reserved.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap justify-center lg:justify-start space-x-2 sm:space-x-4">
                 {navigation.legal.map((item) => (
                   <a key={item.name} href={item.href} className="text-slate-500 hover:text-slate-400 transition-colors text-xs">
                     {item.name}

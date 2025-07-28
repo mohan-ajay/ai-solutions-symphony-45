@@ -48,7 +48,7 @@ const Index = () => {
       <TechStackMarquee />
       <CardHoverEffectDemo />
       <ModernFooter />
-      <a href="/contact-us" className="text-black underline hover:text-[#d3d3d3] font-league-spartan">Contact Us</a>
+      
     </div>
   );
 };
