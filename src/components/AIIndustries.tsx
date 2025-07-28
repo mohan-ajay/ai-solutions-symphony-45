@@ -26,52 +26,52 @@ interface Industry {
   icon: any;
 }
 
-// const industries: Industry[] = [
-//   { label: 'AI', icon: faHexagonNodes},
-//   { label: 'Cloud Migration', icon: faCloud },
-//   { label: 'Networking', icon: faNetworkWired },
-//   { label: 'Edtech', icon: faGraduationCap },
-//   { label: 'Cyber Security', icon: faSignHanging },
-//   { label: 'Digital Marketing', icon: faChartLine },
-//   { label: 'Real Estate', icon: faBuilding }
-// ];
+const industries: Industry[] = [
+  { label: 'AI', icon: faHexagonNodes},
+  { label: 'Cloud Migration', icon: faCloud },
+  { label: 'Networking', icon: faNetworkWired },
+  { label: 'Edtech', icon: faGraduationCap },
+  { label: 'Cyber Security', icon: faSignHanging },
+  { label: 'Digital Marketing', icon: faChartLine },
+  { label: 'Real Estate', icon: faBuilding }
+];
 
-// const Mini3DSphere = ({ icon, label, width = 140, height = 140 }: { icon: any, label: string, width?: number, height?: number }) => {
-//   return (
-//     <div className="w-full h-full relative" style={{ 
-//       width: typeof width === 'number' ? `${width}px` : width,
-//       height: typeof height === 'number' ? `${height}px` : height,
-//     }}>
-//       <Canvas camera={{ position: [0, 0, 2.5], fov: 45 }} style={{ width: '100%', height: '100%', borderRadius: '50%' }}>
-//         <ambientLight intensity={0.5} />
-//         <directionalLight position={[3, 3, 3]} intensity={1} />
-//         <mesh>
-//           <sphereGeometry args={[1, 32, 32]} />
-//           <meshStandardMaterial 
-//             color="#888" 
-//             metalness={0.6} 
-//             roughness={0.2} 
-//             emissive="#d3d3d3"
-//             emissiveIntensity={0.1}
-//           />
-//         </mesh>
-//         <OrbitControls 
-//           enableZoom={false} 
-//           autoRotate={true} 
-//           autoRotateSpeed={3}
-//           enablePan={false}
-//           enableRotate={false}
-//         />
-//       </Canvas>
-//       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-//         <div className="text-white text-center">
-//           <FontAwesomeIcon icon={icon} className="text-base sm:text-lg md:text-xl mb-1" />
-//           <p className="text-[10px] sm:text-xs mt-1 px-1">{label}</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+const Mini3DSphere = ({ icon, label, width = 140, height = 140 }: { icon: any, label: string, width?: number, height?: number }) => {
+  return (
+    <div className="w-full h-full relative" style={{ 
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : height,
+    }}>
+      <Canvas camera={{ position: [0, 0, 2.5], fov: 45 }} style={{ width: '100%', height: '100%', borderRadius: '50%' }}>
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[3, 3, 3]} intensity={1} />
+        <mesh>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial 
+            color="#888" 
+            metalness={0.6} 
+            roughness={0.2} 
+            emissive="#d3d3d3"
+            emissiveIntensity={0.1}
+          />
+        </mesh>
+        <OrbitControls 
+          enableZoom={false} 
+          autoRotate={true} 
+          autoRotateSpeed={3}
+          enablePan={false}
+          enableRotate={false}
+        />
+      </Canvas>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="text-white text-center">
+          <FontAwesomeIcon icon={icon} className="text-base sm:text-lg md:text-xl mb-1" />
+          <p className="text-[10px] sm:text-xs mt-1 px-1">{label}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const AllIndustries = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -84,29 +84,29 @@ const AllIndustries = () => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
-  // useEffect(() => {
-  //   // Generate random binary string
-  //   let str = "";
-  //   for (let i = 0; i < 15000; i++) {
-  //     str += Math.random() > 0.5 ? "1" : "0";
-  //   }
-  //   setRandomBinary(str);
+  useEffect(() => {
+    // Generate random binary string
+    let str = "";
+    for (let i = 0; i < 15000; i++) {
+      str += Math.random() > 0.5 ? "1" : "0";
+    }
+    setRandomBinary(str);
 
-  //   // Intersection Observer
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) setIsVisible(true);
-  //     },
-  //     { threshold: 0.2 }
-  //   );
+    // Intersection Observer
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.2 }
+    );
 
-  //   if (containerRef.current) observer.observe(containerRef.current);
+    if (containerRef.current) observer.observe(containerRef.current);
     
-  //   return () => {
-  //     if (containerRef.current) observer.unobserve(containerRef.current);
-  //     stopAnimation();
-  //   };
-  // }, []);
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+      stopAnimation();
+    };
+  }, []);
 
   function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
@@ -114,137 +114,137 @@ const AllIndustries = () => {
     mouseY.set(clientY - top);
   }
 
-  // const getResponsiveSize = () => {
-  //   const width = window.innerWidth;
-  //   if (width < 640) { // mobile
-  //     return {
-  //       outer: 300,
-  //       inner: 200
-  //     };
-  //   } else if (width < 1024) { // tablet
-  //     return {
-  //       outer: 500,
-  //       inner: 320
-  //     };
-  //   } else { // desktop
-  //     return {
-  //       outer: 700,
-  //       inner: 450
-  //     };
-  //   }
-  // };
+  const getResponsiveSize = () => {
+    const width = window.innerWidth;
+    if (width < 640) { // mobile
+      return {
+        outer: 300,
+        inner: 200
+      };
+    } else if (width < 1024) { // tablet
+      return {
+        outer: 500,
+        inner: 320
+      };
+    } else { // desktop
+      return {
+        outer: 700,
+        inner: 450
+      };
+    }
+  };
 
-  // const [orbitSizes, setOrbitSizes] = useState(getResponsiveSize());
+  const [orbitSizes, setOrbitSizes] = useState(getResponsiveSize());
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setOrbitSizes(getResponsiveSize());
-  //   };
+  useEffect(() => {
+    const handleResize = () => {
+      setOrbitSizes(getResponsiveSize());
+    };
     
-  //   window.addEventListener('resize', handleResize);
-  //   return () => window.removeEventListener('resize', handleResize);
-  // }, []);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-  // const orbits: Orbit[] = [
-  //   { 
-  //     width: orbitSizes.outer,
-  //     height: orbitSizes.outer,
-  //     speed: 20, 
-  //     color: 'from-purple-600 to-purple-700', 
-  //     pathColor: 'rgba(160, 100, 255, 0.3)',
-  //     rotation: ''
-  //   },
-  //   { 
-  //     width: orbitSizes.inner,
-  //     height: orbitSizes.inner,
-  //     speed: 25, 
-  //     color: 'from-purple-600 to-purple-700', 
-  //     pathColor: 'rgba(160, 100, 255, 0.3)',
-  //     rotation: ''
-  //   }
-  // ];
+  const orbits: Orbit[] = [
+    { 
+      width: orbitSizes.outer,
+      height: orbitSizes.outer,
+      speed: 20, 
+      color: 'from-purple-600 to-purple-700', 
+      pathColor: 'rgba(160, 100, 255, 0.3)',
+      rotation: ''
+    },
+    { 
+      width: orbitSizes.inner,
+      height: orbitSizes.inner,
+      speed: 25, 
+      color: 'from-purple-600 to-purple-700', 
+      pathColor: 'rgba(160, 100, 255, 0.3)',
+      rotation: ''
+    }
+  ];
 
-  // const assignIndustries = (orbitsToAssign: Orbit[]): Orbit[] => {
-  //   // First orbit: AI, Cloud Migration, Networking, Real Estate
-  //   const firstOrbitItems = [
-  //     industries[0], // AI
-  //     industries[1], // Cloud Migration
-  //     industries[2], // Networking
-  //     industries[6], // Real Estate
-  //   ];
-  //   // Second orbit: Edtech, Cyber Security, Digital Marketing
-  //   const secondOrbitItems = [
-  //     industries[3], // Edtech
-  //     industries[4], // Cyber Security
-  //     industries[5], // Digital Marketing
-  //   ];
-  //   return orbitsToAssign.map((orbit, orbitIdx) => {
-  //     const newOrbit = { ...orbit };
-  //     if (orbitIdx === 0) {
-  //       newOrbit.items = firstOrbitItems;
-  //     } else if (orbitIdx === 1) {
-  //       newOrbit.items = secondOrbitItems;
-  //     } else {
-  //       newOrbit.items = [];
-  //     }
-  //     return newOrbit;
-  //   });
-  // };
+  const assignIndustries = (orbitsToAssign: Orbit[]): Orbit[] => {
+    // First orbit: AI, Cloud Migration, Networking, Real Estate
+    const firstOrbitItems = [
+      industries[0], // AI
+      industries[1], // Cloud Migration
+      industries[2], // Networking
+      industries[6], // Real Estate
+    ];
+    // Second orbit: Edtech, Cyber Security, Digital Marketing
+    const secondOrbitItems = [
+      industries[3], // Edtech
+      industries[4], // Cyber Security
+      industries[5], // Digital Marketing
+    ];
+    return orbitsToAssign.map((orbit, orbitIdx) => {
+      const newOrbit = { ...orbit };
+      if (orbitIdx === 0) {
+        newOrbit.items = firstOrbitItems;
+      } else if (orbitIdx === 1) {
+        newOrbit.items = secondOrbitItems;
+      } else {
+        newOrbit.items = [];
+      }
+      return newOrbit;
+    });
+  };
 
-  // const allOrbits = assignIndustries(orbits);
+  const allOrbits = assignIndustries(orbits);
 
-  // const getOrbitPosition = (orbitIndex: number, progress: number) => {
-  //   const orbit = allOrbits[orbitIndex];
-  //   const angle = progress * Math.PI * 2;
-  //   const x = Math.cos(angle) * (orbit.width / 2);
-  //   const y = Math.sin(angle) * (orbit.height / 2);
-  //   return { x, y };
-  // };
+  const getOrbitPosition = (orbitIndex: number, progress: number) => {
+    const orbit = allOrbits[orbitIndex];
+    const angle = progress * Math.PI * 2;
+    const x = Math.cos(angle) * (orbit.width / 2);
+    const y = Math.sin(angle) * (orbit.height / 2);
+    return { x, y };
+  };
 
-  // const startAnimation = () => {
-  //   progressRef.current = new Array(allOrbits.length).fill(0);
-  //   previousTimeRef.current = undefined;
-  //   animationRef.current = requestAnimationFrame(animate);
-  // };
+  const startAnimation = () => {
+    progressRef.current = new Array(allOrbits.length).fill(0);
+    previousTimeRef.current = undefined;
+    animationRef.current = requestAnimationFrame(animate);
+  };
 
-  // const stopAnimation = () => {
-  //   if (animationRef.current) {
-  //     cancelAnimationFrame(animationRef.current);
-  //   }
-  // };
+  const stopAnimation = () => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+  };
 
-  // const animate = (time: number) => {
-  //   if (previousTimeRef.current === undefined) {
-  //     previousTimeRef.current = time;
-  //   }
+  const animate = (time: number) => {
+    if (previousTimeRef.current === undefined) {
+      previousTimeRef.current = time;
+    }
 
-  //   const deltaTime = time - previousTimeRef.current;
-  //   previousTimeRef.current = time;
+    const deltaTime = time - previousTimeRef.current;
+    previousTimeRef.current = time;
 
-  //   allOrbits.forEach((orbit, orbitIndex) => {
-  //     progressRef.current[orbitIndex] = (progressRef.current[orbitIndex] + (deltaTime / (orbit.speed * 1000))) % 1;
+    allOrbits.forEach((orbit, orbitIndex) => {
+      progressRef.current[orbitIndex] = (progressRef.current[orbitIndex] + (deltaTime / (orbit.speed * 1000))) % 1;
       
-  //     const orbitElement = containerRef.current?.querySelector(`.orbit-${orbitIndex}`);
-  //     const items = orbitElement?.querySelectorAll('.orbit-item');
+      const orbitElement = containerRef.current?.querySelector(`.orbit-${orbitIndex}`);
+      const items = orbitElement?.querySelectorAll('.orbit-item');
 
-  //     items?.forEach((item, itemIndex) => {
-  //       const itemProgress = (progressRef.current[orbitIndex] + (itemIndex / (items.length || 1))) % 1;
-  //       const pos = getOrbitPosition(orbitIndex, itemProgress);
-  //       (item as HTMLElement).style.transform = `translate(calc(${pos.x}px - 50%), calc(${pos.y}px - 50%)`;
-  //     });
-  //   });
+      items?.forEach((item, itemIndex) => {
+        const itemProgress = (progressRef.current[orbitIndex] + (itemIndex / (items.length || 1))) % 1;
+        const pos = getOrbitPosition(orbitIndex, itemProgress);
+        (item as HTMLElement).style.transform = `translate(calc(${pos.x}px - 50%), calc(${pos.y}px - 50%)`;
+      });
+    });
 
-  //   animationRef.current = requestAnimationFrame(animate);
-  // };
+    animationRef.current = requestAnimationFrame(animate);
+  };
 
-  // useEffect(() => {
-  //   if (isVisible) {
-  //     startAnimation();
-  //   } else {
-  //     stopAnimation();
-  //   }
-  //   return stopAnimation;
-  // }, [isVisible]);
+  useEffect(() => {
+    if (isVisible) {
+      startAnimation();
+    } else {
+      stopAnimation();
+    }
+    return stopAnimation;
+  }, [isVisible]);
 
   return (
     <section 
