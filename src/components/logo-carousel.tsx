@@ -17,10 +17,22 @@ interface LogoCarouselProps {
 }
 
 export function LogoCarousel({ columnCount = 5, logos }: LogoCarouselProps) {
-  // Split logos into sets of columnCount
+  const [currentColumnCount, setCurrentColumnCount] = useState(columnCount);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCurrentColumnCount(window.innerWidth < 640 ? 2 : columnCount);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [columnCount]);
+
+  // Split logos into sets of currentColumnCount
   const logoSets: Logo[][] = [];
-  for (let i = 0; i < logos.length; i += columnCount) {
-    logoSets.push(logos.slice(i, i + columnCount));
+  for (let i = 0; i < logos.length; i += currentColumnCount) {
+    logoSets.push(logos.slice(i, i + currentColumnCount));
   }
 
   const [currentSet, setCurrentSet] = useState(0);
@@ -39,11 +51,11 @@ export function LogoCarousel({ columnCount = 5, logos }: LogoCarouselProps) {
   }
 
   return (
-    <div className="flex space-x-12 mt-12">
+    <div className="flex flex-wrap justify-center space-x-6 sm:space-x-8 md:space-x-12 mt-8 sm:mt-12">
       {displaySet.map((logo, index) => (
         <motion.div
           key={logo.id !== -1 ? logo.id : `empty-${index}`}
-          className="relative h-14 w-24 overflow-hidden md:h-44 md:w-48 flex items-center justify-center"
+          className="relative h-30 w-32 sm:h-32 sm:w-40 md:h-44 md:w-48 overflow-hidden flex items-center justify-center m-3 sm:m-0"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{

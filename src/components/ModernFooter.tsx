@@ -47,52 +47,54 @@ const ModernFooter = () => {
   return (
     <footer className="bg-black border-t border-slate-800">
       {/* Main footer content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col md:flex-row gap-32 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+        <div className="flex flex-col md:flex-row gap-16 sm:gap-32 w-full">
           {/* GlobeDemo - 40% */}
           <div className="w-full md:w-2/5 flex items-center justify-center">
-            <GlobeDemo />
+            <div className="w-full max-w-[300px] sm:max-w-none">
+              <GlobeDemo />
+            </div>
           </div>
           {/* Links - 60% */}
-          <div className="w-full md:w-3/5 grid grid-cols-1 mt-32 md:grid-cols-3 gap-8 md:gap-x-3 justify-between">
-            <div>
-              <h3 className="text-white font-semibold mb-4">Services</h3>
-              <ul className="space-y-4">
+          <div className="w-full md:w-3/5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-x-3 mt-8 sm:mt-32">
+            <div className="col-span-1 pr-4 sm:pr-8">
+              <h3 className="text-white font-semibold mb-3 sm:mb-4 text-lg sm:text-xl">Services</h3>
+              <ul className="space-y-2 sm:space-y-4">
                 {navigation.services.map((item) => (
                   <li key={item.name}>
-                    <a href={item.href} className="text-slate-400 hover:text-white transition-colors text-base">
+                    <a href={item.href} className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">
                       {item.name}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className='ml-10'>
-              <h3 className="text-white font-semibold mb-4">Company</h3>
-              <ul className="space-y-3">
+            <div className="col-span-1 pl-4 sm:pl-8">
+              <h3 className="text-white font-semibold mb-3 sm:mb-4 text-lg sm:text-xl">Company</h3>
+              <ul className="space-y-2 sm:space-y-3">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
-                    <a href={item.href} className="text-slate-400 hover:text-white transition-colors text-base">
+                    <a href={item.href} className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">
                       {item.name}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className=''>
-              <h3 className="text-white font-semibold mb-4">Contact</h3>
+            <div className="col-span-2 sm:col-span-2 md:col-span-1 mt-6 sm:mt-0">
+              <h3 className="text-white font-semibold mb-3 sm:mb-4 text-lg sm:text-xl">Contact</h3>
               <ul className="space-y-3">
-                <li className="flex items-center space-x-2">
-                  <Mail className="w-10 h-10 text-slate-400" />
-                  <span className="text-slate-400 text-base">lohith@metricdust.com</span>
+                <li className="flex items-start space-x-2">
+                  <Mail className="w-6 h-6 sm:w-10 sm:h-10 text-slate-400 mt-1" />
+                  <span className="text-slate-400 text-sm sm:text-base">lohith@metricdust.com</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <Phone className="w-5 h-5 text-slate-400" />
-                  <span className="text-slate-400 text-base">+1 (425) 900-9663</span>
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
+                  <span className="text-slate-400 text-sm sm:text-base">+1 (425) 900-9663</span>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <MapPin className="w-10 h-10 text-slate-400" />
-                  <span className="text-slate-400 text-base">2519 Baker Ave. Unit 3 Everett, WA 98201</span>
+                <li className="flex items-start space-x-2">
+                  <MapPin className="w-6 h-6 sm:w-10 sm:h-10 text-slate-400 mt-1" />
+                  <span className="text-slate-400 text-sm sm:text-base">2519 Baker Ave. Unit 3 Everett, WA 98201</span>
                 </li>
               </ul>
             </div>

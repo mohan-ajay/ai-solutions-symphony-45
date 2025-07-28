@@ -10,7 +10,7 @@ const AIPoweredServices = () => {
   return (
     <div>
       {/* Main Scroll Container */}
-      <section className="py-32 bg-[#d3d3d3] overflow-x-hidden">
+      <section className="py-16 bg-[#d3d3d3] overflow-x-hidden">
   <div className="demo-container flex flex-col md:flex-row mt-8">
     
     {/* Left Fixed MD Video – 60% width on desktop, full width on mobile */}

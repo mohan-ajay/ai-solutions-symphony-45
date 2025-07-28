@@ -44,26 +44,44 @@ const IndustriesWeServe: React.FC = () => {
   return (
     <div className="flex w-full justify-center items-center py-12">
       <div className="hexagon-grid-container">
-        {/* First row with 5 hexagons */}
-        <div className="hexagon-row">
-          {firstRow.map((industry, index) => (
-            <HexagonItem 
-              key={index} 
-              industry={industry} 
-              getBackgroundStyle={getBackgroundStyle} 
-            />
+        {/* Mobile layout: 2 columns, 5 rows */}
+        <div className="sm:hidden">
+          {[0, 2, 4, 6, 8].map((startIndex) => (
+            <div key={startIndex} className="hexagon-mobile-row">
+              {industries.slice(startIndex, startIndex + 2).map((industry, index) => (
+                <HexagonItem 
+                  key={startIndex + index} 
+                  industry={industry} 
+                  getBackgroundStyle={getBackgroundStyle} 
+                />
+              ))}
+            </div>
           ))}
         </div>
         
-        {/* Second row with 4 hexagons, offset */}
-        <div className="hexagon-row offset">
-          {secondRow.map((industry, index) => (
-            <HexagonItem 
-              key={index + 5} 
-              industry={industry} 
-              getBackgroundStyle={getBackgroundStyle} 
-            />
-          ))}
+        {/* Desktop layout: two rows */}
+        <div className="hidden sm:block">
+          {/* First row with 5 hexagons */}
+          <div className="hexagon-row">
+            {firstRow.map((industry, index) => (
+              <HexagonItem 
+                key={index} 
+                industry={industry} 
+                getBackgroundStyle={getBackgroundStyle} 
+              />
+            ))}
+          </div>
+          
+          {/* Second row with 4 hexagons, offset */}
+          <div className="hexagon-row offset">
+            {secondRow.map((industry, index) => (
+              <HexagonItem 
+                key={index + 5} 
+                industry={industry} 
+                getBackgroundStyle={getBackgroundStyle} 
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

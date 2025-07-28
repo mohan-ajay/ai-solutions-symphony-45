@@ -20,7 +20,7 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-6",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4 sm:py-6",
         className
       )}
     >
@@ -28,7 +28,7 @@ export const HoverEffect = ({
         <Link
           to={item?.link}
           key={item?.link}
-          className="relative group block p-2 h-full w-full"
+          className="relative group block p-2 h-full w-full transition-transform duration-200 hover:scale-[0.98] active:scale-[0.97] sm:hover:scale-100 sm:active:scale-100"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -71,12 +71,12 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-xl sm:rounded-2xl h-full w-full p-3 sm:p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
         className
       )}
     >
       {image && (
-        <div className="relative w-full h-50 overflow-hidden rounded-xl mb-4">
+        <div className="relative w-full h-40 sm:h-50 overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4">
           <img 
             src={image} 
             alt="Card image" 
@@ -100,7 +100,7 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
+    <h4 className={cn("text-base sm:text-lg md:text-xl font-bold tracking-wide mt-2 text-neutral-100", className)}>
       {children}
     </h4>
   );
@@ -114,12 +114,7 @@ export const CardDescription = ({
   children: React.ReactNode;
 }) => {
   return (
-    <p
-      className={cn(
-        "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
-        className
-      )}
-    >
+    <p className={cn("mt-2 text-sm sm:text-base text-neutral-300 tracking-wide leading-relaxed", className)}>
       {children}
     </p>
   );

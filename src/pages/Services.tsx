@@ -118,9 +118,9 @@ const Services = () => {
   />
   
   {/* Content container (unchanged) */}
-  <div className="relative z-10 text-center p-8 rounded-lg">
+  <div className="relative z-10 text-center p-4 sm:p-8 rounded-lg">
     <div className="max-w-4xl mx-auto text-center">
-      <h1 className="text-5xl font-bold text-gray-300 mb-8">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-4 sm:mb-8">
         We help you build an AI-first, customer-centric ecosystem that is scalable and future-proof
       </h1>
     </div>
@@ -128,16 +128,16 @@ const Services = () => {
 </div>
 
       <div className="bg-gray-50">
-        <div className="sticky top-[0px] bg-gray-50 z-10 shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between border-b border-gray-200">
+        <div className="sticky top-[0px] bg-gray-50 z-10 shadow-sm overflow-x-auto">
+            <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+                <div className="flex border-b border-gray-200 min-w-max w-full">
                     {expertiseData.map((tab, index) => (
                     <button
                         key={tab.id}
                         onClick={() => scrollToSection(tab.id)}
-                        className={`w-1/4 py-4 text-xl font-medium text-center transition-colors duration-300 relative ${activeSection === tab.id ? 'text-black' : 'text-gray-400 hover:text-black'}`}
+                        className={`flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 text-sm sm:text-base md:text-xl font-medium text-center transition-colors duration-300 relative whitespace-nowrap ${activeSection === tab.id ? 'text-black' : 'text-gray-400 hover:text-black'}`}
                     >
-                        <span className="text-gray-400 mr-2">0{index + 1}</span> {tab.tabName}
+                        <span className="text-gray-400 mr-1 sm:mr-2">0{index + 1}</span> {tab.tabName}
                         {activeSection === tab.id && <motion.div className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-black" layoutId="underline" />}
                     </button>
                     ))}
@@ -145,27 +145,27 @@ const Services = () => {
             </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div className="space-y-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
+            <div className="space-y-16 sm:space-y-24 md:space-y-32">
                 {expertiseData.map((expertise, index) => (
                 <section 
                     key={expertise.id} 
                     id={expertise.id}
                     ref={el => (sectionRefs.current[expertise.id] = el)}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
                 >
                     {index % 2 === 0 ? (
                       <>
                         <div>
-                          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                            <span className="text-gray-400 mr-4">0{index + 1}</span>
+                          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
+                            <span className="text-gray-400 mr-2 sm:mr-4">0{index + 1}</span>
                             {expertise.title}
                           </h2>
                           <div className="rounded-lg overflow-hidden shadow-lg">
                             <img src={expertise.image} alt={expertise.title} className="w-full h-auto object-cover" />
                           </div>
                         </div>
-                        <div className='mt-14'>
+                        <div className='mt-8 sm:mt-14'>
                           <p className="text-black text-xl font-medium mb-8">{expertise.description}</p>
                           <div className="mb-8">
                             <h4 className="text-base font-semibold text-gray-500 mb-4">Services</h4>
@@ -263,12 +263,19 @@ const Services = () => {
         </div>
       </div>
       
-      <div className="bg-gray-200 py-20 text-center">
-        <h2 className="text-4xl font-bold text-black mb-4">Your tech partners for AI-first Digital Transformation —</h2>
-        <p className="text-2xl text-gray-600 mb-8">We'd love to hear about your project</p>
-        <button type="button" className="text-white mb-8 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => {navigate('/contact-us')
+      <div className="bg-gray-200 py-12 sm:py-16 md:py-20 text-center px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-3 sm:mb-4">Your tech partners for AI-first Digital Transformation —</h2>
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 sm:mb-8">We'd love to hear about your project</p>
+        <button type="button" className="text-black mb-6 sm:mb-8 font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-base sm:text-lg md:text-xl px-4 sm:px-5 py-2 sm:py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(5px)',
+                  WebkitBackdropFilter: 'blur(5px)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)'
+                }} onClick={() => {navigate('/contact-us')
            
-          }}>Talk to AI</button>
+          }}>Contact Us</button>
       </div>
       <ModernFooter />
     </>

@@ -76,7 +76,14 @@ const AboutUs = () => {
   <div className="relative z-10 text-center p-8 rounded-lg">
     <div className="max-w-4xl mx-auto text-center">
       <h1 className="text-5xl font-bold text-gray-300 mb-8">Tailored software solutions. Amplifying digital experiences</h1>
-      <button className="bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-3 text-lg font-semibold rounded shadow-md transition-all duration-200" onClick={() => navigate('/contact-us')}>Let's Connect</button>
+      <button className="bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-3 text-lg font-semibold rounded shadow-md transition-all duration-200" style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(5px)',
+                  WebkitBackdropFilter: 'blur(5px)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)'
+                }} onClick={() => navigate('/contact-us')}>Let's Connect</button>
     </div>
   </div>
 </div>

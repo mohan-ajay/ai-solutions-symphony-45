@@ -272,12 +272,12 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
   }, [showModal, onModalStateChange]);
 
   return (
-    <section id="" className="relative min-h-screen bg-black flex flex-col items-center justify-items-center">
+    <section id="" className="relative min-h-screen w-full flex flex-col items-center justify-center">
       {/* Modal Popup for LiveKitAgent - restored */}
        {/* Modal Popup for LiveKitAgent */}
       {showModal && (
-        <div className="fixed inset-0 top-0 mt-12 z-[100] flex items-center justify-center bg-black bg-opacity-70">
-          <div className="w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl p-0 relative backdrop-blur flex flex-col md:flex-row overflow-hidden h-[100px]">
+        <div className="fixed inset-0 min-h-screen px-4 py-6 sm:py-12 z-[100] flex items-start sm:items-center justify-center bg-black bg-opacity-70">
+          <div className="w-[90%] sm:w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl relative backdrop-blur overflow-hidden h-[60vh] sm:h-[500px]">
             <button
               className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-red-600 z-10"
               onClick={() => {
@@ -288,8 +288,8 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
             >
               &times;
             </button>
-            <div className="flex-1 w-0 flex flex-col items-center justify-center p-6 bg-black">
-              <div className="w-full flex-1 flex items-center justify-center">
+            <div className="flex-1 h-full flex flex-col items-center justify-center p-4 sm:p-6 bg-black">
+              <div className="w-full h-full flex items-center justify-center">
                 <LivekitAgent
                   isSessionActive={isSessionActive}
                   onSessionStateChange={handleSessionStateChange}
@@ -302,47 +302,51 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
       )}
 
       {/* Main Content */}
-      <div className="w-screen bg-black text-white relative overflow-hidden">
+      <div className="w-screen bg-black text-white relative overflow-hidden min-h-screen">
         {/* Background with opacity */}
         <div
-          className="h-[150vh] absolute inset-0 bg-cover bg-center opacity-60"
+          className="absolute inset-0 w-full h-full bg-cover bg-center opacity-60"
           style={{ backgroundImage: "url(/earth_horizon.jpg)" }}
         />
 
         {/* Content container */}
-        <div className="relative z-10 h-full container mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-72">
-          <div className="flex flex-col lg:flex-row items-center justify-items-center gap-12">
-            {/* Left: Text Content */}
-            <div className="w-full lg:w-1/2 flex flex-col items-start space-y-8">
-              {/* METRICDUST Canvas */}
-              <div className="w-full" ref={containerRef}>
-                <canvas ref={canvasRef} className="w-full h-[180px] md:h-[220px]" />
+        <div className="relative z-10 h-full container px-4 sm:px-6 lg:px-8 pt-24">
+          <div className="flex flex-col lg:flex-row items-start justify-center gap-8 lg:gap-12">
+            {/* Left: Canvas + Text Content */}
+            <div className="w-full lg:w-[50%] flex flex-col items-center space-y-8">
+              {/* Canvas Container */}
+              <div className="w-full flex justify-start" ref={containerRef}>
+                <div className="w-full max-w-[600px]">
+                  <canvas ref={canvasRef} className="w-full h-[130px] sm:h-[150px] md:h-[180px]" />
+                </div>
               </div>
-
+              
               {/* Headings */}
-              <div className="space-y-2 ml-8">
-                <h1 className="text-3xl sm:text-3xl md:text-6xl font-bold text-white leading-tight">
+              <div className=" sm:space-y-2 ml-8 w-full max-w-[700px]">
+                <h1 className="text-4xl mb-4 sm:text-5xl md:text-7xl font-bold text-white leading-tight drop-shadow-lg">
                   Transform Your
                 </h1>
-                <h1 className="text-3xl py-2 sm:text-3xl md:text-6xl font-bold text-white leading-tight">
+                <h1 className="text-4xl sm:text-5xl mb-4 md:text-7xl font-bold text-white leading-tight drop-shadow-lg">
                   Digital Experience
                 </h1>
-                <h1 className="text-3xl py-2 sm:text-3xl md:text-6xl font-bold text-white leading-tight">
+                <h1 className="text-4xl sm:text-5xl mb-4 md:text-7xl font-bold text-white leading-tight drop-shadow-lg">
                   with AI
                 </h1>
               </div>
             </div>
 
             {/* Right: Visualizer */}
-            <div className="w-full lg:w-1/2 flex flex-col items-center justify-center relative h-[400px] md:h-[400px] md:mt-24">
-              <div className="w-full h-full relative flex items-start justify-start">
-                <MetricDustVisualizer micEnabled={false} />
+            <div className="w-full lg:w-[45%] flex flex-col items-center justify-start">
+              <div className="w-full relative h-[200px] sm:h-[350px] md:h-[400px] flex items-center justify-center">
+                <div className="w-[280px] sm:w-full h-[200px] sm:h-full">
+                  <MetricDustVisualizer micEnabled={false} />
+                </div>
                 {/* Play Button - Centered in Visualizer */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
                   <Button
                     onClick={handlePlayAudio}
                     size="lg"
-                    className="text-white font-medium rounded-xl px-6 py-3 transition-all border"
+                    className="text-white font-medium rounded-xl px-3 sm:px-6 py-2 sm:py-3 transition-all border flex items-center gap-1.5 sm:gap-2"
                     style={{
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '10px',
@@ -354,23 +358,23 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
                   >
                     {isPlaying ? (
                       <div className="flex items-center justify-center space-x-1">
-                        <div className="w-2 h-6 bg-white rounded-sm"></div>
-                        <div className="w-2 h-6 bg-white rounded-sm"></div>
+                        <div className="w-1.5 sm:w-2 h-5 sm:h-6 bg-white rounded-sm"></div>
+                        <div className="w-1.5 sm:w-2 h-5 sm:h-6 bg-white rounded-sm"></div>
                       </div>
                     ) : (
-                      <Play className="w-5 h-5 text-white" fill="white" />
+                      <Play className="w-4 sm:w-5 h-4 sm:h-5 text-white" fill="white" />
                     )}
-                    <span className="font-bold">About us</span>
+                    <span className="font-bold text-sm sm:text-base">About us</span>
                   </Button>
                 </div>
               </div>
-              {/* Talk To AI Button */}
+              {/* Talk To AI Button - Below Visualizer */}
               <button
                 onClick={() => {
                   setShowModal(true);
                   handleStartSession();
                 }}
-                className="text-white font-medium rounded-xl px-6 py-2 transition-all border flex items-center gap-2"
+                className="text-white font-medium rounded-xl px-4 sm:px-6 py-2 transition-all border flex items-center gap-2 mt-6"
                 style={{
                   background: 'rgba(255, 255, 255, 0.2)',
                   borderRadius: '10px',
@@ -380,75 +384,79 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
                   border: '1px solid rgba(255, 255, 255, 0.3)'
                 }}
               >
-                <span>Talk to AI</span>
-                <ArrowRight className="w-5 h-5 text-white" />
+                <span className="text-sm sm:text-base">Talk to AI</span>
+                <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
               </button>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Stats Grid in separate div below hero */}
-      <div className="w-full bg-black text-white py-16">
-        <div className="container mx-auto">
-          <div
-            ref={statsRef}
-            className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
-          >
-            {/* Stat 1 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
-              <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
-                  {projects}
+        {/* projects completed */}
+         <div className="w-full text-white relative z-10">
+        <div className="container py-10 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border-white/10">
+            <div
+              ref={statsRef}
+              className="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+            >
+              {/* Stat 1 */}
+              <div className="flex flex-col items-start p-4 border-b border-white/20">
+                <div className="flex items-end gap-1">
+                  <span className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                    {projects}
+                  </span>
+                  <span className="text-xl font-bold text-white drop-shadow-lg">+</span>
+                </div>
+                <span className="mt-2 text-base md:text-xl font-semibold text-white drop-shadow-lg">
+                  Projects Completed
                 </span>
-                <span className="text-xl font-bold text-white">+</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
-                Projects Completed
-              </span>
-            </div>
 
-            {/* Stat 2 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
-              <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
-                  {clients}
+              {/* Stat 2 */}
+              <div className="flex flex-col items-start p-4 border-b border-white/20">
+                <div className="flex items-end gap-1">
+                  <span className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                    {clients}
+                  </span>
+                  <span className="text-xl font-bold text-white drop-shadow-lg">+</span>
+                </div>
+                <span className="mt-2 text-base md:text-xl font-semibold text-white drop-shadow-lg">
+                  Global Clients
                 </span>
-                <span className="text-xl font-bold text-white">+</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
-                Global Clients
-              </span>
-            </div>
 
-            {/* Stat 3 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
-              <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
-                  {satisfaction}
+              {/* Stat 3 */}
+              <div className="flex flex-col items-start p-4 border-b border-white/20">
+                <div className="flex items-end gap-1">
+                  <span className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                    {satisfaction}
+                  </span>
+                  <span className="text-xl font-bold text-white drop-shadow-lg">%</span>
+                </div>
+                <span className="mt-2 text-base md:text-xl font-semibold text-white drop-shadow-lg">
+                  Customer Satisfaction
                 </span>
-                <span className="text-xl font-bold text-white">%</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
-                Customer Satisfaction
-              </span>
-            </div>
 
-            {/* Stat 4 */}
-            <div className="flex flex-col items-start p-4 border-b border-gray-700">
-              <div className="flex items-end gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
-                  {years}
+              {/* Stat 4 */}
+              <div className="flex flex-col items-start p-4 border-b border-white/20">
+                <div className="flex items-end gap-1">
+                  <span className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                    {years}
+                  </span>
+                  <span className="text-xl font-bold text-white drop-shadow-lg">+</span>
+                </div>
+                <span className="mt-2 text-base md:text-xl font-semibold text-white drop-shadow-lg">
+                  Years of Experience
                 </span>
-                <span className="text-xl font-bold text-white">+</span>
               </div>
-              <span className="mt-1 text-base md:text-xl font-medium text-gray-300">
-                Years of Experience
-              </span>
-            </div>
           </div>
         </div>
       </div>
+      </div>
+      </div>
+
+      {/* Stats Grid in separate div below hero */}
+     
 
       {/* Audio element */}
       <audio

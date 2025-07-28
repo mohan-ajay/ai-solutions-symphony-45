@@ -124,15 +124,67 @@
 }
 
 @media (max-width: 768px) {
-  .hexagon-grid-container {
-    transform: scale(0.8);
+  .hexagon-button {
+    width: 8rem;
+    height: 7rem;
   }
-  
+  .hexagon-row.offset {
+    margin-left: 4rem;
+  }
 }
 
-@media (max-width: 576px) {
-  .hexagon-grid-container {
-    transform: scale(0.6);
+/* Mobile styles */
+@media (max-width: 640px) {
+  .hexagon-button {
+    width: 7rem;
+    height: 6rem;
+    margin: 0;
+    position: relative;
+    padding-bottom: 2.5rem; /* Add padding for the label */
+    margin-top: 1.5rem; /* Add top margin for spacing */
   }
   
+  .hexagon-label {
+    opacity: 1;
+    position: absolute;
+    bottom: -2rem; /* Increased bottom space */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    padding: 0.5rem 0; /* Added vertical padding */
+  }
+  
+  .hexagon-icon {
+    width: 2em;
+    height: 2em;
+    transform: scale(0.9);
+  }
+  
+  .hexagon-front {
+    background: hsla(0, 0%, 100%, 0.2);
+  }
+  
+  .hexagon-grid-container {
+    padding: 1rem;
+    margin-top: 1rem; /* Added top margin to container */
+  }
+
+  .hexagon-mobile-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem; /* Gap between hexagons */
+    margin-bottom: 3.5rem; /* Increased margin between rows */
+  }
+  
+  /* Remove hover effects on mobile */
+  .hexagon-button:hover .hexagon-back,
+  .hexagon-button:hover .hexagon-front,
+  .hexagon-button:hover .hexagon-label {
+    transform: none;
+  }
 }

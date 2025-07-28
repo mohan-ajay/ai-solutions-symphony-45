@@ -16,17 +16,17 @@ interface ContactInfo {
 
 const contactInfo: ContactInfo[] = [
   {
-    icon: (<img src="/glassy_icons/phone.svg" className="w-200 h-100" alt=""></img>),
+    icon: (<Phone className="w-12 h-12 text-white/90" strokeWidth={1.5} />),
     title: "Phone",
     content: "+1 425-900-9663"
   },
   {
-    icon: (<img src="/glassy_icons/email.svg" className="w-200 h-100" alt=""></img>), 
+    icon: (<Mail className="w-12 h-12 text-white/90" strokeWidth={1.5} />), 
     title: "Email",
     content: "lohith@metricdust.com"
   },
   {
-    icon: (<img src="/glassy_icons/pin.svg" className="w-200 h-100" alt=""></img>), 
+    icon: (<MapPin className="w-12 h-12 text-white/90" strokeWidth={1.5} />), 
     title: "Address",
     content: "2519 Baker Ave. Unit 3 Everett, WA 98201"
   }
@@ -56,59 +56,97 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields.",
+        variant: "destructive"
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you as soon as possible."
-    });
+    try {
+      const response = await fetch("https://w7lad2uqt1.execute-api.us-east-1.amazonaws.com/prod/metricdust_contact_service/contactus", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message
+        })
+      });
 
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      await response.json();
+      
+      toast({
+        title: "Success!",
+        description: "Message sent successfully!",
+      });
+
+      // Reset form
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <>
       <ModernHeader />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen">
         {/* Hero Section */}
-        <div
-          className="relative bg-contact-hero bg-cover bg-center bg-no-repeat"
-          style={{
-            background: "url('/contact-us.webp') center center / cover no-repeat, #222a45",
-            marginTop: '80px'
-          }}
+        <div 
+          className="h-[80vh] bg-black text-white bg-cover bg-center flex items-center justify-center relative"
         >
-          <div className="container mx-auto px-6 py-24 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+          {/* Background with opacity */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-60"
+            style={{ backgroundImage: 'url(/contact-us.webp)' }}
+          />
+          
+          {/* Content container */}
+          <div className="relative z-10 text-center p-4 sm:p-8 rounded-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-300 mb-4 sm:mb-6">
               We're here to help you
             </h1>
-            <div className="flex items-center justify-center gap-2 text-white/80">
-              <span>Home</span>
-              <span>&gt;</span>
-              <span className="text-contact-icon">Contact</span>
+            <div className="flex items-center justify-center gap-2 text-gray-300/80">
             </div>
           </div>
         </div>
 
         {/* Contact Info Bar */}
-        <div className="bg-zinc-900">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-4 text-center">
+        <div className="bg-zinc-900 py-8 sm:py-12">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center gap-2 text-white"
+                  className="flex items-center justify-center gap-6 text-white py-4"
                 >
-                  <div className="text-contact-icon flex-shrink-3">
+                  <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-zinc-800 rounded-full">
                     {info.icon}
                   </div>
-                  <div className="text-left mb-5">
-                    <h3 className="text-lg font-semibold mb-1">
+                  <div className="text-left">
+                    <h3 className="text-xl font-semibold mb-2">
                       {info.title}
                     </h3>
-                    <p className="text-white/80 text-lg">{info.content}</p>
+                    <p className="text-white/80 text-base sm:text-lg">{info.content}</p>
                   </div>
                 </div>
               ))}
