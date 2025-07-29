@@ -131,28 +131,30 @@ export default function ContactForm() {
         </div>
 
         {/* Contact Info Bar */}
-        <div className="bg-zinc-900 py-8 sm:py-12">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
-              {contactInfo.map((info, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-center gap-6 text-white py-4"
-                >
-                  <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-zinc-800 rounded-full">
-                    {info.icon}
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-semibold mb-2">
-                      {info.title}
-                    </h3>
-                    <p className="text-white/80 text-base sm:text-lg">{info.content}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="bg-zinc-900 py-8 sm:py-2 flex items-center justify-center">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+      {contactInfo.map((info, index) => (
+        <div
+          key={index}
+          className="flex items-start sm:items-center justify-start gap-6 text-white py-4"
+        >
+          <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-zinc-800 rounded-full">
+            {info.icon}
+          </div>
+          <div className="text-left flex-1 min-w-0">
+            <h3 className="text-xl font-semibold mb-2">
+              {info.title}
+            </h3>
+            <p className="text-white/80 text-base sm:text-lg break-words">
+              {info.content}
+            </p>
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
 
         {/* Contact Form */}
         <div className="bg-background py-16">
@@ -248,7 +250,7 @@ export default function ContactForm() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-8 transition-all duration-300"
+                    className="bg-primary mt-10 hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-8 transition-all duration-300"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>

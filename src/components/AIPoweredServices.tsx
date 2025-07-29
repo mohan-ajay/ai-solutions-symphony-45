@@ -11,10 +11,10 @@ const AIPoweredServices = () => {
     <div>
       {/* Main Scroll Container */}
       <section className="py-16 bg-[#d3d3d3] overflow-x-hidden">
-  <div className="demo-container flex flex-col md:flex-row mt-8">
+  <div className="demo-container flex flex-col justify-center align-center md:flex-row mt-8">
     
     {/* Left Fixed MD Video – 60% width on desktop, full width on mobile */}
-    <div className="w-full lg:w-[60%] lg:sticky lg:top-[100px] h-[250px] sm:h-[300px] lg:h-[calc(100vh-100px)]">
+    <div className="w-full lg:w-[75%] lg:sticky lg:top-[100px] h-[250px] sm:h-[300px] lg:h-[calc(100vh-100px)]">
       <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
         <defs>
           <mask id="md-mask">
@@ -58,7 +58,7 @@ const AIPoweredServices = () => {
     </div>
 
     {/* Right Side Content – 40% width on desktop, full on mobile */}
-    <div className="w-full lg:w-[50%] flex flex-col justify-start mt-6 sm:mt-10 lg:mt-20 px-4 sm:px-6 space-y-6 sm:space-y-8 lg:space-y-10">
+    <div className="w-full lg:w-[50%] flex flex-col justify-start mt-6 sm:mt-10 lg:mt-10 px-4 sm:px-6 space-y-6 sm:space-y-8 lg:space-y-10">
       <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold leading-snug text-black">
         Build products mounted on our AI-first approach for a future ready solution that's ready to scale
       </h1>

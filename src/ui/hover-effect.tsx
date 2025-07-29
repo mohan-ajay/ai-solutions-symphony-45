@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import {Link} from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -52,6 +52,7 @@ export const HoverEffect = ({
           <Card image={item.image}>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
+
           </Card>
         </Link>
       ))}
@@ -77,9 +78,9 @@ export const Card = ({
     >
       {image && (
         <div className="relative w-full h-40 sm:h-50 overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4">
-          <img 
-            src={image} 
-            alt="Card image" 
+          <img
+            src={image}
+            alt="Card image"
             className="object-cover w-full h-full"
           />
         </div>
@@ -87,7 +88,7 @@ export const Card = ({
       <div className="relative z-50">
         <div className="p-4">{children}</div>
       </div>
-      
+
     </div>
   );
 };
@@ -114,8 +115,13 @@ export const CardDescription = ({
   children: React.ReactNode;
 }) => {
   return (
-    <p className={cn("mt-2 text-sm sm:text-base text-neutral-300 tracking-wide leading-relaxed", className)}>
-      {children}
-    </p>
+    <div className="flex flex-col items-start justify-start">
+      <p className={cn("mt-2 text-sm sm:text-base text-neutral-300 tracking-wide leading-relaxed", className)}>
+    {children}
+  </p>
+  <a href="/reflects" className="text-blue-800 mt-4 text-center">
+    Read More
+  </a>
+    </div>
   );
 };

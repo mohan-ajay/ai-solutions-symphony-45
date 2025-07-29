@@ -40,7 +40,7 @@ export function LogoCarousel({ columnCount = 5, logos }: LogoCarouselProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSet((prev) => (prev + 1) % logoSets.length);
-    }, 3000); // Change every 2 seconds
+    }, 5000); // Change every 5 seconds
     return () => clearInterval(interval);
   }, [logoSets.length]);
 
@@ -55,7 +55,7 @@ export function LogoCarousel({ columnCount = 5, logos }: LogoCarouselProps) {
       {displaySet.map((logo, index) => (
         <motion.div
           key={logo.id !== -1 ? logo.id : `empty-${index}`}
-          className="relative h-30 w-32 sm:h-32 sm:w-40 md:h-44 md:w-48 overflow-hidden flex items-center justify-center m-3 sm:m-0"
+          className="relative h-30 w-32 sm:h-32 sm:w-40 md:h-44 md:w-36 overflow-hidden flex items-center justify-center m-3 sm:m-0"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{

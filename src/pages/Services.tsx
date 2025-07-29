@@ -120,22 +120,31 @@ const Services = () => {
   {/* Content container (unchanged) */}
   <div className="relative z-10 text-center p-4 sm:p-8 rounded-lg">
     <div className="max-w-4xl mx-auto text-center">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-4 sm:mb-8">
-        We help you build an AI-first, customer-centric ecosystem that is scalable and future-proof
-      </h1>
+      <div>
+  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-5">
+    We help you build an AI-first,
+  </h1>
+  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-5">
+    customer-centric ecosystem
+  </h1>
+  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-5">
+    that is scalable and future-proof
+  </h1>
+</div>
+
     </div>
   </div>
 </div>
 
       <div className="bg-gray-50">
         <div className="sticky top-[0px] bg-gray-50 z-10 shadow-sm overflow-x-auto">
-            <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-                <div className="flex border-b border-gray-200 min-w-max w-full">
+            <div className="px-2 sm:px-4 lg:px-8">
+                <div className="flex border-b border-gray-200 w-full justify-evenly">
                     {expertiseData.map((tab, index) => (
                     <button
                         key={tab.id}
                         onClick={() => scrollToSection(tab.id)}
-                        className={`flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 text-sm sm:text-base md:text-xl font-medium text-center transition-colors duration-300 relative whitespace-nowrap ${activeSection === tab.id ? 'text-black' : 'text-gray-400 hover:text-black'}`}
+                        className={`flex-shrink-0 py-3 sm:py-2 px-3 sm:px-2 text-sm sm:text-base md:text-xl font-medium text-center transition-colors duration-300 relative whitespace-nowrap ${activeSection === tab.id ? 'text-black' : 'text-gray-400 hover:text-black'}`}
                     >
                         <span className="text-gray-400 mr-1 sm:mr-2">0{index + 1}</span> {tab.tabName}
                         {activeSection === tab.id && <motion.div className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-black" layoutId="underline" />}
@@ -282,4 +291,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default Services;

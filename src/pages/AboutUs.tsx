@@ -7,6 +7,7 @@ import inception_3 from '/about-us/inception_3.jpg'
 import lohith_img from '/about-us/Lohith_img.png'
 import satish_img from '/about-us/Satish_img.png'
 import lakshmi_img from '/about-us/Lakshmi_img.png'
+import bhragv_img from '/about-us/bhargav_image.png'
 import your_dream_img from '/about-us/Your_dream_img.webp'
 import {useNavigate} from 'react-router-dom'
 
@@ -30,7 +31,7 @@ const team = [
   {
     name: 'Bhargav',
     location: 'Seattle, USA',
-    img: '/team/placeholder.png',
+    img: bhragv_img,
   },
 ];
 
@@ -75,7 +76,8 @@ const AboutUs = () => {
   {/* Content container (unchanged) */}
   <div className="relative z-10 text-center p-8 rounded-lg">
     <div className="max-w-4xl mx-auto text-center">
-      <h1 className="text-5xl font-bold text-gray-300 mb-8">Tailored software solutions. Amplifying digital experiences</h1>
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-5">Tailored software solutions.</h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-5">Amplifying digital experiences</h1>
       <button className="bg-gradient-to-r from-[#4961e1] to-[#22232a] hover:from-[#4961e1] hover:to-[#000000] text-white px-8 py-3 text-lg font-semibold rounded shadow-md transition-all duration-200" style={{
                   background: 'rgba(255, 255, 255, 0.2)',
                   borderRadius: '10px',

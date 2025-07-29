@@ -133,9 +133,10 @@ const Reflects = () => {
   {/* Content container (unchanged) */}
   <div className="relative z-10 text-center p-8 rounded-lg">
     <div className="max-w-4xl mx-auto text-center">
-      <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-        Tech News, Industry Insights, Knowledge Base & more...
+      <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">
+        Tech News, Industry Insights, 
       </h1>
+      <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">Knowledge Base & more...</h1>
     </div>
   </div>
 </div>
@@ -152,7 +153,14 @@ const Reflects = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2 line-clamp-2">{card.title}</h2>
               <p className="text-black text-base mb-4 flex-1 line-clamp-3">{card.desc}</p>
-              <button className="mt-auto bg-[#4961e1] text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-fit self-start">Read More</button>
+              <button className="mt-auto bg-[#4961e1] text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-fit self-start" style={{
+                  background: '#4961e1',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(5px)',
+                  WebkitBackdropFilter: 'blur(5px)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)'
+                }}>Read More</button>
             </div>
           </div>
         ))}
