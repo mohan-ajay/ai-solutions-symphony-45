@@ -314,7 +314,7 @@ const BinaryPattern = ({ mouseX, mouseY, randomString }: any) => {
 
   return (
     <>
-      <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] opacity-50"></div>
+      <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] opacity-90"></div>
       
       {/* Base visible binary pattern */}
       <div className="absolute inset-0 opacity-30">
@@ -325,7 +325,7 @@ const BinaryPattern = ({ mouseX, mouseY, randomString }: any) => {
       
       {/* Hover focus effect - only the small area becomes brighter */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-40 transition duration-300 hidden sm:block"
+        className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-90 group-hover:opacity-10 transition duration-300 hidden sm:block"
         style={style}
       />
       

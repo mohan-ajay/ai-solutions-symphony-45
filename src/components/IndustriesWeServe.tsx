@@ -67,6 +67,7 @@ const HexagonItem: React.FC<{
 }> = ({ industry }) => {
   return (
     <div className="hexagon-item">
+      <div className="glassmorphic-wrapper">
       <button
         type="button"
         aria-label={industry.name}
@@ -81,6 +82,7 @@ const HexagonItem: React.FC<{
           {industry.name}
         </span>
       </button>
+      </div>
     </div>
   );
 };

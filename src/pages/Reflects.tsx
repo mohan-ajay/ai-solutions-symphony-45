@@ -13,6 +13,8 @@ import image_11 from '/reflects/image_11.jpg'
 import image_12 from '/reflects/image_12.png'
 import ModernHeader from '@/components/ModernHeader';
 import ModernFooter from '@/components/ModernFooter';
+import { useNavigate } from 'react-router-dom';
+import { link } from 'fs';
 
 
 const cards = [
@@ -23,6 +25,7 @@ const cards = [
     date: 'May 16, 2025',
     author: 'Satish A G',
     tag: 'Announcement',
+    link:'/reflects/ForthWebinar'
   },
   {
     image: image_2,
@@ -31,6 +34,7 @@ const cards = [
     date: 'May 12, 2025',
     author: 'Anjali Burman',
     tag: 'Blog',
+    link: '/reflects/AgriTechBlog'
   },
   {
     image: image_3,
@@ -39,6 +43,8 @@ const cards = [
     date: 'Mar 15, 2025',
     author: 'Satish A G',
     tag: 'MetricTalks',
+    link: '/reflects/third_webinar'
+    
   },
   {
     image: image_4,
@@ -47,6 +53,7 @@ const cards = [
     date: 'Feb 25, 2025',
     author: 'Satish A G',
     tag: 'Announcement',
+    link:'/reflects/third_webinar_invitation'
   },
   {
     image: image_5,
@@ -55,6 +62,7 @@ const cards = [
     date: 'Nov 12, 2024',
     author: 'Vivek V Pai',
     tag: 'Tech',
+    link: '/reflects/MicrofrontendSaas'
   },
   {
     image: image_6,
@@ -63,6 +71,7 @@ const cards = [
     date: 'Oct 22, 2024',
     author: 'Anjali Kumari',
     tag: 'Tech',
+    link: '/reflects/AIMLDeepFake'
   },
   {
     image: image_7,
@@ -103,6 +112,7 @@ const cards = [
     date: 'july 5, 2024',
     author: 'Bhagyalakshmi G',
     tag: 'Announcement',
+    link:'/reflects/AiPoweredComponent'
   },
   {
     image: image_12,
@@ -115,6 +125,8 @@ const cards = [
 ];
 
 const Reflects = () => {
+    const navigate = useNavigate();
+  
   return (
     <>
     
@@ -160,7 +172,7 @@ const Reflects = () => {
                   backdropFilter: 'blur(5px)',
                   WebkitBackdropFilter: 'blur(5px)',
                   border: '1px solid rgba(255, 255, 255, 0.3)'
-                }}>Read More</button>
+                }} onClick={() => {navigate(card.link)}}>Read More</button>
             </div>
           </div>
         ))}

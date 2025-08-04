@@ -46,7 +46,10 @@ const ModernHeader = ({ alwaysHideOnScroll = false, isModalOpen = false }: { alw
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${scrolled ? 'bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border-gray-100' : ''}`}
-        style={!scrolled ? { background: 'none', boxShadow: 'none', border: 'none', backdropFilter: 'none', WebkitBackdropFilter: 'none' } : {}}
+        style={scrolled
+          ? { boxShadow: 'inset 0 0 10px rgba(255, 255, 255, 0.25)' }
+          : { background: 'none',border: 'none', backdropFilter: 'none', WebkitBackdropFilter: 'none' }
+        }
       >
         {scrolled && (
           <div className="absolute inset-0 bg-gradient-to-b from-gray-800/30 to-gray-500/10 backdrop-blur-md border-b border-white/10 z-[-1]" />

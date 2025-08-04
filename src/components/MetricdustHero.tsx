@@ -276,8 +276,8 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
       {/* Modal Popup for LiveKitAgent - restored */}
        {/* Modal Popup for LiveKitAgent */}
       {showModal && (
-        <div className="fixed inset-0 min-h-screen px-2 py-2 sm:py-12 z-[100] flex items-center justify-center bg-black bg-opacity-70">
-          <div className="w-full max-w-[95vw] sm:w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl relative backdrop-blur overflow-hidden h-[70vh] sm:h-[700px] flex flex-col">
+        <div className="fixed inset-0 min-h-screen px-4 py-6 sm:py-12 z-[100] flex items-start sm:items-center justify-center bg-black bg-opacity-70">
+          <div className="w-[90%] sm:w-5/6 max-w-5xl rounded-xl border border-white/30 shadow-2xl relative backdrop-blur overflow-hidden h-[60vh] sm:h-[00px]">
             <button
               className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-red-600 z-10"
               onClick={() => {
@@ -288,13 +288,14 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
             >
               &times;
             </button>
-            <div className="flex-1 h-full flex flex-col items-center justify-center p-2 sm:p-6 bg-black overflow-y-auto">
+            <div className="flex-1 h-full flex flex-col items-center justify-center p-4 sm:p-6 bg-black">
               <div className="w-full h-full flex items-center justify-center">
                 <LivekitAgent
                   isSessionActive={isSessionActive}
                   onSessionStateChange={handleSessionStateChange}
                 />
               </div>
+              {/* End Session button removed */}
             </div>
           </div>
         </div>
@@ -337,34 +338,31 @@ const MetricdustHero = ({ onModalStateChange }: { onModalStateChange?: (isOpen: 
             {/* Right: Visualizer */}
             <div className="w-full lg:w-[45%] flex flex-col items-center justify-start">
               <div className="w-full relative h-[200px] sm:h-[250px] md:h-[400px] flex items-center justify-center">
-                <div className="w-[280px] sm:w-[100px] h-[200px] sm:h-[200px]">
+                <div className="w-[280px] sm:w-full h-[200px] sm:h-full">
                   <MetricDustVisualizer micEnabled={true} />
                 </div>
                 {/* Play Button - Centered in Visualizer */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
-                  <Button
+                  <button
                     onClick={handlePlayAudio}
-                    size="lg"
-                    className="text-white font-medium rounded-xl px-3 sm:px-6 py-2 sm:py-3 transition-all border flex items-center gap-1.5 sm:gap-2"
+                    className="text-white font-medium rounded-xl px-1 sm:px-1.5 py-1.5 sm:py-2 border-0 sm:border transition-all flex items-center gap-1.5 sm:gap-2"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '10px',
                       boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                       backdropFilter: 'blur(5px)',
                       WebkitBackdropFilter: 'blur(5px)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)'
                     }}
                   >
                     {isPlaying ? (
                       <div className="flex items-center justify-center space-x-1">
-                        <div className="w-1.5 sm:w-2 h-5 sm:h-6 bg-white rounded-sm"></div>
-                        <div className="w-1.5 sm:w-2 h-5 sm:h-6 bg-white rounded-sm"></div>
+                        <div className="w-1.5 sm:w-2 h-5 sm:h-4 bg-white rounded-sm"></div>
+                        <div className="w-1.5 sm:w-2 h-5 sm:h-4 bg-white rounded-sm"></div>
                       </div>
                     ) : (
-                      <Play className="w-4 sm:w-5 h-4 sm:h-5 text-white" fill="white" />
+                      <Play className="w-4 sm:w-4 h-3 sm:h-4 text-white" fill="white" />
                     )}
-                    <span className="font-bold text-sm sm:text-base">About us</span>
-                  </Button>
+                    <span className="font-bold sm:font-bold text-xs sm:text-base">About us</span>
+                  </button>
                 </div>
               </div>
               {/* Talk To AI Button - Below Visualizer */}
